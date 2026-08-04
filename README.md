@@ -1,26 +1,368 @@
-# Space Monitoring System
+# 🚀 Mission Control Platform
 
-<h2>Sobre o projeto</h2>
+<div align="center">
 
-O Space Monitoring System é um projeto web desenvolvida para centralizar, gerenciar e monitorar informações vindas de satélites, simulando as operações de um Centro de Missões de uma agência espacial, permitindo acompanhar em tempo real os parâmetros operacionais dos satélites, visualizar suas posições orbitais, registrar eventos críticos e auxiliar operadores na tomada de decisões durante as missões.
+### Plataforma Web para Monitoramento Inteligente de Satélites em Tempo Real
 
-Além do monitoramento em tempo real, o sistema disponibiliza funcionalidades de gerenciamento de satélites, missões, operadores, estações terrestres e sensores embarcados, oferecendo uma visão integrada das operações espaciais.
+Sistema desenvolvido para centralizar, monitorar e gerenciar informações provenientes de satélites artificiais utilizando dados orbitais reais, dashboards interativos e monitoramento em tempo real.
 
-<h2>Objetivo</h2>
+![Laravel](https://img.shields.io/badge/Laravel-12-red?logo=laravel)
+![React](https://img.shields.io/badge/React-TypeScript-61DAFB?logo=react)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue?logo=mysql)
+![Socket.IO](https://img.shields.io/badge/Socket.IO-Realtime-black?logo=socketdotio)
+![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 
-<h2>Integrações com APIs</h2>
-O projeto poderá integrar APIs públicas para obtenção de dados orbitais reais dos satélites.
+</div>
 
-As informações obtidas poderão incluir:
+---
 
-Nome do satélite
-Órbita
-Latitude
-Longitude
-Altitude
-Velocidade orbital
+# 📖 Sobre o Projeto
 
-Os demais parâmetros operacionais serão produzidos pelo simulador interno da aplicação.
+O **Mission Control Platform** é uma plataforma web desenvolvida para centralizar, monitorar e gerenciar informações provenientes de satélites artificiais em órbita terrestre.
 
-<h2>Tecnologias</h2>
-Para desenvolvimento do projeto, foi escolhido Laravel 11 para desenvolvimento back-end,MySql para banco de dados.
+Inspirado em centros de controle de missões espaciais, como NASA e ESA, o sistema reúne em um único ambiente informações operacionais, telemetria, localização orbital, eventos críticos e indicadores de desempenho dos satélites.
+
+Diferentemente de um sistema apenas demonstrativo, o projeto utiliza **APIs públicas de monitoramento espacial**, permitindo acompanhar satélites reais em órbita terrestre e visualizar suas posições e parâmetros em tempo real.
+
+Além disso, a plataforma possui um módulo de simulação responsável por gerar informações operacionais complementares, permitindo representar um ambiente completo de Centro de Controle de Missões.
+
+---
+
+# 🎯 Objetivo
+
+Desenvolver uma plataforma web capaz de monitorar satélites em tempo real, centralizar informações operacionais e auxiliar operadores e engenheiros espaciais na tomada de decisões durante missões.
+
+---
+
+# ❗ Problema
+
+As informações referentes ao monitoramento de satélites normalmente encontram-se distribuídas entre diferentes sistemas e fontes de dados.
+
+Essa descentralização dificulta:
+
+- acompanhamento em tempo real;
+- resposta rápida a incidentes;
+- análise histórica;
+- gerenciamento das missões;
+- visualização integrada das operações.
+
+O Mission Control Platform busca solucionar esse problema por meio de uma plataforma única, moderna e intuitiva.
+
+---
+
+# ✨ Principais Funcionalidades
+
+## 🌍 Monitoramento Orbital
+
+- Visualização de satélites em tempo real
+- Localização orbital
+- Latitude
+- Longitude
+- Altitude
+- Velocidade orbital
+- Tipo de órbita
+- Atualização em tempo real
+
+---
+
+## 📡 Telemetria
+
+- Temperatura
+- Consumo energético
+- Estado operacional
+- Integridade dos sistemas
+- Sensores embarcados
+- Histórico de telemetria
+
+Parte desses dados será obtida através de APIs públicas e parte será gerada pelo simulador interno da plataforma.
+
+---
+
+## 🚨 Sistema de Alertas
+
+- Eventos críticos
+- Alterações de órbita
+- Falhas operacionais
+- Perda de comunicação
+- Alertas personalizados
+
+---
+
+## 📊 Dashboard
+
+- KPIs
+- Indicadores operacionais
+- Missões ativas
+- Satélites monitorados
+- Eventos recentes
+- Gráficos estatísticos
+- Mapa orbital interativo
+
+---
+
+## 📁 Gerenciamento
+
+Cadastro completo de:
+
+- Satélites
+- Missões
+- Operadores
+- Sensores
+- Estações terrestres
+
+---
+
+## 📄 Relatórios
+
+- Missões
+- Eventos
+- Histórico operacional
+- Telemetria
+- Satélites
+
+---
+
+# 🛰 Arquitetura do Sistema
+
+```
+                     APIs Espaciais
+               (NASA • CelesTrak • N2YO)
+                        │
+                        │
+                        ▼
+                 Backend Laravel API
+                        │
+        ┌───────────────┼───────────────┐
+        │                               │
+   Banco MySQL                  Socket.IO Server
+        │                               │
+        └───────────────┬───────────────┘
+                        │
+                        ▼
+              Frontend React + TypeScript
+                        │
+                        ▼
+                  Dashboard Web
+```
+
+---
+
+# 🔌 Integração com APIs
+
+O sistema utilizará APIs públicas para obtenção de informações reais sobre satélites artificiais.
+
+Entre os dados obtidos estão:
+
+- Nome do satélite
+- Número NORAD
+- Posição orbital
+- Latitude
+- Longitude
+- Altitude
+- Velocidade orbital
+- Inclinação
+- Tipo de órbita
+- Última atualização
+
+As APIs inicialmente previstas são:
+
+- NASA Open APIs
+- CelesTrak
+- N2YO API
+
+Novas integrações poderão ser adicionadas futuramente.
+
+---
+
+# ⚙ Tecnologias
+
+## Front-end
+
+- React
+- TypeScript
+- Tailwind CSS
+- Recharts
+- Leaflet
+- Axios
+
+---
+
+## Back-end
+
+- Laravel 12
+- PHP 8.4
+- REST API
+- Socket.IO
+
+---
+
+## Banco de Dados
+
+- MySQL
+
+---
+
+## Versionamento
+
+- Git
+- GitHub
+
+---
+
+# 📂 Estrutura do Projeto
+
+```
+mission-control-platform/
+
+backend/
+│
+├── app/
+├── database/
+├── routes/
+├── config/
+└── ...
+
+frontend/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── hooks/
+│   ├── layouts/
+│   └── assets/
+│
+└── ...
+
+docs/
+
+README.md
+LICENSE
+```
+
+---
+
+# 👥 Stakeholders
+
+| Stakeholder | Responsabilidade |
+|-------------|-----------------|
+| Agência Espacial Internacional | Cliente |
+| Administrador | Administração do sistema |
+| Operador de Missão | Monitoramento das missões |
+| Engenheiro Espacial | Análise da telemetria |
+| Equipe de Desenvolvimento | Evolução da plataforma |
+
+---
+
+# 👨‍💻 Equipe
+
+| Integrante | Responsabilidade |
+|------------|-----------------|
+| **William Galvão** | Scrum Master |
+| **Maria Dalapria** | Scrum Master Assistente • Documentação |
+| **Heloisa Jobbins Scheffer** | Backend |
+| **Rafael Krachinski Seixas** | Backend • QA |
+| **Iryane Karolyne Ienke** | Frontend |
+| **Thauany Favarin Mainardes** | Frontend • QA |
+
+---
+
+# 🚀 Instalação
+
+## Clonar o repositório
+
+```bash
+git clone https://github.com/seu-usuario/mission-control-platform.git
+```
+
+## Backend
+
+```bash
+cd backend
+
+composer install
+
+cp .env.example .env
+
+php artisan key:generate
+
+php artisan migrate
+
+php artisan serve
+```
+
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+---
+
+# 📌 Roadmap
+
+## MVP
+
+- [ ] Sistema de autenticação
+- [ ] Cadastro de satélites
+- [ ] Cadastro de missões
+- [ ] Cadastro de operadores
+- [ ] Dashboard principal
+- [ ] Integração com APIs
+- [ ] Visualização orbital
+- [ ] Histórico
+- [ ] Sistema de alertas
+
+## Futuras versões
+
+- [ ] Múltiplas estações terrestres
+- [ ] Simulador avançado de telemetria
+- [ ] Replay de missões
+- [ ] Controle de permissões
+- [ ] Exportação de relatórios
+- [ ] Tema escuro/claro
+- [ ] PWA
+- [ ] Internacionalização
+
+---
+
+# 🚫 Fora do Escopo
+
+- Aplicativo Mobile
+- Inteligência Artificial para previsão de falhas
+- Comunicação direta com hardware espacial
+- Controle de satélites reais
+
+> **Observação:** embora o sistema utilize dados reais de satélites através de APIs públicas, ele não envia comandos nem realiza qualquer tipo de controle sobre esses equipamentos.
+
+---
+
+# 📚 Referências
+
+- NASA Open APIs — https://api.nasa.gov
+- CelesTrak — https://celestrak.org
+- N2YO API — https://www.n2yo.com/api/
+
+Norma utilizada:
+
+**ABNT NBR 6023:2018**
+
+---
+
+# 📄 Licença
+
+Projeto desenvolvido para fins acadêmicos na disciplina de Engenharia de Software.
+
+---
+
+<div align="center">
+
+## 🌎 Mission Control Platform
+
+*"Centralizando informações espaciais para apoiar decisões críticas em tempo real."*
+
+</div>
