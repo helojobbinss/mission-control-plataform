@@ -11,7 +11,7 @@ describe('ConfirmDialog', () => {
         open
         onOpenChange={vi.fn()}
         title='Delete item'
-        desc='This action cannot be undone.'
+        desc='This action cannot be unConcluída.'
         handleConfirm={vi.fn()}
       />
     )
@@ -20,7 +20,7 @@ describe('ConfirmDialog', () => {
       .element(getByRole('heading', { name: 'Delete item' }))
       .toBeInTheDocument()
     await expect
-      .element(getByText('This action cannot be undone.'))
+      .element(getByText('This action cannot be unConcluída.'))
       .toBeInTheDocument()
     await expect
       .element(getByRole('button', { name: 'Cancel' }))

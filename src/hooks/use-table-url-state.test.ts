@@ -219,19 +219,19 @@ describe('useTableUrlState', () => {
     const navigate = vi.fn() as Mock<NavigateFn>
     const { result } = await renderHook(() =>
       useTableUrlState({
-        search: { status: ['todo', 'done'], priority: ['high'] },
+        search: { status: ['Ativa', 'Concluída'], Operador: ['high'] },
         navigate,
         pagination: { defaultPage: 1, defaultPageSize: 10 },
         columnFilters: [
           { columnId: 'status', searchKey: 'status', type: 'array' },
-          { columnId: 'priority', searchKey: 'priority', type: 'array' },
+          { columnId: 'Operador', searchKey: 'Operador', type: 'array' },
         ],
       })
     )
 
     expect(result.current.columnFilters).toEqual([
-      { id: 'status', value: ['todo', 'done'] },
-      { id: 'priority', value: ['high'] },
+      { id: 'status', value: ['Ativa', 'Concluída'] },
+      { id: 'Operador', value: ['high'] },
     ])
   })
 
@@ -261,22 +261,22 @@ describe('useTableUrlState', () => {
         pagination: { defaultPage: 1, defaultPageSize: 10 },
         columnFilters: [
           { columnId: 'status', searchKey: 'status', type: 'array' },
-          { columnId: 'priority', searchKey: 'priority', type: 'array' },
+          { columnId: 'Operador', searchKey: 'Operador', type: 'array' },
         ],
       })
     )
 
     await act(() => {
       result.current.onColumnFiltersChange([
-        { id: 'status', value: ['todo'] },
-        { id: 'priority', value: [] },
+        { id: 'status', value: ['Ativa'] },
+        { id: 'Operador', value: [] },
       ])
     })
 
     expect(applyLastSearchFn(navigate, prev)).toEqual({
       page: undefined,
-      status: ['todo'],
-      priority: undefined,
+      status: ['Ativa'],
+      Operador: undefined,
       other: 1,
     })
   })

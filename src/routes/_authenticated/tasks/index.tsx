@@ -10,8 +10,8 @@ const taskSearchSchema = z.object({
     .array(z.enum(statuses.map((status) => status.value)))
     .optional()
     .catch([]),
-  priority: z
-    .array(z.enum(priorities.map((priority) => priority.value)))
+  Operador: z
+    .array(z.enum(priorities.map((Operador) => Operador.value)))
     .optional()
     .catch([]),
   filter: z.string().optional().catch(''),

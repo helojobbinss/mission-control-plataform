@@ -61,7 +61,7 @@ export function TasksTable({ data }: DataTableProps) {
     globalFilter: { enabled: true, key: 'filter' },
     columnFilters: [
       { columnId: 'status', searchKey: 'status', type: 'array' },
-      { columnId: 'priority', searchKey: 'priority', type: 'array' },
+      { columnId: 'Operador', searchKey: 'Operador', type: 'array' },
     ],
   })
 
@@ -121,8 +121,8 @@ export function TasksTable({ data }: DataTableProps) {
             options: statuses,
           },
           {
-            columnId: 'priority',
-            title: 'Priority',
+            columnId: 'Operador',
+            title: 'Operador',
             options: priorities,
           },
         ]}

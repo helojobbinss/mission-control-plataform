@@ -11,9 +11,9 @@ vi.mock('@/lib/show-submitted-data', () => ({ showSubmittedData: vi.fn() }))
 const MOCK_TASK = {
   id: 'task-1',
   title: 'Existing task',
-  status: 'in progress',
+  status: 'Agendada',
   label: 'feature',
-  priority: 'medium',
+  Operador: 'medium',
 } as const satisfies Task
 
 describe('TasksMutateDrawer', () => {
@@ -48,7 +48,7 @@ describe('TasksMutateDrawer', () => {
     const titleInput = getByRole('textbox', { name: /Title/i })
     const statusSelect = getByRole('combobox', { name: /Status/i })
     const labelRadio = getByRole('radio', { name: MOCK_TASK.label })
-    const priorityRadio = getByRole('radio', { name: MOCK_TASK.priority })
+    const OperadorRadio = getByRole('radio', { name: MOCK_TASK.Operador })
 
     await expect.element(title).toBeInTheDocument()
     await expect.element(desc).toBeInTheDocument()
@@ -57,7 +57,7 @@ describe('TasksMutateDrawer', () => {
       .element(statusSelect)
       .toHaveTextContent(new RegExp(MOCK_TASK.status, 'i'))
     await expect.element(labelRadio).toBeChecked()
-    await expect.element(priorityRadio).toBeChecked()
+    await expect.element(OperadorRadio).toBeChecked()
   })
 
   it('shows validation messages when submitting an empty form', async () => {
@@ -76,7 +76,7 @@ describe('TasksMutateDrawer', () => {
       .element(getByText(/Please select a label.$/i))
       .toBeInTheDocument()
     await expect
-      .element(getByText(/Please choose a priority.$/i))
+      .element(getByText(/Please choose a Operador.$/i))
       .toBeInTheDocument()
   })
 
@@ -91,7 +91,7 @@ describe('TasksMutateDrawer', () => {
 
     const statusSelect = getByRole('combobox', { name: /Status/i })
     await userEvent.click(statusSelect)
-    await userEvent.click(getByRole('option', { name: /Todo/i }))
+    await userEvent.click(getByRole('option', { name: /Ativa/i }))
 
     await userEvent.click(getByRole('radio', { name: /^Bug$/i }))
     await userEvent.click(getByRole('radio', { name: /^Low$/i }))
@@ -105,9 +105,9 @@ describe('TasksMutateDrawer', () => {
     expect(showSubmittedData).toHaveBeenCalledOnce()
     expect(showSubmittedData).toHaveBeenCalledWith({
       title: 'New task title',
-      status: 'todo',
+      status: 'Ativa',
       label: 'bug',
-      priority: 'low',
+      Operador: 'low',
     })
   })
 
@@ -150,16 +150,16 @@ describe('TasksMutateDrawer', () => {
 
     const statusSelect = getByRole('combobox', { name: /Status/i })
     await userEvent.click(statusSelect)
-    await userEvent.click(getByRole('option', { name: /Todo/i }))
-    await expect.element(statusSelect).toHaveTextContent(/Todo/i)
+    await userEvent.click(getByRole('option', { name: /Ativa/i }))
+    await expect.element(statusSelect).toHaveTextContent(/Ativa/i)
 
     const labelRadio = getByRole('radio', { name: /^Documentation$/i })
     await userEvent.click(labelRadio)
     await expect.element(labelRadio).toBeChecked()
 
-    const priorityRadio = getByRole('radio', { name: /^High$/i })
-    await userEvent.click(priorityRadio)
-    await expect.element(priorityRadio).toBeChecked()
+    const OperadorRadio = getByRole('radio', { name: /^High$/i })
+    await userEvent.click(OperadorRadio)
+    await expect.element(OperadorRadio).toBeChecked()
 
     const closeButtons = getByRole('dialog')
       .getByRole('button', {
@@ -172,8 +172,8 @@ describe('TasksMutateDrawer', () => {
     await userEvent.click(reopenButton)
 
     await expect.element(titleInput).toHaveValue('')
-    await expect.element(statusSelect).not.toHaveTextContent(/Todo/i)
+    await expect.element(statusSelect).not.toHaveTextContent(/Ativa/i)
     await expect.element(labelRadio).not.toBeChecked()
-    await expect.element(priorityRadio).not.toBeChecked()
+    await expect.element(OperadorRadio).not.toBeChecked()
   })
 })

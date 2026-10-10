@@ -30,7 +30,7 @@ async function renderWithSearchProvider() {
 
 /**
  * Open the palette by shortcut, retrying while the keydown listener may not be mounted yet.
- * Waits between attempts so a successful toggle is not immediately undone by a second chord.
+ * Waits between attempts so a successful toggle is not immediately unConcluída by a second chord.
  */
 async function openCommandPalette(
   screen: RenderResult,

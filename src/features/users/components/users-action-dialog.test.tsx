@@ -48,7 +48,7 @@ describe('UsersActionDialog', () => {
         name: /Add New User/i,
       })
       const description = getByText(
-        /Create new user here. Click save when you're done./i
+        /Create new user here. Click save when you're Concluída./i
       )
 
       await expect.element(title).toBeInTheDocument()
@@ -195,7 +195,7 @@ describe('UsersActionDialog', () => {
         name: /Edit User/i,
       })
       const description = getByText(
-        /Update the user here\. Click save when you're done\./i
+        /Update the user here\. Click save when you're Concluída\./i
       )
 
       await expect.element(title).toBeInTheDocument()

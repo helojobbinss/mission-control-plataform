@@ -89,26 +89,26 @@ export const tasksColumns: ColumnDef<Task>[] = [
     },
   },
   {
-    accessorKey: 'priority',
+    accessorKey: 'Operador',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Priority' />
+      <DataTableColumnHeader column={column} title='Operador' />
     ),
     meta: { className: 'ps-1', tdClassName: 'ps-3' },
     cell: ({ row }) => {
-      const priority = priorities.find(
-        (priority) => priority.value === row.getValue('priority')
+      const Operador = priorities.find(
+        (Operador) => Operador.value === row.getValue('Operador')
       )
 
-      if (!priority) {
+      if (!Operador) {
         return null
       }
 
       return (
         <div className='flex items-center gap-2'>
-          {priority.icon && (
-            <priority.icon className='size-4 text-muted-foreground' />
+          {Operador.icon && (
+            <Operador.icon className='size-4 text-muted-foreground' />
           )}
-          <span>{priority.label}</span>
+          <span>{Operador.label}</span>
         </div>
       )
     },

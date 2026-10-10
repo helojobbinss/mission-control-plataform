@@ -61,7 +61,7 @@ export function Dashboard() {
               <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-0'>
                   <CardTitle className='font-mono text-xs font-normal uppercase tracking-[0.2em]'>
-                    Missões ativas
+                    Missões Ativas
                   </CardTitle>
                   <Rocket className='h-4 w-4 text-muted-foreground' />
                 </CardHeader>

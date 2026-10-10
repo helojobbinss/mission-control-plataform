@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { type Table } from '@tanstack/react-table'
-import { Trash2, CircleArrowUp, ArrowUpDown, Download } from 'lucide-react'
+import { CircleArrowUp, ArrowUpDown, Download } from 'lucide-react'
 import { toast } from 'sonner'
 import { sleep } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -43,13 +43,13 @@ export function DataTableBulkActions<TData>({
     table.resetRowSelection()
   }
 
-  const handleBulkPriorityChange = (priority: string) => {
+  const handleBulkOperadorChange = (Operador: string) => {
     const selectedTasks = selectedRows.map((row) => row.original as Task)
     toast.promise(sleep(2000), {
-      loading: 'Updating priority...',
+      loading: 'Updating Operador...',
       success: () => {
         table.resetRowSelection()
-        return `Priority updated to "${priority}" for ${selectedTasks.length} task${selectedTasks.length > 1 ? 's' : ''}.`
+        return `Operador updated to "${Operador}" for ${selectedTasks.length} task${selectedTasks.length > 1 ? 's' : ''}.`
       },
       error: 'Error',
     })
@@ -116,29 +116,26 @@ export function DataTableBulkActions<TData>({
                   variant='outline'
                   size='icon'
                   className='size-8'
-                  aria-label='Update priority'
-                  title='Update priority'
+                  aria-label='Update Operador'
+                  title='Update Operador'
                 >
                   <ArrowUpDown />
-                  <span className='sr-only'>Update priority</span>
+                  <span className='sr-only'>Update Operador</span>
                 </Button>
               </DropdownMenuTrigger>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Update priority</p>
+              <p>Update Operador</p>
             </TooltipContent>
           </Tooltip>
           <DropdownMenuContent sideOffset={14}>
-            {priorities.map((priority) => (
+            {priorities.map((Operador) => (
               <DropdownMenuItem
-                key={priority.value}
-                defaultValue={priority.value}
-                onClick={() => handleBulkPriorityChange(priority.value)}
+                key={Operador.value}
+                defaultValue={Operador.value}
+                onClick={() => handleBulkOperadorChange(Operador.value)}
               >
-                {priority.icon && (
-                  <priority.icon className='size-4 text-muted-foreground' />
-                )}
-                {priority.label}
+                {Operador.label}
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
@@ -165,17 +162,6 @@ export function DataTableBulkActions<TData>({
 
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button
-              variant='destructive'
-              size='icon'
-              onClick={() => setShowDeleteConfirm(true)}
-              className='size-8'
-              aria-label='Delete selected tasks'
-              title='Delete selected tasks'
-            >
-              <Trash2 />
-              <span className='sr-only'>Delete selected tasks</span>
-            </Button>
           </TooltipTrigger>
           <TooltipContent>
             <p>Delete selected tasks</p>

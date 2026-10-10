@@ -1,6 +1,5 @@
 import { showSubmittedData } from '@/lib/show-submitted-data'
 import { ConfirmDialog } from '@/components/confirm-dialog'
-import { TasksImportDialog } from './tasks-import-dialog'
 import { TasksMutateDrawer } from './tasks-mutate-drawer'
 import { useTasks } from './tasks-provider'
 
@@ -12,12 +11,6 @@ export function TasksDialogs() {
         key='task-create'
         open={open === 'create'}
         onOpenChange={() => setOpen('create')}
-      />
-
-      <TasksImportDialog
-        key='tasks-import'
-        open={open === 'import'}
-        onOpenChange={() => setOpen('import')}
       />
 
       {currentRow && (
@@ -60,7 +53,7 @@ export function TasksDialogs() {
               <>
                 You are about to delete a task with the ID{' '}
                 <strong>{currentRow.id}</strong>. <br />
-                This action cannot be undone.
+                This action cannot be unConcluída.
               </>
             }
             confirmText='Delete'
