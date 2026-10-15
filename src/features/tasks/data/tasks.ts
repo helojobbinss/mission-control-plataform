@@ -10,11 +10,11 @@ export const tasks = Array.from({ length: 5 }, () => {
     'Concluída',
     'Abortada',
   ] as const
-  const labels = ['bug', 'feature', 'documentation'] as const
+  const labels = ['Monitoramento', 'comunicacao', 'AnaliseOrbital'] as const
   const priorities = ['Arthur', 'Sophia', 'Gabriel','Isabella'] as const
 
   return {
-    id: `TASK-${faker.number.int({ min: 1000, max: 9999 })}`,
+    id: `MISSÃO-${faker.number.int({ min: 1000, max: 9999 })}`,
     title: faker.lorem.sentence({ min: 5, max: 15 }),
     status: faker.helpers.arrayElement(statuses),
     label: faker.helpers.arrayElement(labels),

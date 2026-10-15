@@ -84,12 +84,12 @@ export function DataTableBulkActions<TData>({
                   title='Update status'
                 >
                   <CircleArrowUp />
-                  <span className='sr-only'>Update status</span>
+                  <span className='sr-only'>Atualizar status</span>
                 </Button>
               </DropdownMenuTrigger>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Update status</p>
+              <p>Atualizar status</p>
             </TooltipContent>
           </Tooltip>
           <DropdownMenuContent sideOffset={14}>
@@ -120,12 +120,12 @@ export function DataTableBulkActions<TData>({
                   title='Update Operador'
                 >
                   <ArrowUpDown />
-                  <span className='sr-only'>Update Operador</span>
+                  <span className='sr-only'>Atualizar Operador</span>
                 </Button>
               </DropdownMenuTrigger>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Update Operador</p>
+              <p>Atualizar Operador</p>
             </TooltipContent>
           </Tooltip>
           <DropdownMenuContent sideOffset={14}>
@@ -152,11 +152,11 @@ export function DataTableBulkActions<TData>({
               title='Export tasks'
             >
               <Download />
-              <span className='sr-only'>Export tasks</span>
+              <span className='sr-only'>Exportar missões</span>
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Export tasks</p>
+            <p>Exportar missões</p>
           </TooltipContent>
         </Tooltip>
 

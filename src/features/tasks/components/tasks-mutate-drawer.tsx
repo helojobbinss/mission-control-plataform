@@ -73,7 +73,7 @@ export function TasksMutateDrawer({
     >
       <SheetContent className='flex flex-col'>
         <SheetHeader className='text-start'>
-          <SheetTitle>{isUpdate ? 'Update' : 'Create'} Task</SheetTitle>
+          <SheetTitle>{isUpdate ? 'Update' : 'Create'} missão</SheetTitle>
           <SheetDescription>
             {isUpdate
               ? 'Atualize a missão com as informações necessarias '
@@ -94,7 +94,7 @@ export function TasksMutateDrawer({
                 <FormItem>
                   <FormLabel>Título</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder='Enter a title' />
+                    <Input {...field} placeholder='' />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -109,7 +109,7 @@ export function TasksMutateDrawer({
                   <SelectDropdown
                     defaultValue={field.value}
                     onValueChange={field.onChange}
-                    placeholder='Select dropdown'
+                    placeholder='Selecione um status'
                     items={[
                       { label: 'Agendada', value: 'Agendada' },
                       { label: 'Ativa', value: 'Ativa' },
@@ -126,7 +126,7 @@ export function TasksMutateDrawer({
               name='label'
               render={({ field }) => (
                 <FormItem className='relative'>
-                  <FormLabel>Label</FormLabel>
+                  <FormLabel>Tipo</FormLabel>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -135,23 +135,23 @@ export function TasksMutateDrawer({
                     >
                       <FormItem className='flex items-center'>
                         <FormControl>
-                          <RadioGroupItem value='documentation' />
+                          <RadioGroupItem value='AnaliseOrbital' />
                         </FormControl>
-                        <FormLabel className='font-normal'>
-                          Documentation
+                        <FormLabel className='font-normal '>
+                          Análise Orbital
                         </FormLabel>
                       </FormItem>
                       <FormItem className='flex items-center'>
                         <FormControl>
-                          <RadioGroupItem value='feature' />
+                          <RadioGroupItem value='comunicao' />
                         </FormControl>
-                        <FormLabel className='font-normal'>Feature</FormLabel>
+                        <FormLabel className='font-normal'>Comunicação</FormLabel>
                       </FormItem>
                       <FormItem className='flex items-center'>
                         <FormControl>
-                          <RadioGroupItem value='bug' />
+                          <RadioGroupItem value='Monitoramento' />
                         </FormControl>
-                        <FormLabel className='font-normal'>Bug</FormLabel>
+                        <FormLabel className='font-normal'>Monitoramento</FormLabel>
                       </FormItem>
                     </RadioGroup>
                   </FormControl>
@@ -205,7 +205,7 @@ export function TasksMutateDrawer({
         </Form>
         <SheetFooter className='gap-2'>
           <SheetClose asChild>
-            <Button variant='outline'>Close</Button>
+            <Button variant='outline'>Fechar</Button>
           </SheetClose>
           <Button form='tasks-form' type='submit'>
             Salvar

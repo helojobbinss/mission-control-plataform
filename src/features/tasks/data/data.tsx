@@ -7,16 +7,17 @@ import {
 
 export const labels = [
   {
-    value: 'bug',
-    label: 'Bug',
+    value: 'Monitoramento',
+    label: 'Monitoramento',
   },
   {
-    value: 'feature',
-    label: 'Feature',
+    value: 'Comunicacao',
+    label: 'Comunicacao',
   },
   {
-    value: 'documentation',
-    label: 'Documentation',
+    value: 'AnaliseOrbital',
+    label: 'AnaliseOrbital',
+    color: 'text-sky-300',
   },
 ]
 

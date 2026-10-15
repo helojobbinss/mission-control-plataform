@@ -113,7 +113,7 @@ export function TasksTable({ data }: DataTableProps) {
     >
       <DataTableToolbar
         table={table}
-        searchPlaceholder='Filter by title or ID...'
+        searchPlaceholder='Filtre pelo nome da missão'
         filters={[
           {
             columnId: 'status',

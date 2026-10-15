@@ -34,7 +34,7 @@ export const tasksColumns: ColumnDef<Task>[] = [
   {
     accessorKey: 'id',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Task' />
+      <DataTableColumnHeader column={column} title='Missão' />
     ),
     cell: ({ row }) => <div className='w-20'>{row.getValue('id')}</div>,
     enableSorting: false,
@@ -43,7 +43,7 @@ export const tasksColumns: ColumnDef<Task>[] = [
   {
     accessorKey: 'title',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Title' />
+      <DataTableColumnHeader column={column} title='Título' />
     ),
     meta: {
       className: 'ps-1 max-w-0 w-2/3',
@@ -54,7 +54,23 @@ export const tasksColumns: ColumnDef<Task>[] = [
 
       return (
         <div className='flex space-x-2'>
-          {label && <Badge variant='outline'>{label.label}</Badge>}
+          {label && (
+            <Badge
+              variant='outline'
+              className={
+                label.label === 'Monitoramento'
+                  ? 'border-yellow-400/50 text-yellow-300'
+                  : label.label === 'AnaliseOrbital'
+                    ? 'border-blue-500/50 text-blue-400'
+                    : label.label === 'comunicacao'
+                      ? 'border-blue-500/50 text-green-400'
+                      : ''
+              }
+            >
+              {label.label}
+            </Badge>
+          )}
+
           <span className='truncate font-medium'>{row.getValue('title')}</span>
         </div>
       )
@@ -105,9 +121,6 @@ export const tasksColumns: ColumnDef<Task>[] = [
 
       return (
         <div className='flex items-center gap-2'>
-          {Operador.icon && (
-            <Operador.icon className='size-4 text-muted-foreground' />
-          )}
           <span>{Operador.label}</span>
         </div>
       )
