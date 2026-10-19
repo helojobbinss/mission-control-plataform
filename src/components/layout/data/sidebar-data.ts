@@ -51,7 +51,7 @@ export const sidebarData: SidebarData = {
   ],
   navGroups: [
     {
-      title: 'General',
+      title: 'Geral',
       items: [
         {
           title: 'Painel Geral',
@@ -70,18 +70,18 @@ export const sidebarData: SidebarData = {
         },
         {
           title: 'Alertas e Manutenção',
-          url: '/chats',
+          url: '/users',
           badge: '3',
           icon: TriangleAlert,
         },
         {
           title: 'Comunicações',
-          url: '/users',
+          url: '/chats',
           icon: RadioTower,
         },
         {
           title: 'Gestão e dados',
-          url: '',
+          url: '/userscopy',
           icon: Users,
         },
         {

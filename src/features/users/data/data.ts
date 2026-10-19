@@ -1,35 +1,32 @@
-import { Shield, UserCheck, Users, CreditCard } from 'lucide-react'
+import { UserRoundX, CheckCheck, CircleCheck, Eye } from 'lucide-react'
 import { type UserStatus } from './schema'
 
 export const callTypes = new Map<UserStatus, string>([
-  ['active', 'bg-teal-100/30 text-teal-900 dark:text-teal-200 border-teal-200'],
-  ['inactive', 'bg-neutral-300/40 border-neutral-300'],
-  ['invited', 'bg-sky-200/40 text-sky-900 dark:text-sky-100 border-sky-300'],
-  [
-    'suspended',
-    'bg-destructive/10 dark:bg-destructive/50 text-destructive dark:text-primary border-destructive/10',
-  ],
+  ['info', 'bg-blue-500/20 text-blue-300 border-blue-500'],
+  ['aviso', 'bg-yellow-400/25 text-yellow-300 border-yellow-400'],
+  ['critico', 'bg-red-500/25 text-red-300 border-red-500'],
+  ['reconhecido', 'bg-gray-500/20 text-gray-300 border-gray-500/40',],
 ])
 
 export const roles = [
   {
-    label: 'Superadmin',
-    value: 'superadmin',
-    icon: Shield,
+    label: 'naoreconhecido',
+    value: 'naoreconhecido',
+    icon: UserRoundX,
   },
   {
-    label: 'Admin',
-    value: 'admin',
-    icon: UserCheck,
+    label: 'Fechado',
+    value: 'Fechado',
+    icon: CheckCheck,
   },
   {
-    label: 'Manager',
-    value: 'manager',
-    icon: Users,
+    label: 'Reconhecido',
+    value: 'Reconhecido',
+    icon: CircleCheck,
   },
   {
-    label: 'Cashier',
-    value: 'cashier',
-    icon: CreditCard,
+    label: 'Observacao',
+    value: 'Observacao',
+    icon: Eye,
   },
 ] as const

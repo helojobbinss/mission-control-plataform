@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { type Table } from '@tanstack/react-table'
-import { Trash2, UserX, UserCheck, Mail } from 'lucide-react'
+import { Trash2, UserCheck } from 'lucide-react'
 import { toast } from 'sonner'
 import { sleep } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -26,28 +26,16 @@ export function DataTableBulkActions<TData>({
   const handleBulkStatusChange = (status: 'active' | 'inactive') => {
     const selectedUsers = selectedRows.map((row) => row.original as User)
     toast.promise(sleep(2000), {
-      loading: `${status === 'active' ? 'Activating' : 'Deactivating'} users...`,
+      loading: `${status === 'active' ? 'Reconhecendo' : 'Deactivating'} aviso...`,
       success: () => {
         table.resetRowSelection()
-        return `${status === 'active' ? 'Activated' : 'Deactivated'} ${selectedUsers.length} user${selectedUsers.length > 1 ? 's' : ''}`
+        return `${status === 'active' ? 'Reconhecido' : 'Deactivated'} ${selectedUsers.length} avisp${selectedUsers.length > 1 ? 's' : ''}`
       },
-      error: `Error ${status === 'active' ? 'activating' : 'deactivating'} users`,
+      error: `Error ${status === 'active' ? 'Reconhecendo' : 'deactivating'} aviso`,
     })
     table.resetRowSelection()
   }
 
-  const handleBulkInvite = () => {
-    const selectedUsers = selectedRows.map((row) => row.original as User)
-    toast.promise(sleep(2000), {
-      loading: 'Inviting users...',
-      success: () => {
-        table.resetRowSelection()
-        return `Invited ${selectedUsers.length} user${selectedUsers.length > 1 ? 's' : ''}`
-      },
-      error: 'Error inviting users',
-    })
-    table.resetRowSelection()
-  }
 
   return (
     <>
@@ -57,55 +45,17 @@ export function DataTableBulkActions<TData>({
             <Button
               variant='outline'
               size='icon'
-              onClick={handleBulkInvite}
-              className='size-8'
-              aria-label='Invite selected users'
-              title='Invite selected users'
-            >
-              <Mail />
-              <span className='sr-only'>Invite selected users</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Invite selected users</p>
-          </TooltipContent>
-        </Tooltip>
-
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant='outline'
-              size='icon'
               onClick={() => handleBulkStatusChange('active')}
               className='size-8'
-              aria-label='Activate selected users'
-              title='Activate selected users'
+              aria-label='Reconhecer Aviso'
+              title='Reconhecer Aviso'
             >
               <UserCheck />
-              <span className='sr-only'>Activate selected users</span>
+              <span className='sr-only'>Reconhecer Aviso</span>
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Activate selected users</p>
-          </TooltipContent>
-        </Tooltip>
-
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant='outline'
-              size='icon'
-              onClick={() => handleBulkStatusChange('inactive')}
-              className='size-8'
-              aria-label='Deactivate selected users'
-              title='Deactivate selected users'
-            >
-              <UserX />
-              <span className='sr-only'>Deactivate selected users</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Deactivate selected users</p>
+            <p>Reconhecer Aviso</p>
           </TooltipContent>
         </Tooltip>
 
@@ -116,15 +66,15 @@ export function DataTableBulkActions<TData>({
               size='icon'
               onClick={() => setShowDeleteConfirm(true)}
               className='size-8'
-              aria-label='Delete selected users'
-              title='Delete selected users'
+              aria-label='Excluir aviso'
+              title='Excluir aviso'
             >
               <Trash2 />
-              <span className='sr-only'>Delete selected users</span>
+              <span className='sr-only'>Excluir aviso</span>
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Delete selected users</p>
+            <p>Excluir aviso</p>
           </TooltipContent>
         </Tooltip>
       </BulkActionsToolbar>
