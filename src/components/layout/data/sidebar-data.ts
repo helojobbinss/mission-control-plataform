@@ -12,9 +12,7 @@ import {
   RadioTower,
   TriangleAlert,
   ShieldCheck,
-  AudioWaveform,
   Command,
-  GalleryVerticalEnd,
 } from 'lucide-react'
 import { type SidebarData } from '../types'
 
@@ -29,16 +27,6 @@ export const sidebarData: SidebarData = {
       name: 'MCP',
       logo: Command,
       plan: 'Mission Control Platform',
-    },
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
     },
   ],
   navGroups: [
@@ -80,31 +68,23 @@ export const sidebarData: SidebarData = {
       ],
     },
     {
-      title: 'Pages',
+      title: 'Login',
       items: [
         {
-          title: 'Auth',
+          title: 'Autenticação',
           icon: ShieldCheck,
           items: [
             {
-              title: 'Sign In',
+              title: 'Login',
               url: '/sign-in',
             },
             {
-              title: 'Sign In (2 Col)',
-              url: '/sign-in-2',
-            },
-            {
-              title: 'Sign Up',
+              title: 'Cadastro',
               url: '/sign-up',
             },
             {
-              title: 'Forgot Password',
+              title: 'Esqueci a Senha',
               url: '/forgot-password',
-            },
-            {
-              title: 'OTP',
-              url: '/otp',
             },
           ],
         },
