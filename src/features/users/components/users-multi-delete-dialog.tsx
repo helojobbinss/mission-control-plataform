@@ -36,12 +36,12 @@ export function UsersMultiDeleteDialog<TData>({
     onOpenChange(false)
 
     toast.promise(sleep(2000), {
-      loading: 'Deleting users...',
+      loading: 'Excluindo avisos...',
       success: () => {
         setValue('')
         table.resetRowSelection()
-        return `Deleted ${selectedRows.length} ${
-          selectedRows.length > 1 ? 'users' : 'user'
+        return `Excluído ${selectedRows.length} ${
+          selectedRows.length > 1 ? 'avisos' : 'aviso'
         }`
       },
       error: 'Error',
@@ -74,24 +74,24 @@ export function UsersMultiDeleteDialog<TData>({
           className='space-y-4'
         >
           <p className='mb-2'>
-            Are you sure you want to delete the selected users? <br />
-            This action cannot be unConcluída.
+            Tem certeza que deseja excluir esse aviso? <br />
+            Essa ação não pode ser desfeita
           </p>
 
           <Label className='my-4 flex flex-col items-start gap-1.5'>
-            <span className=''>Confirm by typing "{CONFIRM_WORD}":</span>
+            <span className=''>Confirme digitando "{CONFIRM_WORD}":</span>
             <Input
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder={`Type "${CONFIRM_WORD}" to confirm.`}
+              placeholder={`Escreva "${CONFIRM_WORD}" para confirmar.`}
               autoFocus
             />
           </Label>
 
           <Alert variant='destructive'>
-            <AlertTitle>Warning!</AlertTitle>
+            <AlertTitle>Aviso!</AlertTitle>
             <AlertDescription>
-              Please be careful, this operation can not be rolled back.
+              Verifique com atenção, essa ação não pode ser desfeita
             </AlertDescription>
           </Alert>
         </form>

@@ -33,10 +33,10 @@ export function DataTableBulkActions<TData>({
   const handleBulkStatusChange = (status: string) => {
     const selectedTasks = selectedRows.map((row) => row.original as Task)
     toast.promise(sleep(2000), {
-      loading: 'Updating status...',
+      loading: 'Atualizando status...',
       success: () => {
         table.resetRowSelection()
-        return `Status updated to "${status}" for ${selectedTasks.length} task${selectedTasks.length > 1 ? 's' : ''}.`
+        return `Status atualizado "${status}" para ${selectedTasks.length} missões${selectedTasks.length > 1 ? '' : ''}.`
       },
       error: 'Error',
     })
@@ -46,10 +46,10 @@ export function DataTableBulkActions<TData>({
   const handleBulkOperadorChange = (Operador: string) => {
     const selectedTasks = selectedRows.map((row) => row.original as Task)
     toast.promise(sleep(2000), {
-      loading: 'Updating Operador...',
+      loading: 'Atualizando Operador...',
       success: () => {
         table.resetRowSelection()
-        return `Operador updated to "${Operador}" for ${selectedTasks.length} task${selectedTasks.length > 1 ? 's' : ''}.`
+        return `Operador atualizado "${Operador}" para ${selectedTasks.length} missão${selectedTasks.length > 1 ? '' : ''}.`
       },
       error: 'Error',
     })
@@ -59,10 +59,10 @@ export function DataTableBulkActions<TData>({
   const handleBulkExport = () => {
     const selectedTasks = selectedRows.map((row) => row.original as Task)
     toast.promise(sleep(2000), {
-      loading: 'Exporting tasks...',
+      loading: 'Exportando missões...',
       success: () => {
         table.resetRowSelection()
-        return `Exported ${selectedTasks.length} task${selectedTasks.length > 1 ? 's' : ''} to CSV.`
+        return `Exportadas ${selectedTasks.length} missões${selectedTasks.length > 1 ? '' : ''} em CSV.`
       },
       error: 'Error',
     })

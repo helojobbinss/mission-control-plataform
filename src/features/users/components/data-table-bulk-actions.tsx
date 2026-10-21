@@ -29,7 +29,7 @@ export function DataTableBulkActions<TData>({
       loading: `${status === 'active' ? 'Reconhecendo' : 'Deactivating'} aviso...`,
       success: () => {
         table.resetRowSelection()
-        return `${status === 'active' ? 'Reconhecido' : 'Deactivated'} ${selectedUsers.length} avisp${selectedUsers.length > 1 ? 's' : ''}`
+        return `${status === 'active' ? 'Reconhecido' : 'Deactivated'} ${selectedUsers.length} aviso${selectedUsers.length > 1 ? 's' : ''}`
       },
       error: `Error ${status === 'active' ? 'Reconhecendo' : 'deactivating'} aviso`,
     })

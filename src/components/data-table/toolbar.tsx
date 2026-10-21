@@ -22,7 +22,7 @@ type DataTableToolbarProps<TData> = {
 
 export function DataTableToolbar<TData>({
   table,
-  searchPlaceholder = 'Filter...',
+  searchPlaceholder = 'Filtrar...',
   searchKey,
   filters = [],
 }: DataTableToolbarProps<TData>) {

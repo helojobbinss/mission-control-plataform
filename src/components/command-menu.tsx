@@ -30,7 +30,7 @@ export function CommandMenu() {
 
   return (
     <CommandDialog modal open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder='Type a command or search...' />
+      <CommandInput placeholder='Digite uma palavra para pesquisar' />
       <CommandList>
         <ScrollArea type='hover' className='h-72 pe-1'>
           <CommandEmpty>No results found.</CommandEmpty>
@@ -73,15 +73,15 @@ export function CommandMenu() {
           <CommandSeparator />
           <CommandGroup heading='Theme'>
             <CommandItem onSelect={() => runCommand(() => setTheme('light'))}>
-              <Sun /> <span>Light</span>
+              <Sun /> <span>Claro</span>
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
               <Moon className='scale-90' />
-              <span>Dark</span>
+              <span>Escuro</span>
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme('system'))}>
               <Laptop />
-              <span>System</span>
+              <span>Sistema</span>
             </CommandItem>
           </CommandGroup>
         </ScrollArea>

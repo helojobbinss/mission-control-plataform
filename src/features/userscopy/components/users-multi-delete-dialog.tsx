@@ -36,12 +36,12 @@ export function UsersMultiDeleteDialog<TData>({
     onOpenChange(false)
 
     toast.promise(sleep(2000), {
-      loading: 'Deleting users...',
+      loading: 'Deletando missões',
       success: () => {
         setValue('')
         table.resetRowSelection()
-        return `Deleted ${selectedRows.length} ${
-          selectedRows.length > 1 ? 'users' : 'user'
+        return `Deletada ${selectedRows.length} ${
+          selectedRows.length > 1 ? 'missões' : 'missão'
         }`
       },
       error: 'Error',

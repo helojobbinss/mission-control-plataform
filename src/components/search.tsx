@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 
 export function Search({
   className = '',
-  placeholder = 'Search',
+  placeholder = 'Pesquisar',
   ...props
 }: React.ComponentProps<'button'> & { placeholder?: string }) {
   const { setOpen } = useSearch()
@@ -26,9 +26,6 @@ export function Search({
         size={16}
       />
       <span className='ms-4'>{placeholder}</span>
-      <kbd className='pointer-events-none absolute inset-e-[0.3rem] top-[0.3rem] hidden h-5 items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 select-none group-hover:bg-accent sm:flex'>
-        <span className='text-xs'>⌘</span>K
-      </kbd>
     </Button>
   )
 }
