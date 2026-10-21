@@ -1,21 +1,14 @@
 import {
-  Construction,
   LayoutDashboard,
   Monitor,
-  Bug,
   Rocket,
-  FileX,
-  HelpCircle,
-  Lock,
   Bell,
   Radar,
   Palette,
-  ServerOff,
   Settings,
   Users,
   Wrench,
   UserCog,
-  UserX,
   RadioTower,
   TriangleAlert,
   ShieldCheck,
@@ -23,7 +16,6 @@ import {
   Command,
   GalleryVerticalEnd,
 } from 'lucide-react'
-import { ClerkLogo } from '@/assets/clerk-logo'
 import { type SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
@@ -65,7 +57,7 @@ export const sidebarData: SidebarData = {
         },
         {
           title: 'Monitoramento',
-          url: '/apps',
+          url: '',
           icon: Radar,
         },
         {
@@ -76,7 +68,7 @@ export const sidebarData: SidebarData = {
         },
         {
           title: 'Comunicações',
-          url: '/chats',
+          url: '',
           icon: RadioTower,
         },
         {
@@ -84,31 +76,7 @@ export const sidebarData: SidebarData = {
           url: '/userscopy',
           icon: Users,
         },
-        {
-          title: 'Configurações',
-          url: '',
-          icon: Settings,
-        },
 
-
-        {
-          title: 'Secured by Clerk',
-          icon: ClerkLogo,
-          items: [
-            {
-              title: 'Sign In',
-              url: '/clerk/sign-in',
-            },
-            {
-              title: 'Sign Up',
-              url: '/clerk/sign-up',
-            },
-            {
-              title: 'User Management',
-              url: '/clerk/user-management',
-            },
-          ],
-        },
       ],
     },
     {
@@ -140,63 +108,32 @@ export const sidebarData: SidebarData = {
             },
           ],
         },
-        {
-          title: 'Errors',
-          icon: Bug,
-          items: [
-            {
-              title: 'Unauthorized',
-              url: '/errors/unauthorized',
-              icon: Lock,
-            },
-            {
-              title: 'Forbidden',
-              url: '/errors/forbidden',
-              icon: UserX,
-            },
-            {
-              title: 'Not Found',
-              url: '/errors/not-found',
-              icon: FileX,
-            },
-            {
-              title: 'Internal Server Error',
-              url: '/errors/internal-server-error',
-              icon: ServerOff,
-            },
-            {
-              title: 'Maintenance Error',
-              url: '/errors/maintenance-error',
-              icon: Construction,
-            },
-          ],
-        },
       ],
     },
     {
-      title: 'Other',
+      title: 'Outros',
       items: [
         {
-          title: 'Settings',
+          title: 'Configurações',
           icon: Settings,
           items: [
             {
-              title: 'Profile',
+              title: 'Perfil',
               url: '/settings',
               icon: UserCog,
             },
             {
-              title: 'Account',
+              title: 'Conta',
               url: '/settings/account',
               icon: Wrench,
             },
             {
-              title: 'Appearance',
+              title: 'Aparência',
               url: '/settings/appearance',
               icon: Palette,
             },
             {
-              title: 'Notifications',
+              title: 'Notificações',
               url: '/settings/notifications',
               icon: Bell,
             },
@@ -206,11 +143,6 @@ export const sidebarData: SidebarData = {
               icon: Monitor,
             },
           ],
-        },
-        {
-          title: 'Help Center',
-          url: '/help-center',
-          icon: HelpCircle,
         },
       ],
     },
