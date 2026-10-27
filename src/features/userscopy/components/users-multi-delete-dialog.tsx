@@ -36,12 +36,12 @@ export function UsersMultiDeleteDialog<TData>({
     onOpenChange(false)
 
     toast.promise(sleep(2000), {
-      loading: 'Deletando missões',
+      loading: 'Deletando usuário',
       success: () => {
         setValue('')
         table.resetRowSelection()
-        return `Deletada ${selectedRows.length} ${
-          selectedRows.length > 1 ? 'missões' : 'missão'
+        return `Deletado ${selectedRows.length} ${
+          selectedRows.length > 1 ? 'usuários' : 'usuário'
         }`
       },
       error: 'Error',
@@ -60,8 +60,8 @@ export function UsersMultiDeleteDialog<TData>({
             className='me-1 inline-block stroke-destructive'
             size={18}
           />{' '}
-          Delete {selectedRows.length}{' '}
-          {selectedRows.length > 1 ? 'users' : 'user'}
+          Deletar {selectedRows.length}{' '}
+          {selectedRows.length > 1 ? 'usuários' : 'usuário'}
         </span>
       }
       desc={
@@ -74,29 +74,29 @@ export function UsersMultiDeleteDialog<TData>({
           className='space-y-4'
         >
           <p className='mb-2'>
-            Are you sure you want to delete the selected users? <br />
-            This action cannot be unConcluída.
+            Tem certeza que deseja excluir o usuário selecionado? <br />
+            Essa ação não pode ser desfeita
           </p>
 
           <Label className='my-4 flex flex-col items-start gap-1.5'>
-            <span className=''>Confirm by typing "{CONFIRM_WORD}":</span>
+            <span className=''>Confirme escrevendo "{CONFIRM_WORD}":</span>
             <Input
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder={`Type "${CONFIRM_WORD}" to confirm.`}
+              placeholder={`Escreva "${CONFIRM_WORD}" para confirmar.`}
               autoFocus
             />
           </Label>
 
           <Alert variant='destructive'>
-            <AlertTitle>Warning!</AlertTitle>
+            <AlertTitle>Aviso!</AlertTitle>
             <AlertDescription>
-              Please be careful, this operation can not be rolled back.
+              Tenha cuidado, essa ação não pode ser defeita
             </AlertDescription>
           </Alert>
         </form>
       }
-      confirmText='Delete'
+      confirmText='Deletar'
       destructive
     />
   )
