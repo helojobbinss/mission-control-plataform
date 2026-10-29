@@ -21,6 +21,7 @@ type TeamSwitcherProps = {
     name: string
     logo: React.ElementType
     plan: string
+    image?: string
   }[]
 }
 
@@ -38,7 +39,15 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
               className='data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground'
             >
               <div className='flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground'>
-                <activeTeam.logo className='size-4' />
+                {activeTeam.image ? (
+                  <img
+                    src={activeTeam.image}
+                    alt={activeTeam.name}
+                    className='size-full rounded-lg object-contain'
+                  />
+                ) : (
+                  <activeTeam.logo className='size-4' />
+                )}
               </div>
               <div className='grid flex-1 text-start text-sm leading-tight'>
                 <span className='truncate font-semibold'>

@@ -22,13 +22,14 @@ export const sidebarData: SidebarData = {
     email: 'missionControlPlatform@gmail.com',
     avatar: '/avatars/shadcn.jpg',
   },
-  teams: [
-    {
-      name: 'MCP',
-      logo: Command,
-      plan: 'Mission Control Platform',
-    },
-  ],
+teams: [
+  {
+    name: 'MCP',
+    logo: Command,
+    image: '/images/Logoofc-semfundo.png',
+    plan: 'Mission Control Platform',
+  },
+],
   navGroups: [
     {
       title: 'Geral',
