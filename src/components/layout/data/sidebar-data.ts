@@ -46,7 +46,7 @@ teams: [
         },
         {
           title: 'Monitoramento',
-          url: '',
+          url: '/monitoramento',
           icon: Radar,
         },
         {
@@ -57,7 +57,7 @@ teams: [
         },
         {
           title: 'Comunicações',
-          url: '',
+          url: '/comunicacoes',
           icon: RadioTower,
         },
         {
