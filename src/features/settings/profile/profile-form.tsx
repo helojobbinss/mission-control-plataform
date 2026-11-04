@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Link } from '@tanstack/react-router'
 import { showSubmittedData } from '@/lib/show-submitted-data'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -26,20 +25,20 @@ import { Textarea } from '@/components/ui/textarea'
 
 const profileFormSchema = z.object({
   username: z
-    .string('Please enter your username.')
-    .min(2, 'Username must be at least 2 characters.')
-    .max(30, 'Username must not be longer than 30 characters.'),
+    .string('Por favor, insira seu nome de usuário.')
+    .min(2, 'O nome de usuário deve ter pelo menos 2 caracteres.')
+    .max(30, 'O nome de usuário não deve ter mais de 30 caracteres.'),
   email: z.email({
     error: (iss) =>
       iss.input === undefined
-        ? 'Please select an email to display.'
+        ? 'Selecione um e-mail para exibir.'
         : undefined,
   }),
   bio: z.string().max(160).min(4),
   urls: z
     .array(
       z.object({
-        value: z.url('Please enter a valid URL.'),
+        value: z.url('Insira uma URL válida.'),
       })
     )
     .optional(),
@@ -49,10 +48,10 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>
 
 // This can come from your database or API.
 const defaultValues: Partial<ProfileFormValues> = {
-  bio: 'I own a computer.',
+  bio: 'Eu tenho um computador.',
   urls: [
-    { value: 'https://shadcn.com' },
-    { value: 'http://twitter.com/shadcn' },
+    { value: 'https://adm.com' },
+    { value: 'http://twitter.com/adm' },
   ],
 }
 
@@ -81,11 +80,11 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder='shadcn' {...field} />
+                <Input placeholder='admin' {...field} />
               </FormControl>
               <FormDescription>
-                This is your public display name. It can be your real name or a
-                pseudonym. You can only change this once every 30 days.
+                Este é o seu nome de exibição público. Pode ser o seu nome real ou um
+                pseudônimo. Você só pode alterá-lo uma vez a cada 30 dias.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -100,7 +99,7 @@ export function ProfileForm() {
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder='Select a verified email to display' />
+                    <SelectValue placeholder='Selecione um e-mail verificado para exibir' />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -110,8 +109,7 @@ export function ProfileForm() {
                 </SelectContent>
               </Select>
               <FormDescription>
-                You can manage verified email addresses in your{' '}
-                <Link to='/'>email settings</Link>.
+                Você pode gerenciar endereços de e-mail verificados em sua conta.{' '}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -131,8 +129,7 @@ export function ProfileForm() {
                 />
               </FormControl>
               <FormDescription>
-                You can <span>@mention</span> other users and organizations to
-                link to them.
+                Você pode <span>@mencionar</span> outros usuários e organizações para criar um link para eles.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -150,7 +147,7 @@ export function ProfileForm() {
                     URLs
                   </FormLabel>
                   <FormDescription className={cn(index !== 0 && 'sr-only')}>
-                    Add links to your website, blog, or social media profiles.
+                   Adicione links para o seu site, blog ou perfis em redes sociais.
                   </FormDescription>
                   <FormControl className={cn(index !== 0 && 'mt-1.5')}>
                     <Input {...field} />
@@ -170,7 +167,7 @@ export function ProfileForm() {
             Add URL
           </Button>
         </div>
-        <Button type='submit'>Update profile</Button>
+        <Button type='submit'>Atualizar perfil</Button>
       </form>
     </Form>
   )

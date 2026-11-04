@@ -56,7 +56,7 @@ export function AppearanceForm() {
           name='font'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Font</FormLabel>
+              <FormLabel>Fonte</FormLabel>
               <div className='relative w-max'>
                 <FormControl>
                   <select
@@ -77,7 +77,7 @@ export function AppearanceForm() {
                 <ChevronDownIcon className='absolute inset-e-3 top-2.5 h-4 w-4 opacity-50' />
               </div>
               <FormDescription className='font-manrope'>
-                Set the font you want to use in the dashboard.
+               Defina a fonte que você deseja usar no painel.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -88,9 +88,9 @@ export function AppearanceForm() {
           name='theme'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Theme</FormLabel>
+              <FormLabel>Tema</FormLabel>
               <FormDescription>
-                Select the theme for the dashboard.
+                Selecione o tema para o painel.
               </FormDescription>
               <FormMessage />
               <RadioGroup

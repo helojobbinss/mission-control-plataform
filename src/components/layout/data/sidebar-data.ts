@@ -1,6 +1,5 @@
 import {
   LayoutDashboard,
-  Monitor,
   Rocket,
   Bell,
   Radar,
@@ -117,11 +116,6 @@ teams: [
               title: 'Notificações',
               url: '/settings/notifications',
               icon: Bell,
-            },
-            {
-              title: 'Display',
-              url: '/settings/display',
-              icon: Monitor,
             },
           ],
         },
