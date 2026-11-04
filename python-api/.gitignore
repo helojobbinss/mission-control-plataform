@@ -1,0 +1,24 @@
+# Ambientes virtuais
+.venv/
+.venv-new/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Testes
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Variáveis de ambiente
+.env
+.env.*
+
+# Exceção para um arquivo de exemplo, caso seja necessário
+!.env.example
+
+# Editores
+.vscode/
+.idea/

@@ -30,4 +30,21 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'nasa' => [
+        'donki_base_url' => env(
+            'NASA_DONKI_BASE_URL',
+            'https://api.nasa.gov/DONKI'
+        ),
+        'api_key' => env('NASA_API_KEY', 'DEMO_KEY'),
+    ],
+
+    'python_api' => [
+        'url' => env('PYTHON_API_URL', 'http://127.0.0.1:8001'),
+    ],
+    'celestrak' => [
+        'base_url' => env(
+            'CELESTRAK_BASE_URL',
+            'https://celestrak.org/NORAD/elements'
+        ),
+    ],
 ];

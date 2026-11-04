@@ -13,10 +13,17 @@ class AddRoleAndActiveToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('role_id')->nullable();
-            $table->boolean('is_active')->default(true);
-        });
+        if (!Schema::hasColumn('users', 'role_id')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->unsignedBigInteger('role_id')->nullable();
+            });
+        }
+
+        if (!Schema::hasColumn('users', 'is_active')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->boolean('is_active')->default(true);
+            });
+        }
     }
 
     /**
@@ -26,8 +33,7 @@ class AddRoleAndActiveToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-             $table->dropColumn(['role_id', 'is_active']);
-        });
+        // Não remover as colunas automaticamente:
+        // elas também são definidas na migration CreateUsersTable.
     }
 }
