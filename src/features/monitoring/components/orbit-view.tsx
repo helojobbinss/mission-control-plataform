@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import {
   type Satellite,
   orbitalAngle,
-  satellites,
   statusColor,
 } from '../data/fleet'
 
@@ -50,9 +49,11 @@ function position(sat: Satellite, t: number) {
 }
 
 export function OrbitView({
+  satellites,
   selectedId,
   onSelect,
 }: {
+  satellites: Satellite[]
   selectedId: string
   onSelect: (id: string) => void
 }) {

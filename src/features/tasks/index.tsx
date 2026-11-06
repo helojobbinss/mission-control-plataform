@@ -7,9 +7,13 @@ import { TasksDialogs } from './components/tasks-dialogs'
 import { TasksPrimaryButtons } from './components/tasks-primary-buttons'
 import { TasksProvider } from './components/tasks-provider'
 import { TasksTable } from './components/tasks-table'
-import { tasks } from './data/tasks'
+import { useQuery } from '@tanstack/react-query'
+import { listMissions } from './data/api'
 
 export function Tasks() {
+  const { data: tasks = [], isLoading, isError, refetch } = useQuery({
+    queryKey: ['missions'], queryFn: listMissions,
+  })
   return (
     <TasksProvider>
       <Header>
@@ -32,7 +36,9 @@ export function Tasks() {
           </div>
           <TasksPrimaryButtons />
         </div>
-        <TasksTable data={tasks} />
+        {isLoading ? <p>Carregando missões...</p> : isError ? (
+          <p>Não foi possível carregar as missões. <button type='button' onClick={() => refetch()}>Tentar novamente</button></p>
+        ) : <TasksTable data={tasks} />}
       </Main>
 
       <TasksDialogs />

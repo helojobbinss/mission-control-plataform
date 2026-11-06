@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { type Table } from '@tanstack/react-table'
-import { CircleArrowUp, ArrowUpDown, Download } from 'lucide-react'
+import { CircleArrowUp, ArrowUpDown, Download, Trash2 } from 'lucide-react'
+import { useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
-import { sleep } from '@/lib/utils'
+
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -17,8 +18,11 @@ import {
 } from '@/components/ui/tooltip'
 import { DataTableBulkActions as BulkActionsToolbar } from '@/components/data-table'
 import { priorities, statuses } from '../data/data'
+
+import { ConfirmDialog } from '@/components/confirm-dialog'
+import { bulkMissions } from '../data/api'
+import { useReopenConfirmation } from './reopen-confirmation'
 import { type Task } from '../data/schema'
-import { TasksMultiDeleteDialog } from './tasks-multi-delete-dialog'
 
 type DataTableBulkActionsProps<TData> = {
   table: Table<TData>
@@ -28,49 +32,45 @@ export function DataTableBulkActions<TData>({
   table,
 }: DataTableBulkActionsProps<TData>) {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+  const [pending, setPending] = useState(false)
+  const [deleteConfirmation, setDeleteConfirmation] = useState('')
+  const queryClient = useQueryClient()
+  const { requestConfirmation, dialog } = useReopenConfirmation()
   const selectedRows = table.getFilteredSelectedRowModel().rows
+  const containsCompleted = selectedRows.some((row) => (row.original as Task).status === 'Concluída')
 
-  const handleBulkStatusChange = (status: string) => {
-    const selectedTasks = selectedRows.map((row) => row.original as Task)
-    toast.promise(sleep(2000), {
-      loading: 'Atualizando status...',
-      success: () => {
-        table.resetRowSelection()
-        return `Status atualizado "${status}" para ${selectedTasks.length} missões${selectedTasks.length > 1 ? '' : ''}.`
-      },
-      error: 'Error',
-    })
-    table.resetRowSelection()
-  }
 
-  const handleBulkOperadorChange = (Operador: string) => {
-    const selectedTasks = selectedRows.map((row) => row.original as Task)
-    toast.promise(sleep(2000), {
-      loading: 'Atualizando Operador...',
-      success: () => {
-        table.resetRowSelection()
-        return `Operador atualizado "${Operador}" para ${selectedTasks.length} missão${selectedTasks.length > 1 ? '' : ''}.`
-      },
-      error: 'Error',
-    })
-    table.resetRowSelection()
+  const runBulk = async (action: 'status' | 'operator' | 'delete', value?: string) => {
+    const ids = selectedRows.map((row) => (row.original as Task).id)
+    if (ids.length === 0 || pending) return
+    let confirmation: string | undefined = action === 'delete' ? deleteConfirmation || undefined : undefined
+    if (action === 'status' && selectedRows.some((row) => {
+      const task = row.original as Task
+      return ['Concluída', 'Abortada'].includes(task.status) && task.status !== value
+    })) {
+      confirmation = await requestConfirmation()
+      if (!confirmation) return
+    }
+    setPending(true)
+    try {
+      await bulkMissions(ids, action, value, confirmation)
+      table.resetRowSelection()
+      setShowDeleteConfirm(false)
+      setDeleteConfirmation('')
+      await queryClient.invalidateQueries({ queryKey: ['missions'] })
+      toast.success(action === 'delete' ? 'Missões excluídas.' : 'Missões atualizadas.')
+    } catch {
+      toast.error('Não foi possível concluir. Atualize a lista e tente novamente.')
+      await queryClient.invalidateQueries({ queryKey: ['missions'] })
+    } finally {
+      setPending(false)
+    }
   }
-
-  const handleBulkExport = () => {
-    const selectedTasks = selectedRows.map((row) => row.original as Task)
-    toast.promise(sleep(2000), {
-      loading: 'Exportando missões...',
-      success: () => {
-        table.resetRowSelection()
-        return `Exportadas ${selectedTasks.length} missões${selectedTasks.length > 1 ? '' : ''} em CSV.`
-      },
-      error: 'Error',
-    })
-    table.resetRowSelection()
-  }
+  const handleBulkExport = () => toast.info('Exportação ainda não implementada.')
 
   return (
     <>
+      {dialog}
       <BulkActionsToolbar table={table} entityName='task'>
         <DropdownMenu>
           <Tooltip>
@@ -82,6 +82,7 @@ export function DataTableBulkActions<TData>({
                   className='size-8'
                   aria-label='Update status'
                   title='Update status'
+                  disabled={pending}
                 >
                   <CircleArrowUp />
                   <span className='sr-only'>Atualizar status</span>
@@ -97,7 +98,7 @@ export function DataTableBulkActions<TData>({
               <DropdownMenuItem
                 key={status.value}
                 defaultValue={status.value}
-                onClick={() => handleBulkStatusChange(status.value)}
+                onClick={() => runBulk('status', status.value)}
               >
                 {status.icon && (
                   <status.icon className='size-4 text-muted-foreground' />
@@ -118,6 +119,7 @@ export function DataTableBulkActions<TData>({
                   className='size-8'
                   aria-label='Update Operador'
                   title='Update Operador'
+                  disabled={pending}
                 >
                   <ArrowUpDown />
                   <span className='sr-only'>Atualizar Operador</span>
@@ -133,7 +135,7 @@ export function DataTableBulkActions<TData>({
               <DropdownMenuItem
                 key={Operador.value}
                 defaultValue={Operador.value}
-                onClick={() => handleBulkOperadorChange(Operador.value)}
+                onClick={() => runBulk('operator', Operador.value)}
               >
                 {Operador.label}
               </DropdownMenuItem>
@@ -161,19 +163,26 @@ export function DataTableBulkActions<TData>({
         </Tooltip>
 
         <Tooltip>
-          <TooltipTrigger asChild>
-          </TooltipTrigger>
+          <TooltipTrigger asChild><Button variant='outline' size='icon' className='size-8' aria-label='Excluir selecionadas' disabled={pending} onClick={() => setShowDeleteConfirm(true)}><Trash2 /></Button></TooltipTrigger>
           <TooltipContent>
-            <p>Delete selected tasks</p>
+            <p>Excluir missões selecionadas</p>
           </TooltipContent>
         </Tooltip>
       </BulkActionsToolbar>
 
-      <TasksMultiDeleteDialog
+      <ConfirmDialog
         open={showDeleteConfirm}
-        onOpenChange={setShowDeleteConfirm}
-        table={table}
-      />
+        onOpenChange={(open) => { setShowDeleteConfirm(open); if (!open) setDeleteConfirmation('') }}
+        title='Excluir missões selecionadas?'
+        desc={`As ${selectedRows.length} missões selecionadas e seus comentários serão excluídos permanentemente.`}
+        confirmText='Excluir'
+        destructive
+        isLoading={pending}
+        disabled={containsCompleted && deleteConfirmation !== 'ciente'}
+        handleConfirm={() => runBulk('delete')}
+      >
+        {containsCompleted && <div className='space-y-2 rounded-lg border bg-muted/40 p-4'><label htmlFor='bulk-delete-confirmation'>Há missões concluídas. Digite <strong>ciente</strong> para excluir.</label><input id='bulk-delete-confirmation' className='border-input bg-background w-full rounded-md border px-3 py-2' value={deleteConfirmation} onChange={(event) => setDeleteConfirmation(event.target.value)} autoComplete='off' placeholder='ciente' /></div>}
+      </ConfirmDialog>
     </>
   )
 }

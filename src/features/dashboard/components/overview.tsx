@@ -1,178 +1,72 @@
-const satellites = [
-  {
-    name: 'SERPENS',
-    id: 'SAT-001',
-    status: 'OPERACIONAL',
-    signal: 94,
-    battery: 87,
-    altitude: '412',
-    color: '#10dba4',
-    trend: [18, 12, 21, 32, 36, 29, 19, 12, 17, 28, 35, 37],
-  },
-  {
-    name: 'SGDC',
-    id: 'SAT-002',
-    status: 'DEGRADADO',
-    signal: 61,
-    battery: 43,
-    altitude: '523',
-    color: '#fbbf24',
-    trend: [15, 12, 20, 30, 37, 35, 27, 19, 15, 22, 31, 36],
-  },
-  {
-    name: 'ITASat',
-    id: 'SAT-003',
-    status: 'OPERACIONAL',
-    signal: 88,
-    battery: 92,
-    altitude: '705',
-    color: '#10dba4',
-    trend: [18, 12, 20, 30, 35, 29, 20, 13, 17, 28, 35, 37],
-  },
-  {
-    name: 'TRACERS',
-    id: 'SAT-004',
-    status: 'CRÍTICO',
-    signal: 22,
-    battery: 18,
-    altitude: '20.200',
-    color: '#ff5263',
-    trend: [16, 12, 20, 29, 37, 34, 25, 18, 13, 21, 31, 36],
-  },
-  {
-    name: 'TES-22',
-    id: 'SAT-005',
-    status: 'OFFLINE',
-    signal: 0,
-    battery: 0,
-    altitude: '—',
-    color: '#64748b',
-    trend: [],
-  },
-  {
-    name: 'REAL',
-    id: 'SAT-006',
-    status: 'OPERACIONAL',
-    signal: 97,
-    battery: 95,
-    altitude: '35.786',
-    color: '#10dba4',
-    trend: [18, 12, 20, 30, 35, 29, 20, 13, 17, 28, 35, 37],
-  },
-]
+type MissionSummary = { id: number | string; name: string; status: string }
 
-function SatelliteTrend({
-  values,
-  color,
-}: {
-  values: number[]
-  color: string
-}) {
-  if (values.length === 0) {
-    return (
-      <div className='h-8 w-20 flex items-center'>
-        <div className='w-full border-t-2 border-red-500' />
-      </div>
-    )
-  }
-
-  const points = values
-    .map((value, index) => `${(index / (values.length - 1)) * 76},${value}`)
-    .join(' ')
-
-  return (
-    <svg viewBox='0 0 76 40' className='h-8 w-20' aria-hidden='true'>
-      <polyline
-        points={points}
-        fill='none'
-        stroke={color}
-        strokeWidth='1.8'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-    </svg>
-  )
+export type DashboardSatellite = {
+  id: number
+  name: string
+  norad_id: number
+  missions: MissionSummary[]
 }
 
-export function Overview() {
+export type DashboardOrbit = { elements: { EPOCH?: string } }
+export type DashboardReception = {
+  signal: { state: string; label: string }
+  observation: { start: string; station_name: string | null; waterfall_status: string | null } | null
+}
+
+type QueryState<T> = { data?: T; isLoading: boolean; isError: boolean }
+
+function formatAge(timestamp: string | undefined) {
+  if (!timestamp) return '—'
+  const date = new Date(timestamp.endsWith('Z') ? timestamp : `${timestamp}Z`)
+  if (!Number.isFinite(date.getTime())) return '—'
+  const minutes = Math.max(0, Math.floor((Date.now() - date.getTime()) / 60_000))
+  if (minutes < 60) return minutes < 1 ? 'agora' : `há ${minutes} min`
+  const hours = Math.floor(minutes / 60)
+  if (hours < 48) return `há ${hours} h`
+  return `há ${Math.floor(hours / 24)} dias`
+}
+
+function receptionTone(state: string | undefined) {
+  if (state === 'detected' || state === 'validated') return 'border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
+  if (state === 'not_detected') return 'border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300'
+  return 'border-muted text-muted-foreground'
+}
+
+export function Overview({
+  satellites,
+  orbit,
+  reception,
+  loading,
+}: {
+  satellites: DashboardSatellite[]
+  orbit: QueryState<DashboardOrbit>[]
+  reception: QueryState<DashboardReception>[]
+  loading: boolean
+}) {
+  if (loading) return <p className='py-8 text-center text-sm text-muted-foreground'>Carregando dados da frota...</p>
+  if (satellites.length === 0) return <div className='py-8 text-center'><p className='font-medium'>Nenhum satélite cadastrado.</p><p className='mt-1 text-xs text-muted-foreground'>Cadastre um satélite no monitoramento para exibi-lo aqui.</p></div>
+
   return (
     <div className='w-full overflow-x-auto'>
-      <table className='w-full min-w-[650px] border-collapse text-sm'>
-        <thead>
-          <tr className='border-b border-border text-muted-foreground'>
-            <th className='px-4 py-3 text-left font-normal'>Satélite</th>
-            <th className='px-3 py-3 text-left font-normal'>Status</th>
-            <th className='px-3 py-3 text-center font-normal'>Sinal</th>
-            <th className='px-3 py-3 text-center font-normal'>Bateria</th>
-            <th className='px-3 py-3 text-center font-normal'>Alt (km)</th>
+      <table className='w-full min-w-[620px] border-collapse text-sm'>
+        <thead><tr className='border-b border-border text-muted-foreground'><th className='px-4 py-3 text-left font-normal'>Satélite</th><th className='px-3 py-3 text-center font-normal'>Missões ativas</th><th className='px-3 py-3 text-left font-normal'>Última recepção pública</th><th className='px-3 py-3 text-right font-normal'>Época orbital</th></tr></thead>
+        <tbody>{satellites.map((satellite, index) => {
+          const orbitQuery = orbit[index]
+          const receptionQuery = reception[index]
+          const receptionData = receptionQuery?.data
+          const missionCount = (satellite.missions ?? []).filter((mission) => mission.status === 'Ativa').length
+          const receptionLabel = receptionQuery?.isLoading ? 'Consultando' : receptionQuery?.isError ? 'Fonte indisponível' : receptionData?.signal?.label ?? 'Sem observações públicas'
+          const receptionAge = receptionData?.observation ? formatAge(receptionData.observation.start) : null
+          const epochAge = orbitQuery?.data ? formatAge(orbitQuery.data.elements?.EPOCH) : orbitQuery?.isLoading ? 'Consultando' : 'Indisponível'
+          return <tr key={satellite.id} className='border-b border-border/60 last:border-0 hover:bg-muted/30'>
+            <td className='px-4 py-3'><p className='font-semibold text-foreground'>{satellite.name}</p><p className='font-mono text-xs text-muted-foreground'>NORAD {satellite.norad_id}</p></td>
+            <td className='px-3 py-3 text-center font-mono'>{missionCount}</td>
+            <td className='px-3 py-3'><span className={`inline-flex max-w-[220px] flex-col rounded-md border px-2 py-1 text-xs ${receptionTone(receptionData?.signal?.state)}`}><span className='truncate'>{receptionLabel}</span>{receptionData?.observation && <span className='mt-0.5 truncate opacity-75'>{receptionData.observation.station_name ?? 'Estação pública'} · {receptionAge}</span>}</span></td>
+            <td className='px-3 py-3 text-right font-mono text-xs text-muted-foreground'>{epochAge}</td>
           </tr>
-        </thead>
-
-        <tbody>
-          {satellites.map((satellite) => (
-            <tr
-              key={satellite.id}
-              className='border-b border-border/60 last:border-0 hover:bg-muted/30'
-            >
-              <td className='px-4 py-3'>
-                <div className='font-semibold text-foreground'>
-                  {satellite.name}
-                </div>
-                <div className='font-mono text-xs text-muted-foreground'>
-                  {satellite.id}
-                </div>
-              </td>
-
-              <td className='px-3 py-3'>
-                <span
-                  className='inline-flex whitespace-nowrap rounded border px-2 py-1 font-mono text-[10px] font-medium'
-                  style={{
-                    color: satellite.color,
-                    borderColor: `${satellite.color}55`,
-                    backgroundColor: `${satellite.color}12`,
-                  }}
-                >
-                  {satellite.status}
-                </span>
-              </td>
-
-              <td
-                className='px-3 py-3 text-center font-mono font-medium'
-                style={{
-                  color:
-                    satellite.signal === 0
-                      ? '#ff5263'
-                      : satellite.signal < 70
-                        ? '#fbbf24'
-                        : satellite.color,
-                }}
-              >
-                {satellite.signal}%
-              </td>
-
-              <td
-                className='px-3 py-3 text-center font-mono font-medium'
-                style={{
-                  color:
-                    satellite.battery === 0
-                      ? '#ff5263'
-                      : satellite.battery < 50
-                        ? '#fbbf24'
-                        : satellite.color,
-                }}
-              >
-                {satellite.battery}%
-              </td>
-
-              <td className='px-3 py-3 text-center font-mono text-cyan-400'>
-                {satellite.altitude}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        })}</tbody>
       </table>
+      <p className='px-4 pt-3 text-[11px] text-muted-foreground'>A recepção SatNOGS é esporádica e depende de estações públicas. Ela não confirma, por si só, a saúde do satélite.</p>
     </div>
   )
 }
-
-

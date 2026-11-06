@@ -26,8 +26,8 @@ const MOCK_USER: User = {
   username: 'alex_smith',
   email: 'alex@smith.com',
   phoneNumber: '+19999999999',
-  status: 'active',
-  role: 'superadmin',
+  status: 'ativo',
+  role: 'Gerente',
   createdAt: new Date('2026-01-01'),
   updatedAt: new Date('2026-02-02'),
 }
@@ -48,7 +48,7 @@ describe('UsersActionDialog', () => {
         name: /Add New User/i,
       })
       const description = getByText(
-        /Create new user here. Click save when you're Concluída./i
+        /Create new user here. Click save when you're ConcluÃ­da./i
       )
 
       await expect.element(title).toBeInTheDocument()
@@ -195,7 +195,7 @@ describe('UsersActionDialog', () => {
         name: /Edit User/i,
       })
       const description = getByText(
-        /Update the user here\. Click save when you're Concluída\./i
+        /Update the user here\. Click save when you're ConcluÃ­da\./i
       )
 
       await expect.element(title).toBeInTheDocument()

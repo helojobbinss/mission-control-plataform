@@ -38,7 +38,7 @@ export function TasksTable({ data }: DataTableProps) {
   // Local UI-only states
   const [rowSelection, setRowSelection] = useState({})
   const [sorting, setSorting] = useState<SortingState>([])
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({ id: false })
 
   // Local state management for table (uncomment to use local-only state, not synced with URL)
   // const [globalFilter, onGlobalFilterChange] = useState('')
@@ -68,6 +68,7 @@ export function TasksTable({ data }: DataTableProps) {
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data,
+    getRowId: (row) => row.id,
     columns,
     state: {
       sorting,
