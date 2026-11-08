@@ -8,6 +8,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Throwable;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 
 class SatelliteController extends Controller
@@ -241,15 +243,7 @@ class SatelliteController extends Controller
         return response()->json([
             'message' => "Você não tem permissão para {$action}.",
         ], 403);
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cache;
-use Throwable;
-
-class SatelliteController extends Controller
-{
-    public function index() { return Satellite::with('missions:id,name,status,satellite_id')->orderBy('name')->get(); }
-
+    }
     public function orbit(Satellite $satellite)
     {
         try {

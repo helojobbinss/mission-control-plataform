@@ -15,7 +15,6 @@ use App\Http\Controllers\SatelliteSensorController;
 use App\Services\Integrations\CelesTrakService;
 use App\Services\Integrations\NasaDonkiService;
 use App\Http\Controllers\SatelliteTelemetryController;
-use App\Http\Controllers\SatelliteController;
 use App\Http\Controllers\SatelliteMonitoringController;
 
 /*
