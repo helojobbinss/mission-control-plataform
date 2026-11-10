@@ -16,6 +16,7 @@ use App\Services\Integrations\CelesTrakService;
 use App\Services\Integrations\NasaDonkiService;
 use App\Http\Controllers\SatelliteTelemetryController;
 use App\Http\Controllers\SatelliteMonitoringController;
+use App\Http\Controllers\ServiceOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -153,6 +154,43 @@ Route::middleware('auth:sanctum')->group(function () {
         });
 
     });
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Ordens de serviço (CRUD)
+    |--------------------------------------------------------------------------
+    |
+    | Gerenciamento das ordens de serviço relacionadas às missões,
+    | satélites e alertas.
+    |
+    */
+
+    Route::get(
+        '/service-orders',
+        [ServiceOrderController::class, 'index']
+    );
+
+    Route::post(
+        '/service-orders',
+        [ServiceOrderController::class, 'store']
+    );
+
+    Route::get(
+        '/service-orders/{serviceOrder}',
+        [ServiceOrderController::class, 'show']
+    )->where('serviceOrder', '[0-9]+');
+
+    Route::match(
+        ['put', 'patch'],
+        '/service-orders/{serviceOrder}',
+        [ServiceOrderController::class, 'update']
+    )->where('serviceOrder', '[0-9]+');
+
+    Route::delete(
+        '/service-orders/{serviceOrder}',
+        [ServiceOrderController::class, 'destroy']
+    )->where('serviceOrder', '[0-9]+');
+
 
     /*
     |--------------------------------------------------------------------------
