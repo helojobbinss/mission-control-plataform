@@ -1,5 +1,8 @@
 # Mission Control — frontend
 
+Execução final com cinco serviços, MariaDB e roteiro de apresentação:
+[estabilização do MVP](../docs/final-stabilization.md).
+
 Aplicação React/TypeScript incorporada seletivamente de `origin/frontend`
 (`8eb9104`). O backend oficial permanece em `../backend`; não há backend nesta pasta.
 
