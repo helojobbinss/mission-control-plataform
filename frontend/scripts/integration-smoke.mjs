@@ -112,6 +112,42 @@ try {
   await page.getByLabel('Confirmação da senha').fill('integration-test-password')
   await page.getByRole('button', { name: 'Cadastrar usuário', exact: true }).click()
   await page.getByText('Usuário cadastrado.', { exact: true }).waitFor()
+
+  // Usar links SPA: uma propriedade JS desapareceria se houvesse reload.
+  const navigationMarker = `navigation-${Date.now()}`
+  await page.evaluate((value) => Reflect.set(window, 'mission-smoke-marker', value), navigationMarker)
+  const navigate = async (name, suffix) => {
+    await page.getByRole('link', { name, exact: true }).click()
+    await page.waitForURL((url) => url.pathname === suffix)
+    assert.equal(await page.evaluate(() => Reflect.get(window, 'mission-smoke-marker')), navigationMarker, 'Navigation reloaded the application')
+  }
+  const communicationRequests = []
+  page.on('request', (request) => {
+    if (request.url().includes('/api/') && /comm|channel|command/.test(new URL(request.url()).pathname)) communicationRequests.push(request.url())
+  })
+  await navigate('Comunicações', '/comunicacoes')
+  await page.getByRole('region', { name: 'Console de comunicação simulada' }).waitFor()
+  await page.getByRole('button', { name: 'Nota', exact: true }).click()
+  await page.getByRole('textbox', { name: 'Texto da nota' }).fill('SPA session communication note')
+  await page.getByRole('button', { name: 'Registrar nota local' }).click()
+  await page.getByText('SPA session communication note', { exact: true }).waitFor()
+  await page.getByRole('button', { name: 'Telecomando', exact: true }).click()
+  await page.getByRole('button', { name: 'Simular envio', exact: true }).click()
+  await page.getByText('PING → PONG · RTT nominal', { exact: true }).waitFor()
+  await navigate('Monitoramento', '/monitoramento')
+  await page.getByRole('region', { name: 'Histórico de telemetria desta sessão' }).waitFor()
+  const refreshTelemetry = page.waitForResponse((response) => response.url().includes('/monitoring/telemetry'))
+  await page.getByRole('button', { name: 'Atualizar leitura', exact: true }).click()
+  assert.equal((await refreshTelemetry).status(), 200)
+  await navigate('Missões', '/tasks')
+  await page.getByRole('button', { name: 'Smoke Mission', exact: true }).waitFor()
+  await navigate('Painel Geral', '/')
+  await page.getByText('Smoke Manual', { exact: true }).waitFor()
+  await navigate('Gestão e dados', '/userscopy')
+  await page.getByText('Seu acesso', { exact: true }).waitFor()
+  await navigate('Comunicações', '/comunicacoes')
+  await page.getByText('SPA session communication note', { exact: true }).waitFor()
+  assert.deepEqual(communicationRequests, [], 'Demonstration sent a communication request')
   await page.getByRole('button', { name: 'Abrir perfil', exact: true }).click()
   await page.getByRole('menuitem', { name: /^Sign out/ }).click()
   const logoutResponse = page.waitForResponse((response) => response.url().endsWith('/api/logout'))
@@ -121,7 +157,7 @@ try {
   await page.goto('http://127.0.0.1:15173/tasks')
   await page.waitForURL('**/sign-in**')
   assert.deepEqual(errors, [], `Browser errors: ${errors.join(', ')}`)
-  console.log('PASS: route guard, login, manual satellite, FastAPI telemetry, mission creation/edit/transition, dashboard, session reload, manager user creation and logout.')
+  console.log('PASS: prior integrated flows, SPA navigation across dashboard/missions/satellites/monitoring/communications/users, session telemetry chart, simulated PING, note retention and logout. No communication API requests.')
 } catch (error) {
   console.error(error.message)
   console.error(logs.slice(-15).join('\n'))

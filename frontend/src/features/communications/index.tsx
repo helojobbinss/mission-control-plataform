@@ -2,6 +2,7 @@ import { Activity, Clock4, RadioTower, Send, Waves } from 'lucide-react'
 import { meterColor } from '@/lib/meter-color'
 import { cn } from '@/lib/utils'
 import { formatLive, useMissionClock } from '@/hooks/use-mission-clock'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ConfigDrawer } from '@/components/config-drawer'
 import { Header } from '@/components/layout/header'
@@ -23,7 +24,14 @@ import { useCommChannel } from './hooks/use-comm-channel'
 
 export function Communications() {
   const { now, elapsed } = useMissionClock(2000)
-  const { messages, sendCommand, addNote, retry } = useCommChannel()
+  const {
+    messages,
+    sendCommand,
+    addNote,
+    retry,
+    beaconsEnabled,
+    setBeaconsEnabled,
+  } = useCommChannel()
 
   const links = satellites
     .filter((s) => activeLinks[s.id])
@@ -56,12 +64,33 @@ export function Communications() {
       </Header>
 
       <Main className='flex flex-1 flex-col gap-4'>
-        <p role='status' className='rounded border border-amber-500 p-3 text-sm'>Demonstração local de comunicações. Os valores e mensagens são simulados; nenhum comando é enviado a satélites. A integração deste módulo será feita na próxima etapa.</p>
+        <p
+          role='status'
+          className='rounded border border-amber-500 p-3 text-sm'
+        >
+          Modo demonstrativo: canais, estações, mensagens e confirmações são
+          simulados neste navegador. Nenhum comando é enviado a satélites. Esta
+          frota de exemplo é independente dos satélites cadastrados. As
+          mensagens permanecem durante a navegação e são descartadas ao sair da
+          sessão ou recarregar a página.
+        </p>
         <div>
           <h1 className='text-2xl font-bold tracking-tight'>Comunicações</h1>
           <p className='font-mono text-xs tracking-[0.2em] text-emerald-500 uppercase dark:text-green-300'>
-            AO VIVO · {formatLive(now)}
+            SIMULAÇÃO LOCAL · {formatLive(now)}
           </p>
+        </div>
+
+        <div>
+          <Button
+            variant='outline'
+            aria-pressed={beaconsEnabled}
+            onClick={() => setBeaconsEnabled(!beaconsEnabled)}
+          >
+            {beaconsEnabled
+              ? 'Pausar beacons simulados'
+              : 'Retomar beacons simulados'}
+          </Button>
         </div>
 
         {/* ===== KPIs ===== */}

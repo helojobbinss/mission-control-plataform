@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import {
   activeLinks,
@@ -6,11 +6,13 @@ import {
   satellites,
   telemetryAt,
 } from '@/features/monitoring/data/fleet'
+import { CommChannelContext } from '../context/comm-channel-context'
 import {
   type CommMessage,
   type CommandCode,
   type Priority,
   commandReplies,
+  commands,
   initialMessages,
   nextId,
 } from '../data/messages'
@@ -18,11 +20,12 @@ import {
 /**
  * Estado do canal de comunicação + simulação do ciclo de vida de um
  * telecomando: PENDENTE → ENVIADO → ACK/FALHA (ou ENFILEIRADO sem enlace).
- * Ao integrar com o backend, trocar os setTimeout por WebSocket/SSE.
+ * Sem transporte externo. Mensagens e confirmações existem apenas nesta sessão.
  */
-export function useCommChannel() {
+export function useDemoCommChannel() {
   const [messages, setMessages] = useState<CommMessage[]>(initialMessages)
-  const timers = useRef<ReturnType<typeof setTimeout>[]>([])
+  const [beaconsEnabled, setBeaconsEnabled] = useState(true)
+  const timers = useRef(new Set<ReturnType<typeof setTimeout>>())
 
   const patch = useCallback((id: string, changes: Partial<CommMessage>) => {
     setMessages((prev) =>
@@ -31,22 +34,31 @@ export function useCommChannel() {
   }, [])
 
   const push = useCallback((msg: CommMessage) => {
-    setMessages((prev) => [...prev, msg])
+    setMessages((prev) => [...prev, msg].slice(-300))
   }, [])
 
-  const later = (ms: number, fn: () => void) => {
-    timers.current.push(setTimeout(fn, ms))
-  }
+  const later = useCallback((ms: number, fn: () => void) => {
+    const timer = setTimeout(() => {
+      timers.current.delete(timer)
+      fn()
+    }, ms)
+    timers.current.add(timer)
+  }, [])
 
   useEffect(() => {
     const list = timers.current
-    return () => list.forEach(clearTimeout)
+    return () => {
+      list.forEach(clearTimeout)
+      list.clear()
+    }
   }, [])
 
   // Beacons periódicos dos satélites com enlace
   useEffect(() => {
+    if (!beaconsEnabled) return
     const id = setInterval(() => {
       const linked = satellites.filter((s) => activeLinks[s.id])
+      if (linked.length === 0) return
       const sat = linked[Math.floor(Math.random() * linked.length)]
       const tel = telemetryAt(sat, Date.now() / 1000)
       push({
@@ -61,7 +73,7 @@ export function useCommChannel() {
       })
     }, 12_000)
     return () => clearInterval(id)
-  }, [push])
+  }, [push, beaconsEnabled])
 
   const sendCommand = useCallback(
     (args: {
@@ -71,6 +83,11 @@ export function useCommChannel() {
       priority: Priority
       operator: string
     }) => {
+      if (
+        !satellites.some((sat) => sat.id === args.satelliteId) ||
+        !commands.some((command) => command.code === args.code)
+      )
+        return
       const sat = satById(args.satelliteId)
       const station = activeLinks[sat.id]
       const id = nextId()
@@ -89,8 +106,8 @@ export function useCommChannel() {
       })
 
       if (!station) {
-        toast.warning(`${sat.name} sem enlace`, {
-          description: `${args.code} enfileirado para a próxima janela de contato.`,
+        toast.warning(`Simulação: ${sat.name} sem enlace`, {
+          description: `${args.code} permanece na fila local; não há envio automático a satélites.`,
         })
         return
       }
@@ -104,7 +121,7 @@ export function useCommChannel() {
       later(latency, () => {
         patch(id, { status: fails ? 'FALHA' : 'ACK' })
         if (fails) {
-          toast.error(`${args.code} sem confirmação`, {
+          toast.error(`Simulação: ${args.code} sem confirmação`, {
             description: `${sat.name}: sinal fraco (${signal.toFixed(0)}%). Tente na próxima passagem.`,
           })
           return
@@ -123,11 +140,13 @@ export function useCommChannel() {
         )
       })
     },
-    [patch, push]
+    [patch, push, later]
   )
 
   const addNote = useCallback(
     (satelliteId: string, content: string, operator: string) => {
+      if (!content.trim() || !satellites.some((sat) => sat.id === satelliteId))
+        return
       push({
         id: nextId(),
         satelliteId,
@@ -145,6 +164,12 @@ export function useCommChannel() {
 
   const retry = useCallback(
     (msg: CommMessage) => {
+      if (
+        msg.direction !== 'UP' ||
+        msg.status !== 'FALHA' ||
+        !commands.some((command) => command.code === msg.code)
+      )
+        return
       sendCommand({
         satelliteId: msg.satelliteId,
         code: msg.code as CommandCode,
@@ -156,5 +181,18 @@ export function useCommChannel() {
     [sendCommand]
   )
 
-  return { messages, sendCommand, addNote, retry }
+  return {
+    messages,
+    sendCommand,
+    addNote,
+    retry,
+    beaconsEnabled,
+    setBeaconsEnabled,
+  }
+}
+
+export function useCommChannel() {
+  const channel = useContext(CommChannelContext)
+  if (!channel) throw new Error('Comunicação requer uma sessão autenticada.')
+  return channel
 }

@@ -8,6 +8,7 @@ import {
   TerminalSquare,
   WifiOff,
 } from 'lucide-react'
+import { useAuthStore } from '@/stores/auth-store'
 import { cn } from '@/lib/utils'
 import { formatUtc } from '@/hooks/use-mission-clock'
 import { Button } from '@/components/ui/button'
@@ -46,8 +47,6 @@ const filters: { value: Filter; label: string }[] = [
   { value: 'NOTE', label: 'Notas' },
 ]
 
-const OPERATOR = 'Admin'
-
 export function CommsConsole({
   messages,
   onSend,
@@ -65,6 +64,12 @@ export function CommsConsole({
   onNote: (satelliteId: string, content: string, operator: string) => void
   onRetry: (msg: CommMessage) => void
 }) {
+  const operator = useAuthStore(
+    (state) =>
+      state.auth.user?.name ??
+      state.auth.user?.email ??
+      'Operador da demonstração'
+  )
   const [selectedId, setSelectedId] = useState('SAT-002')
   const [filter, setFilter] = useState<Filter>('ALL')
   const [mode, setMode] = useState<'CMD' | 'NOTE'>('CMD')
@@ -114,25 +119,29 @@ export function CommsConsole({
     e.preventDefault()
     if (mode === 'NOTE') {
       if (!text.trim()) return
-      onNote(selectedId, text.trim(), OPERATOR)
+      onNote(selectedId, text.trim(), operator)
     } else {
       onSend({
         satelliteId: selectedId,
         code,
         params: text.trim(),
         priority,
-        operator: OPERATOR,
+        operator,
       })
     }
     setText('')
   }
 
   return (
-    <div className='grid h-[680px] grid-cols-1 overflow-hidden rounded-xl border bg-card md:grid-cols-[230px_1fr]'>
+    <div
+      role='region'
+      aria-label='Console de comunicação simulada'
+      className='grid h-[680px] grid-cols-1 overflow-hidden rounded-xl border bg-card md:grid-cols-[230px_1fr]'
+    >
       {/* ===== Canais ===== */}
       <aside className='flex gap-1 overflow-x-auto border-b p-2 md:flex-col md:overflow-y-auto md:border-e md:border-b-0'>
         <p className='hidden px-2 pt-1 pb-2 font-mono text-[10px] tracking-[0.2em] text-muted-foreground uppercase md:block'>
-          Canais
+          Canais de demonstração
         </p>
         {satellites.map((s) => {
           const total = messages.filter((m) => m.satelliteId === s.id)
@@ -144,6 +153,8 @@ export function CommsConsole({
               key={s.id}
               type='button'
               onClick={() => openChannel(s.id)}
+              aria-pressed={active}
+              aria-label={`Canal simulado ${s.name}`}
               className={cn(
                 'min-w-[150px] shrink-0 rounded-lg px-3 py-2 text-start transition-colors md:min-w-0',
                 active ? 'bg-muted' : 'hover:bg-muted/50'
@@ -254,6 +265,7 @@ export function CommsConsole({
                 >
                   <SelectTrigger
                     size='sm'
+                    aria-label='Telecomando simulado'
                     className='w-[230px] font-mono text-xs'
                   >
                     <SelectValue />
@@ -279,6 +291,7 @@ export function CommsConsole({
                 >
                   <SelectTrigger
                     size='sm'
+                    aria-label='Prioridade do comando'
                     className='w-[120px] font-mono text-xs'
                   >
                     <SelectValue />
@@ -309,6 +322,9 @@ export function CommsConsole({
           </div>
           <div className='flex gap-2'>
             <Input
+              aria-label={
+                mode === 'CMD' ? 'Parâmetros do comando' : 'Texto da nota'
+              }
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder={
@@ -321,7 +337,7 @@ export function CommsConsole({
             <Button type='submit' disabled={mode === 'NOTE' && !text.trim()}>
               <Send className='size-4' />
               <span className='hidden sm:inline'>
-                {mode === 'CMD' ? 'Transmitir' : 'Registrar'}
+                {mode === 'CMD' ? 'Simular envio' : 'Registrar nota local'}
               </span>
             </Button>
           </div>

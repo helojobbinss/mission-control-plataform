@@ -62,3 +62,6 @@ remove apenas seu diretório temporário ao terminar normalmente.
 
 **A suíte herdada não está verde.** Consulte resultados reais, telas conectadas e
 pendências em [docs/frontend-integration.md](../docs/frontend-integration.md).
+
+A comunicação demonstrativa e os gráficos de acompanhamento estão integrados no
+mesmo frontend. Consulte a [matriz de comparação e os limites da comunicação](../docs/communications-integration.md).

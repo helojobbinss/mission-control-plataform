@@ -5,6 +5,8 @@ Base técnica e instruções atuais de execução: [diagnóstico de integração
 Frontend oficial em [`frontend/`](frontend/README.md). Consulte os
 [resultados e limites da integração](docs/frontend-integration.md).
 
+Comunicação e acompanhamento: [comparação, funcionalidades e limites](docs/communications-integration.md).
+
 <div align="center">
 
 ### Plataforma Web para Monitoramento Inteligente de Satélites em Tempo Real
