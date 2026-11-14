@@ -18,6 +18,9 @@ class PasswordController extends Controller
      */
     public function forgot(Request $request)
     {
+        // O token na resposta é um recurso exclusivo do desenvolvimento.
+        abort_unless(app()->environment(['local', 'testing']), 403);
+
         $data = $request->validate([
             'email' => ['required', 'email'],
         ]);

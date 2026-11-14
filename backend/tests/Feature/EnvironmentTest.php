@@ -28,7 +28,7 @@ class EnvironmentTest extends TestCase
         $token = $user->createToken('environment-test')->plainTextToken;
 
         $this->withToken($token)->getJson('/api/user')
-            ->assertOk()->assertJsonPath('id', $user->id)
+            ->assertOk()->assertJsonPath('user.id', $user->id)
             ->assertJsonMissingPath('password');
     }
 }

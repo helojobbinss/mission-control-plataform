@@ -20,9 +20,7 @@ class TelemetryUnitCatalogTest extends TestCase
         ], $keys);
     }
 
-    /**
-     * @dataProvider expectedUnits
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('expectedUnits')]
     public function test_units_symbols_and_types_are_correct($key, $unit, $symbol, $type): void
     {
         $definitions = array_column((new TelemetryUnitCatalog())->all(), null, 'key');
@@ -33,7 +31,7 @@ class TelemetryUnitCatalogTest extends TestCase
         $this->assertSame($type, $definitions[$key]['type']);
     }
 
-    public function expectedUnits(): array
+    public static function expectedUnits(): array
     {
         return [
             'latitude' => ['latitude', 'Grau', '°', 'number'],

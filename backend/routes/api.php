@@ -17,6 +17,7 @@ use App\Services\Integrations\NasaDonkiService;
 use App\Http\Controllers\SatelliteTelemetryController;
 use App\Http\Controllers\SatelliteMonitoringController;
 use App\Http\Controllers\ServiceOrderController;
+use App\Http\Controllers\NasaEventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,7 +111,7 @@ Route::middleware('auth:sanctum')->group(function () {
             Request $request,
             NasaDonkiService $nasa
         ) {
-            return self::queryNasaEvents(
+            return app(NasaEventController::class)->query(
                 $request,
                 $nasa,
                 'getSolarFlares',
@@ -127,7 +128,7 @@ Route::middleware('auth:sanctum')->group(function () {
             Request $request,
             NasaDonkiService $nasa
         ) {
-            return self::queryNasaEvents(
+            return app(NasaEventController::class)->query(
                 $request,
                 $nasa,
                 'getGeomagneticStorms',
@@ -144,7 +145,7 @@ Route::middleware('auth:sanctum')->group(function () {
             Request $request,
             NasaDonkiService $nasa
         ) {
-            return self::queryNasaEvents(
+            return app(NasaEventController::class)->query(
                 $request,
                 $nasa,
                 'getCoronalMassEjections',
@@ -258,9 +259,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::get('/telemetry/units', [TelemetryUnitController::class, 'index']);
-// Desenvolvimento local: substituir por autenticação antes de disponibilizar a API.
-if (app()->environment(['local', 'testing'])) {
-    Route::get('/satellites', [SatelliteController::class, 'index']);
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('/satellites/search', [SatelliteController::class, 'search']);
     Route::post('/satellites/import', [SatelliteController::class, 'import']);
     Route::get('/satellites/{satellite}/orbit', [SatelliteController::class, 'orbit']);
@@ -273,4 +272,4 @@ if (app()->environment(['local', 'testing'])) {
     Route::post('/missions/{mission}/transition', [MissionController::class, 'transition']);
     Route::put('/missions/{mission}', [MissionController::class, 'update']);
     Route::delete('/missions/{mission}', [MissionController::class, 'destroy']);
-}
+});

@@ -12,6 +12,7 @@ class MissionApiTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        \Laravel\Sanctum\Sanctum::actingAs(\App\Models\User::factory()->create());
         \App\Models\Satellite::create(['norad_id' => 25544, 'name' => 'ISS', 'source' => 'CelesTrak']);
     }
 
