@@ -89,6 +89,8 @@ class PasswordController extends Controller
             'remember_token' => Str::random(60),
         ])->save();
 
+        $user->tokens()->delete();
+
         DB::table('password_resets')
             ->where('email', $data['email'])
             ->delete();
