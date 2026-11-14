@@ -22,6 +22,16 @@ client = TestClient(app)
 EPOCH = datetime(2026, 1, 1, tzinfo=timezone.utc)
 
 
+def test_official_application_registers_simulation_endpoint():
+    from app.main import app as official_app
+    response = TestClient(official_app).post("/api/v1/orbits/simulate", json={
+        "altitude_km": 500, "inclination_deg": 30, "epoch": EPOCH.isoformat(),
+    })
+    assert response.status_code == 200
+    assert response.json()["simulated"] is True
+    assert -90 <= response.json()["orbital_position"]["latitude"] <= 90
+
+
 def test_sgp4_position_has_geodetic_values():
     result = calculate_satellite_position(
         ISS_L1, ISS_L2, datetime(2019, 12, 9, 12, 0, tzinfo=timezone.utc)
