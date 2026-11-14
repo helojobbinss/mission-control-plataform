@@ -11,6 +11,12 @@ class SatelliteTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        \Laravel\Sanctum\Sanctum::actingAs(\App\Models\User::factory()->create());
+    }
+
     public function test_import_and_required_mission_relationship(): void
     {
         Http::fake(['celestrak.org/*' => Http::response([['NORAD_CAT_ID' => 25544, 'OBJECT_NAME' => 'ISS (ZARYA)']])]);
@@ -23,7 +29,7 @@ class SatelliteTest extends TestCase
             $this->postJson('/api/missions', ['name' => $name, 'status' => 'Agendada', 'satellite_id' => $satellite])->assertCreated();
         }
         $this->assertCount(2, Satellite::findOrFail($satellite)->missions);
-        $this->getJson('/api/satellites')->assertOk()->assertJsonCount(2, '0.missions')->assertJsonPath('0.missions.0.name', 'Primeira');
+        $this->getJson('/api/satellites')->assertOk()->assertJsonCount(2, 'data.0.missions')->assertJsonPath('data.0.missions.0.name', 'Primeira');
         $this->getJson('/api/missions')->assertJsonFragment(['norad_id' => 25544]);
     }
 

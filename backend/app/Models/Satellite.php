@@ -69,4 +69,9 @@ class Satellite extends Model
     {
         return $this->hasMany(SatelliteAlert::class);
     }
+
+    public function missions()
+    {
+        return $this->hasMany(Mission::class);
+    }
 }

@@ -32,6 +32,7 @@ class SatelliteController extends Controller
         ]);
 
         $query = Satellite::query()
+            ->with('missions')
             ->withCount([
                 'alerts as open_alerts_count' => function ($q) {
                     $q->where('resolved', false);
@@ -397,6 +398,10 @@ class SatelliteController extends Controller
             'updated_at' => $satellite->updated_at,
         ];
 
+        if ($satellite->relationLoaded('missions')) {
+            $item['missions'] = $satellite->missions;
+        }
+
         if (isset($satellite->open_alerts_count)) {
             $item['open_alerts_count'] =
                 (int) $satellite->open_alerts_count;
@@ -748,7 +753,7 @@ class SatelliteController extends Controller
                 ['norad_id' => $id],
                 [
                     'name' => trim($result['OBJECT_NAME']),
-                    'source' => 'CelesTrak'
+                    'source' => Satellite::SOURCE_CELESTRAK
                 ]
             ),
             201
