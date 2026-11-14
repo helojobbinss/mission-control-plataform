@@ -1,5 +1,7 @@
 # 🚀 Mission Control Platform
 
+Base técnica e instruções atuais de execução: [diagnóstico de integração](docs/integration-baseline.md).
+
 <div align="center">
 
 ### Plataforma Web para Monitoramento Inteligente de Satélites em Tempo Real
