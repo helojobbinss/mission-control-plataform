@@ -1,6 +1,7 @@
 # Ambientes virtuais
 .venv/
 .venv-new/
+.venv*/
 venv/
 
 # Python

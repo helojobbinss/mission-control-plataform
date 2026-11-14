@@ -5,6 +5,9 @@
 /vendor
 .env
 .env.backup
+.env.*
+!.env.example
+/.phpunit.cache
 .phpunit.result.cache
 docker-compose.override.yml
 Homestead.json
