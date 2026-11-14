@@ -2,6 +2,9 @@
 
 Base técnica e instruções atuais de execução: [diagnóstico de integração](docs/integration-baseline.md).
 
+Frontend oficial em [`frontend/`](frontend/README.md). Consulte os
+[resultados e limites da integração](docs/frontend-integration.md).
+
 <div align="center">
 
 ### Plataforma Web para Monitoramento Inteligente de Satélites em Tempo Real
