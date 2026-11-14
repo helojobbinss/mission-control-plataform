@@ -14,6 +14,7 @@ import { Main } from '@/components/layout/main'
 import { ProfileDropdown } from '@/components/profile-dropdown'
 import { ThemeSwitch } from '@/components/theme-switch'
 import { AddSatellite } from './components/add-satellite'
+import { SatelliteActions } from './components/satellite-actions'
 import { OrbitView } from './components/orbit-view'
 import { satellites as decorativeSatellites } from './data/fleet'
 
@@ -129,6 +130,7 @@ export function Monitoring() {
       <section aria-label='Passagens e eventos' className='grid gap-4 lg:grid-cols-2'><Card><CardHeader><CardTitle>Próximas passagens</CardTitle><p className='text-xs text-muted-foreground'>Previsões sobre estações terrestres</p></CardHeader><CardContent className='rounded-b-xl bg-muted/10 py-6 text-sm text-muted-foreground'>Previsões ainda não disponíveis. Para calcular passagens, será necessário cadastrar as coordenadas das estações.</CardContent></Card><Card><CardHeader><CardTitle>Eventos</CardTitle><p className='text-xs text-muted-foreground'>Alertas e ocorrências da frota</p></CardHeader><CardContent className='rounded-b-xl bg-muted/10 py-6 text-sm text-muted-foreground'>Os alertas da leitura atual estão na seção Telemetria e alertas abaixo.</CardContent></Card></section>
       <div className='mt-4 flex justify-center'><Button variant='outline' size='lg' aria-expanded={advancedOpen} aria-controls='monitoring-advanced' onClick={() => setAdvancedOpen((value) => !value)}>{advancedOpen ? <ChevronUp className='size-4' /> : <ChevronDown className='size-4' />}{advancedOpen ? 'Recolher dados avançados' : 'Dados avançados'}</Button></div>
       {advancedOpen && <section id='monitoring-advanced' className='grid gap-4 border-t border-dashed pt-5 md:grid-cols-2' aria-label='Dados avançados'><div className='md:col-span-2'><p className='text-lg font-semibold'>Camada avançada de monitoramento</p><p className='text-sm text-muted-foreground'>Área expansível reservada para os próximos indicadores da plataforma.</p></div><AdvancedCard icon={Clock3} title='Janela de visibilidade' description='Aguardando localização de uma estação terrestre para estimar aquisição e perda de sinal.' /><AdvancedCard icon={Activity} title='Qualidade da propagação' description='A idade dos elementos orbitais está indicada acima; dados mais antigos reduzem a confiança da estimativa.' /><AdvancedCard icon={Radio} title='Enlace e telemetria' description='SNR, potência recebida, frequência e estado do enlace poderão entrar aqui quando houver uma fonte conectada.' /><AdvancedCard icon={Orbit} title='Parâmetros orbitais adicionais' description='Próximos campos podem incluir apogeu, perigeu e passagens previstas, com método e fonte identificados.' /></section>}
+      {selected && <SatelliteActions key={selected.id} satellite={selected} />}
       {selected && <LiveTelemetry satelliteId={selected.id} />}
     </>}
   </Main><AddSatellite open={open} onOpenChange={setOpen} /></>
