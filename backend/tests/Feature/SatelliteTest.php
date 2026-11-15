@@ -14,7 +14,8 @@ class SatelliteTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        \Laravel\Sanctum\Sanctum::actingAs(\App\Models\User::factory()->create());
+        $role = \App\Models\Role::firstOrCreate(['name' => 'operador']);
+        \Laravel\Sanctum\Sanctum::actingAs(\App\Models\User::factory()->create(['role_id' => $role->id]));
     }
 
     public function test_import_and_required_mission_relationship(): void

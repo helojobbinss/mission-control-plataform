@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { api as axios } from '@/lib/api'
+import { api as axios, apiErrorMessage } from '@/lib/api'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
@@ -24,7 +24,7 @@ export function AddSatellite({ open, onOpenChange }: { open: boolean; onOpenChan
   const add = useMutation({
     mutationFn: async () => axios.post('/api/satellites/import', { norad_id: Number(norad) }),
     onSuccess: async () => { await client.invalidateQueries({ queryKey: ['satellites'] }); toast.success('Satélite adicionado.'); setName(''); setNorad(''); setChosen(null); onOpenChange(false) },
-    onError: () => toast.error('Não foi possível adicionar. Verifique o NORAD ou tente mais tarde.'),
+    onError: (error) => toast.error(apiErrorMessage(error)),
   })
   return <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className='max-h-[85vh] overflow-y-auto'><DialogHeader><DialogTitle>Adicionar satélite</DialogTitle><DialogDescription>Pesquise no catálogo público CelesTrak e selecione o satélite desejado.</DialogDescription></DialogHeader>
     <div className='space-y-3'><label htmlFor='monitor-satellite-name' className='text-sm font-medium'>Pesquisar por nome</label><Input id='monitor-satellite-name' placeholder='Digite pelo menos 3 letras' maxLength={80} value={name} onChange={(event) => { setName(event.target.value); setChosen(null); setNorad('') }} />

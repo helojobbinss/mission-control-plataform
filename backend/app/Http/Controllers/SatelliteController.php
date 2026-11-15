@@ -684,6 +684,10 @@ class SatelliteController extends Controller
 
     public function import(Request $request)
     {
+        if ($denied = $this->deny($request, self::CAN_WRITE, 'importar satélites')) {
+            return $denied;
+        }
+
         $data = $request->validate([
             'norad_id' => [
                 'required',

@@ -8,6 +8,8 @@
 .env.*
 !.env.example
 /.phpunit.cache
+/database/*.sqlite*
+/mission_control_compose_smoke
 .phpunit.result.cache
 docker-compose.override.yml
 Homestead.json

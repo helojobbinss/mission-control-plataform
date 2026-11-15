@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true" cacheDirectory=".phpunit.cache">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd" bootstrap="tests/bootstrap.php" colors="true" cacheDirectory=".phpunit.cache">
     <testsuites>
         <testsuite name="Unit"><directory>tests/Unit</directory></testsuite>
         <testsuite name="Feature"><directory>tests/Feature</directory></testsuite>
@@ -7,6 +7,11 @@
     <source><include><directory>app</directory></include></source>
     <php>
         <env name="APP_ENV" value="testing" force="true"/>
+        <env name="PYTHON_API_URL" value="http://127.0.0.1:8001" force="true"/>
+        <env name="NASA_DONKI_BASE_URL" value="https://api.nasa.gov/DONKI" force="true"/>
+        <env name="CELESTRAK_BASE_URL" value="https://celestrak.org/NORAD/elements" force="true"/>
+        <env name="NASA_API_KEY" value="DEMO_KEY" force="true"/>
+        <env name="SANCTUM_EXPIRATION" value="1440" force="true"/>
         <!-- Chave pública e exclusiva dos testes; nunca usar em ambientes reais. -->
         <env name="APP_KEY" value="base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" force="true"/>
         <env name="DB_CONNECTION" value="sqlite" force="true"/>

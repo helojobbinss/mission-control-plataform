@@ -1,9 +1,93 @@
 # 🚀 Mission Control Platform
 
+## Executar o MVP integrado
+
+Estado validado: React/Vite → Laravel 12/Sanctum → MariaDB 11.4, com FastAPI
+para posições e sensores simulados. Existe apenas um frontend oficial em
+`frontend/`. Comunicação é uma demonstração local; não envia comandos a satélites.
+As seções acadêmicas abaixo também descrevem funcionalidades planejadas.
+
+**Pré-requisitos:** Docker Desktop/Engine com Compose, acesso à internet na
+primeira instalação e portas locais 5173, 8000 e 3307 disponíveis. Para executar
+testes de navegador no host, usar Node.js 22.12 ou superior.
+
+Na raiz do repositório, em PowerShell:
+
+```powershell
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+if (!(Test-Path backend/.env)) { Copy-Item backend/.env.example backend/.env }
+```
+
+Preencha `DB_PASSWORD` e `DB_ROOT_PASSWORD` no `.env` da raiz com valores locais.
+Não substitua credenciais de um volume MariaDB já inicializado. O Compose
+encaminha banco e Python pelos nomes internos dos serviços.
+
+```powershell
+docker compose build app python-api
+docker compose up -d db python-api app
+docker compose exec -T app composer install --no-interaction --prefer-dist
+```
+
+**Somente na primeira instalação**, se `APP_KEY` de `backend/.env` estiver vazia:
+
+```powershell
+docker compose exec -T app php artisan key:generate
+```
+
+Depois de revisar o estado do banco:
+
+```powershell
+docker compose exec -T app php artisan migrate:status
+docker compose exec -T app php artisan migrate
+docker compose exec -T app php artisan db:seed
+docker compose exec -T -e DEMO_PASSWORD=Apresentacao!2026 app php artisan db:seed --class=DemoSeeder
+docker compose up -d nginx frontend
+```
+
+Conta demonstrativa local: `demo.manager@example.test` / `Apresentacao!2026`,
+**apenas se você executar o comando acima**. O seeder é restrito a local/testing
+e não altera a senha nem os dados de uma conta que já exista.
+
+- Interface: **http://127.0.0.1:5173**.
+- Laravel: http://127.0.0.1:8000; API pública de unidades em `/api/telemetry/units`.
+- MariaDB no host: `127.0.0.1:3307`; FastAPI acessível internamente como `python-api:8001`.
+- Para parar sem apagar dados: `docker compose stop`. Para retornar: `docker compose up -d`.
+
+As variáveis essenciais são `APP_KEY`, `APP_ENV=local`, `DB_*`,
+`PYTHON_API_URL`, `SANCTUM_EXPIRATION` (1440 minutos por padrão),
+`VITE_API_URL` e `API_PROXY_TARGET`. Os exemplos não incluem credenciais reais.
+No Compose, deixe o proxy e os endereços internos definidos pelos serviços.
+
+Testes básicos:
+
+```powershell
+docker compose exec -T app php vendor/phpunit/phpunit/phpunit --no-progress
+docker compose exec -T python-api python -m pytest -q -p no:cacheprovider /tests
+cd frontend
+npm ci
+npm run build
+npm run lint
+npm exec playwright install chromium
+npm test
+npm run test:compose
+```
+
+O teste Python em `/tests` usa o volume de testes definido no Compose. O teste
+Compose cria recursos descartáveis próprios; não utiliza o volume do ambiente.
+O runner E2E com reinicialização e MariaDB está documentado no
+[relatório final e roteiro de apresentação](docs/final-stabilization.md).
+**Limites:** sensores e comunicação simulados, telas legadas demonstrativas,
+46 falhas conhecidas em testes herdados. Build e fluxos principais passaram;
+o estado completo não deve ser confundido com prontidão de produção.
+
 Base técnica e instruções atuais de execução: [diagnóstico de integração](docs/integration-baseline.md).
 
 Frontend oficial em [`frontend/`](frontend/README.md). Consulte os
 [resultados e limites da integração](docs/frontend-integration.md).
+
+Comunicação e acompanhamento: [comparação, funcionalidades e limites](docs/communications-integration.md).
+
+Revisão para entrega: [checklist, testes repetidos e recomendação de merge](docs/final-review.md).
 
 <div align="center">
 

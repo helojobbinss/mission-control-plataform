@@ -77,7 +77,7 @@ export function TasksMutateDrawer({
   const importSatellite = useMutation({
     mutationFn: async () => (await axios.post<{id: number}>('/api/satellites/import', { norad_id: Number(norad) })).data,
     onSuccess: async (satellite) => { await queryClient.invalidateQueries({ queryKey: ['satellites'] }); form.setValue('satellite_id', String(satellite.id), { shouldValidate: true }); setNorad(''); setChosenName(''); setSearchName(''); toast.success('Satélite encontrado no CelesTrak.') },
-    onError: () => toast.error('Satélite não encontrado ou CelesTrak indisponível. Verifique o NORAD e tente novamente.'),
+    onError: (error) => toast.error(apiErrorMessage(error)),
   })
   const { requestConfirmation, dialog } = useReopenConfirmation()
 

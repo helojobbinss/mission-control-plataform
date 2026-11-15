@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Database\QueryException;
 
 class Handler extends ExceptionHandler
 {
@@ -39,6 +40,18 @@ class Handler extends ExceptionHandler
 
     public function register()
     {
+        $this->renderable(function (QueryException $exception, $request) {
+            $code = (int) ($exception->errorInfo[1] ?? 0);
+            if ($request->is('api/*') && (
+                in_array($code, [1451, 787], true)
+                || str_contains($exception->getMessage(), 'FOREIGN KEY constraint failed')
+            )) {
+                return response()->json([
+                    'message' => 'Este registro possui vínculos e não pode ser excluído.',
+                ], 409);
+            }
+        });
+
         $this->reportable(function (Throwable $e) {
             //
         });
