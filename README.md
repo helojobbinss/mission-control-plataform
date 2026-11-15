@@ -87,6 +87,8 @@ Frontend oficial em [`frontend/`](frontend/README.md). Consulte os
 
 Comunicação e acompanhamento: [comparação, funcionalidades e limites](docs/communications-integration.md).
 
+Revisão para entrega: [checklist, testes repetidos e recomendação de merge](docs/final-review.md).
+
 <div align="center">
 
 ### Plataforma Web para Monitoramento Inteligente de Satélites em Tempo Real
