@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\phpunit.xml" tests="11" assertions="18" errors="0" failures="1" skipped="0" time="0.920148">
+    <testsuite name="Feature" tests="11" assertions="18" errors="0" failures="1" skipped="0" time="0.920148">
+      <testsuite name="Tests\Feature\SprintSixTest" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" tests="11" assertions="18" errors="0" failures="1" skipped="0" time="0.920148">
+        <testsuite name="Tests\Feature\SprintSixTest::test_ct001_altitude_limits" tests="4" assertions="8" errors="0" failures="0" skipped="0" time="0.716756">
+          <testcase name="test_ct001_altitude_limits with data set #0" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="32" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="2" time="0.641145">
+            <system-out>&#13;
+&#13;
+</system-out>
+          </testcase>
+          <testcase name="test_ct001_altitude_limits with data set #1" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="32" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="2" time="0.023512"/>
+          <testcase name="test_ct001_altitude_limits with data set #2" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="32" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="2" time="0.025067"/>
+          <testcase name="test_ct001_altitude_limits with data set #3" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="32" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="2" time="0.027033"/>
+        </testsuite>
+        <testsuite name="Tests\Feature\SprintSixTest::test_ct002_pagination_limits" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.111927">
+          <testcase name="test_ct002_pagination_limits with data set #0" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="49" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="1" time="0.023613"/>
+          <testcase name="test_ct002_pagination_limits with data set #1" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="49" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="1" time="0.031432"/>
+          <testcase name="test_ct002_pagination_limits with data set #2" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="49" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="1" time="0.030765"/>
+          <testcase name="test_ct002_pagination_limits with data set #3" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="49" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="1" time="0.026118"/>
+        </testsuite>
+        <testcase name="test_ct003_missing_records_return_404" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="56" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="3" time="0.031162"/>
+        <testcase name="test_ct004_invalid_bulk_is_atomic" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="65" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="2" time="0.026732"/>
+        <testcase name="test_ct005_alerts_with_same_code_preserve_each_parameter" file="F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php" line="78" class="Tests\Feature\SprintSixTest" classname="Tests.Feature.SprintSixTest" assertions="1" time="0.033569">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\SprintSixTest::test_ct005_alerts_with_same_code_preserve_each_parameter&#13;
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &amp;0 [
+-    0 =&gt; 'gyroscope_x',
+-    1 =&gt; 'gyroscope_y',
++    0 =&gt; 'gyroscope_y',
+ ]
+&#13;
+F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php:90</failure>
+        </testcase>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

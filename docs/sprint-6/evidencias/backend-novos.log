@@ -1,0 +1,41 @@
+Casos: CT-001..CT-005
+InÃ­cio: 2026-11-15T21:20:03.8622392-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: backend
+Comando: php vendor/phpunit/phpunit/phpunit --colors=never --filter SprintSixTest --log-junit ../docs/sprint-6/evidencias/backend-novos.xml
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.12
+Configuration: F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\phpunit.xml
+
+
+
+DDDDDDDDDDF                                                       11 / 11 (100%)
+
+Time: 00:00.946, Memory: 48.00 MB
+
+There was 1 failure:
+
+1) Tests\Feature\SprintSixTest::test_ct005_alerts_with_same_code_preserve_each_parameter
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+-    0 => 'gyroscope_x',
+-    1 => 'gyroscope_y',
++    0 => 'gyroscope_y',
+ ]
+
+F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\SprintSixTest.php:90
+
+FAILURES!
+Tests: 11, Assertions: 18, Failures: 1, Deprecations: 1.
+--- fim ---
+Fim: 2026-11-15T21:20:05.2495563-03:00
+CÃ³digo: 1
+Estado do comando: falhou ou bloqueado; classificar pela causa no relatÃ³rio
+EvidÃªncia: docs/sprint-6/evidencias/backend-novos.log

@@ -1,0 +1,20 @@
+Casos: CT-028
+Início: 2026-11-15T21:42:08.4228123-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (árvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+Diretório: .
+Comando: python-api/.venv/Scripts/python.exe docs/sprint-6/validar_entregaveis.py
+Esperado: Código de saída zero; todas as verificações aprovadas.
+--- saída original ---
+APROVADO: 17 títulos acadêmicos presentes, ordenados e preenchidos.
+APROVADO: 35 CT completos; 30 executados, 28 aprovados, 2 reprovados, 1 bloqueado e 4 não executados.
+APROVADO: 316 instâncias conferidas com JUnit/JSON; E2E aprovado; vereditos dos CT consistentes.
+APROVADO: incidentes, severidades, percentuais e cobertura não medida consistentes.
+APROVADO: alterações restritas a testes/documentação/ignore; nenhum arquivo de produção modificado.
+APROVADO: hashes SHA256 de todos os arquivos do inventário conferidos.
+VALIDAÇÃO CONCLUÍDA. Isso valida os entregáveis; não altera as falhas de produto ou da regressão.
+--- fim ---
+Fim: 2026-11-15T21:42:09.0925247-03:00
+Código: 0
+Estado do comando: passou (confirmar contagens na saída)
+Evidência: docs/sprint-6/evidencias/validacao-final.log

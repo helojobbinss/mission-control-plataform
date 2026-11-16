@@ -1,0 +1,20 @@
+Casos: PREPARACAO
+InÃ­cio: 2026-11-15T21:18:17.2219329-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: frontend
+Comando: npm.cmd ci --no-audit --no-fund
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+
+added 457 packages in 2m
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+--- fim ---
+Fim: 2026-11-15T21:19:56.9005490-03:00
+CÃ³digo: 0
+Estado do comando: passou (confirmar contagens na saÃ­da)
+EvidÃªncia: docs/sprint-6/evidencias/npm-ci.log

@@ -1,0 +1,42 @@
+Casos: BASE-BACKEND
+InÃ­cio: 2026-11-15T21:19:49.6307435-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: backend
+Comando: php vendor/phpunit/phpunit/phpunit --colors=never --display-deprecations --filter EnvironmentTest
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.12
+Configuration: F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\phpunit.xml
+
+
+
+DDD                                                                 3 / 3 (100%)
+
+Time: 00:01.699, Memory: 46.00 MB
+
+3 tests triggered 1 PHP deprecation:
+
+1) F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\config\database.php:62
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Feature\EnvironmentTest::test_api_returns_401_without_a_json_accept_header
+  F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\EnvironmentTest.php:20
+
+* Tests\Feature\EnvironmentTest::test_sanctum_token_can_authenticate_a_user
+  F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\EnvironmentTest.php:25
+
+* Tests\Feature\EnvironmentTest::test_tests_use_an_isolated_database
+  F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\tests\Feature\EnvironmentTest.php:14
+
+OK, but there were issues!
+Tests: 3, Assertions: 7, Deprecations: 1.
+--- fim ---
+Fim: 2026-11-15T21:19:52.5031760-03:00
+CÃ³digo: 0
+Estado do comando: passou (confirmar contagens na saÃ­da)
+EvidÃªncia: docs/sprint-6/evidencias/php-avisos.log

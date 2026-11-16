@@ -1,0 +1,14 @@
+Casos: CT-029
+InÃ­cio: 2026-11-15T21:29:25.7029726-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: .
+Comando: docker version
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+O termo 'docker' não é reconhecido como nome de cmdlet, função, arquivo de script ou programa operável. Verifique a grafia do nome ou, se um caminho tiver sido incluído, veja se o caminho está correto e tente novamente.
+--- fim ---
+Fim: 2026-11-15T21:29:25.9856574-03:00
+CÃ³digo: 127
+Estado do comando: falhou ou bloqueado; classificar pela causa no relatÃ³rio
+EvidÃªncia: docs/sprint-6/evidencias/docker.log

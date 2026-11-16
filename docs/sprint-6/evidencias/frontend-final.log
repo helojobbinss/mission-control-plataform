@@ -1,0 +1,1694 @@
+Casos: CT-009,CT-011,CT-012,CT-030
+InÃ­cio: 2026-11-15T21:27:58.9848037-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: frontend
+Comando: npm.cmd test -- --reporter=default --reporter=json --outputFile=../docs/sprint-6/evidencias/frontend-final.json
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+
+> mission-control-frontend@2.2.1 test
+> vitest run --browser.headless --reporter=default --reporter=json --outputFile=../docs/sprint-6/evidencias/frontend-final.json
+
+
+ RUN  v4.1.11 F:/faculdade/TrabalhoLucas/Testes/mission-control-plataform/frontend
+
+ ✓ |chromium| src/components/confirm-dialog.test.tsx (9 tests) 1888ms
+     ✓ calls handleConfirm when the confirm button is clicked  1360ms
+ ✓ |chromium| src/features/userscopy/components/users-delete-dialog.test.tsx (6 tests) 578ms
+ ✓ |chromium| src/features/users/components/users-delete-dialog.test.tsx (6 tests) 643ms
+ ✓ |chromium| src/components/config-drawer.test.tsx (15 tests) 6445ms
+     ✓ opens the drawer and renders the sections  1575ms
+       ✓ applies light theme to <html> and cookie  393ms
+       ✓ applies dark theme to <html> and cookie  326ms
+       ✓ applies system theme: stores cookie and applies a resolved light or dark class  416ms
+       ✓ selecting inset updates layout_variant cookie after another variant  444ms
+       ✓ resets theme via section control after choosing dark  385ms
+       ✓ resets direction via section control after choosing RTL  347ms
+       ✓ resets sidebar style via section control after choosing floating  658ms
+     ✓ reset restores defaults across sidebar/theme/layout/direction  459ms
+ ✓ |chromium| src/features/tasks/components/tasks-mutate-drawer.test.tsx (6 tests) 2514ms
+     ✓ envia a missão válida e fecha após a confirmação do serviço  708ms
+     ✓ fecha pelo botão Fechar  453ms
+     ✓ limpa o título de rascunho ao fechar e reabrir  737ms
+ ✓ |chromium| src/features/tasks/components/tasks-import-dialog.test.tsx (4 tests) 555ms
+ ✓ |chromium| src/components/password-input.test.tsx (4 tests) 287ms
+ ✓ |chromium| src/features/auth/sign-in/components/user-auth-form.test.tsx (2 tests) 407ms
+ ✓ |chromium| src/features/auth/forgot-password/components/forgot-password-form.test.tsx (2 tests) 305ms
+ ✓ |chromium| src/hooks/use-table-url-state.test.ts (17 tests) 43ms
+ ✓ |chromium| src/stores/auth-store.test.ts (5 tests) 19ms
+ ✓ |chromium| src/components/sign-out-dialog.test.tsx (2 tests) 332ms
+ ✓ |chromium| src/lib/api.test.ts (9 tests) 23ms
+ ✓ |chromium| src/lib/cookies.test.ts (2 tests) 11ms
+ ✓ |chromium| src/lib/handle-server-error.test.ts (7 tests) 41ms
+ ✓ |chromium| src/lib/utils.test.ts (5 tests) 1ms
+ ✓ |chromium| src/lib/meter-color.test.ts (6 tests) 1ms
+ ❯ |chromium| src/features/tasks/components/tasks-multi-delete-dialog.test.tsx (6 tests | 1 failed) 15745ms
+     × renders the dialog with the correct title, description, input and buttons 15235ms
+     ✓ keeps the delete button disabled until the confirm delete input is filled correctly 68ms
+     ✓ closes the dialog when the cancel button is clicked 160ms
+     ✓ resets the confirm delete input when the dialog is closed and reopened 135ms
+     ✓ shows the submitted data when deleted successfully 99ms
+     ✓ deletes successfully when press Enter key on the confirm delete input 47ms
+ ❯ |chromium| src/context/search-provider.test.tsx (8 tests | 7 failed) 36384ms
+     × renders the command palette when the palette is open 5624ms
+     ✓ does not show the dialog content when search is closed 29ms
+     × opens the command menu when Ctrl + K is pressed 5105ms
+     × opens the command menu when Cmd + K is pressed 5141ms
+     × navigates to a top-level route and closes the palette when a nav item is selected 5168ms
+     × navigates for nested sidebar items (group with sub-items) 5115ms
+     × applies theme and closes the palette when a theme command is chosen 5098ms
+     × shows empty state when the filter matches nothing 5101ms
+ ❯ |chromium| src/features/userscopy/components/users-invite-dialog.test.tsx (6 tests | 3 failed) 45906ms
+     ✓ renders the dialog title and description 250ms
+     ✓ closes when the dialog close button is clicked  335ms
+     ✓ closes when Cancel is clicked 242ms
+     × shows error messages when submitting empty form, and clears them as fields are filled 15046ms
+     × resets entered values when the dialog is closed and reopened 15007ms
+     × shows submitted data when the form is submitted successfully 15024ms
+ ❯ |chromium| src/features/users/components/users-invite-dialog.test.tsx (6 tests | 3 failed) 45904ms
+     ✓ renders the dialog title and description 249ms
+     ✓ closes when the dialog close button is clicked  327ms
+     ✓ closes when Cancel is clicked 243ms
+     × shows error messages when submitting empty form, and clears them as fields are filled 15043ms
+     × resets entered values when the dialog is closed and reopened 15009ms
+     × shows submitted data when the form is submitted successfully 15029ms
+ ❯ |chromium| src/features/users/components/users-action-dialog.test.tsx (9 tests | 3 failed) 46309ms
+       × renders title and description 15251ms
+       ✓ shows validation messages when the form is submitted with empty fields 175ms
+       ✓ keeps confirm password disabled until password field is touched 84ms
+       ✓ shows password validation messages when password is invalid 290ms
+       × shows the submitted data when the form is submitted successfully 15006ms
+       × renders title and description 15091ms
+       ✓ submits without password changes 114ms
+       ✓ requires confirm password when password is changed 115ms
+       ✓ shows the submitted data when the form is submitted successfully 178ms
+ ❯ |chromium| src/features/auth/sign-up/components/sign-up-form.test.tsx (4 tests | 4 failed) 60335ms
+     × renders fields and submit button 15283ms
+     × shows validation messages when submitting empty form 15011ms
+     × shows a mismatch error when passwords do not match 15013ms
+     × disables submit while submitting and re-enables after timeout 15026ms
+ ❯ |chromium| src/features/users/components/users-multi-delete-dialog.test.tsx (6 tests | 5 failed) 75819ms
+     × renders the dialog with the correct title, description, input and buttons 15326ms
+     × keeps the delete button disabled until the confirm delete input is filled correctly 15009ms
+     ✓ closes the dialog when the cancel button is clicked 106ms
+     × resets the confirm delete input when the dialog is closed and reopened 15017ms
+     × shows the submitted data when deleted successfully 15015ms
+     × deletes successfully when press Enter key on the confirm delete input 15345ms
+ ❯ |chromium| src/features/userscopy/components/users-multi-delete-dialog.test.tsx (6 tests | 5 failed) 75866ms
+     × renders the dialog with the correct title, description, input and buttons 15278ms
+     × keeps the delete button disabled until the confirm delete input is filled correctly 15108ms
+     ✓ closes the dialog when the cancel button is clicked 88ms
+     × resets the confirm delete input when the dialog is closed and reopened 14991ms
+     × shows the submitted data when deleted successfully 15122ms
+     × deletes successfully when press Enter key on the confirm delete input 15274ms
+ ❯ |chromium| src/features/userscopy/components/users-action-dialog.test.tsx (9 tests | 9 failed) 135998ms
+       × renders title and description 15292ms
+       × shows validation messages when the form is submitted with empty fields 15011ms
+       × keeps confirm password disabled until password field is touched 15050ms
+       × shows password validation messages when password is invalid 15158ms
+       × shows the submitted data when the form is submitted successfully 15364ms
+       × renders title and description 15097ms
+       × submits without password changes 15011ms
+       × requires confirm password when password is changed 15011ms
+       × shows the submitted data when the form is submitted successfully 15001ms
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯ Failed Tests 40 ⎯⎯⎯⎯⎯⎯⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/context/search-provider.test.tsx > SearchProvider and CommandMenu > renders the command palette when the palette is open
+Error: Timed out in waitFor!
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/context/__screenshots__/search-provider.test.tsx/SearchProvider-and-CommandMenu-renders-the-command-palette-when-the-palette-is-open-1.png
+System.Management.Automation.RemoteException
+ ❯ openCommandPalette src/context/search-provider.test.tsx:39:11
+     37|   modifier: ShortcutModifier = 'Control'
+     38| ) {
+     39|   await vi.waitFor(
+       |           ^
+     40|     async () => {
+     41|       const isCommandPaletteOpen =
+ ❯ src/context/search-provider.test.tsx:67:10
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/context/search-provider.test.tsx > SearchProvider and CommandMenu > opens the command menu when Ctrl + K is pressed
+ FAIL  |chromium| src/context/search-provider.test.tsx > SearchProvider and CommandMenu > opens the command menu when Cmd + K is pressed
+Error: Timed out in waitFor!
+System.Management.Automation.RemoteException
+Failure screenshots:
+  - src/context/__screenshots__/search-provider.test.tsx/SearchProvider-and-CommandMenu-opens-the-command-menu-when-Ctrl---K-is-pressed-1.png
+  - src/context/__screenshots__/search-provider.test.tsx/SearchProvider-and-CommandMenu-opens-the-command-menu-when-Cmd---K-is-pressed-1.png
+System.Management.Automation.RemoteException
+ ❯ openCommandPalette src/context/search-provider.test.tsx:39:11
+     37|   modifier: ShortcutModifier = 'Control'
+     38| ) {
+     39|   await vi.waitFor(
+       |           ^
+     40|     async () => {
+     41|       const isCommandPaletteOpen =
+ ❯ src/context/search-provider.test.tsx:99:12
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/context/search-provider.test.tsx > SearchProvider and CommandMenu > navigates to a top-level route and closes the palette when a nav item is selected
+Error: Timed out in waitFor!
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/context/__screenshots__/search-provider.test.tsx/SearchProvider-and-CommandMenu-navigates-to-a-top-level-route-and-closes-the-palette-when-a-nav-item-is-selected-1.png
+System.Management.Automation.RemoteException
+ ❯ openCommandPalette src/context/search-provider.test.tsx:39:11
+     37|   modifier: ShortcutModifier = 'Control'
+     38| ) {
+     39|   await vi.waitFor(
+       |           ^
+     40|     async () => {
+     41|       const isCommandPaletteOpen =
+ ❯ src/context/search-provider.test.tsx:110:10
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/context/search-provider.test.tsx > SearchProvider and CommandMenu > navigates for nested sidebar items (group with sub-items)
+Error: Timed out in waitFor!
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/context/__screenshots__/search-provider.test.tsx/SearchProvider-and-CommandMenu-navigates-for-nested-sidebar-items--group-with-sub-items--1.png
+System.Management.Automation.RemoteException
+ ❯ openCommandPalette src/context/search-provider.test.tsx:39:11
+     37|   modifier: ShortcutModifier = 'Control'
+     38| ) {
+     39|   await vi.waitFor(
+       |           ^
+     40|     async () => {
+     41|       const isCommandPaletteOpen =
+ ❯ src/context/search-provider.test.tsx:124:10
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/context/search-provider.test.tsx > SearchProvider and CommandMenu > applies theme and closes the palette when a theme command is chosen
+Error: Timed out in waitFor!
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/context/__screenshots__/search-provider.test.tsx/SearchProvider-and-CommandMenu-applies-theme-and-closes-the-palette-when-a-theme-command-is-chosen-1.png
+System.Management.Automation.RemoteException
+ ❯ openCommandPalette src/context/search-provider.test.tsx:39:11
+     37|   modifier: ShortcutModifier = 'Control'
+     38| ) {
+     39|   await vi.waitFor(
+       |           ^
+     40|     async () => {
+     41|       const isCommandPaletteOpen =
+ ❯ src/context/search-provider.test.tsx:137:10
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/context/search-provider.test.tsx > SearchProvider and CommandMenu > shows empty state when the filter matches nothing
+Error: Timed out in waitFor!
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/context/__screenshots__/search-provider.test.tsx/SearchProvider-and-CommandMenu-shows-empty-state-when-the-filter-matches-nothing-1.png
+System.Management.Automation.RemoteException
+ ❯ openCommandPalette src/context/search-provider.test.tsx:39:11
+     37|   modifier: ShortcutModifier = 'Control'
+     38| ) {
+     39|   await vi.waitFor(
+       |           ^
+     40|     async () => {
+     41|       const isCommandPaletteOpen =
+ ❯ src/context/search-provider.test.tsx:150:10
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/tasks/components/tasks-multi-delete-dialog.test.tsx > TasksMultiDeleteDialog > renders the dialog with the correct title, description, input and buttons
+VitestBrowserElementError: Cannot find element with locator: page.getByText('Are you sure you want to delete the selected tasks?')
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_2_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_1_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_0_"[39m
+    [33mrole[39m=[32m"alertdialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<div[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/tasks/components/__screenshots__/tasks-multi-delete-dialog.test.tsx/TasksMultiDeleteDialog-renders-the-dialog-with-the-correct-title--description--input-and-buttons-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/tasks/components/tasks-multi-delete-dialog.test.tsx:37:31
+     35|
+     36|     await expect.element(title).toBeInTheDocument()
+     37|     await expect.element(desc).toBeInTheDocument()
+       |                               ^
+     38|     await expect.element(confirmDeleteInput).toBeInTheDocument()
+     39|     await expect.element(cancelButton).toBeInTheDocument()
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/tasks/components/tasks-multi-delete-dialog.test.tsx:37:4
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-action-dialog.test.tsx > UsersActionDialog > add user > renders title and description
+VitestBrowserElementError: Cannot find element with locator: page.getByText(/Create new user here. Click save when you're ConcluÃ­da./i)
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_2_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_1_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_0_"[39m
+    [33mrole[39m=[32m"dialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<p[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"h-105 w-[calc(100%+0.75rem)] overflow-y-auto py-1 pe-3"[39m
+    [36m>[39m
+      [36m<form[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"absolute inset-e-4 top-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"[39m
+      [33mdata-slot[39m=[32m"dialog-close"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<svg[39m …[36m />[39m
+      [36m<span[39m …[36m />[39m
+    [36m</button>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m...
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-add-user-renders-title-and-description-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:55:40
+     53|
+     54|       await expect.element(title).toBeInTheDocument()
+     55|       await expect.element(description).toBeInTheDocument()
+       |                                        ^
+     56|     })
+     57|
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:55:6
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-action-dialog.test.tsx > UsersActionDialog > add user > shows validation messages when the form is submitted with empty fields
+TimeoutError: locator.click: Timeout 14849ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('button', { name: /Save Changes/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-add-user-shows-validation-messages-when-the-form-is-submitted-with-empty-fields-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:64:22
+     62|
+     63|       const submitButton = getByRole('button', { name: /Save Changes/i…
+     64|       await userEvent.click(submitButton)
+       |                      ^
+     65|
+     66|       await expect
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-action-dialog.test.tsx > UsersActionDialog > add user > keeps confirm password disabled until password field is touched
+VitestBrowserElementError: Cannot find element with locator: page.getByRole('textbox', { name: /Confirm Password/i })
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_10_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_v_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_u_"[39m
+    [33mrole[39m=[32m"dialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<p[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"h-105 w-[calc(100%+0.75rem)] overflow-y-auto py-1 pe-3"[39m
+    [36m>[39m
+      [36m<form[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"absolute inset-e-4 top-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"[39m
+      [33mdata-slot[39m=[32m"dialog-close"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<svg[39m …[36m />[39m
+      [36m<span[39m …[36m />[39m
+    [36m</button>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m...
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-add-user-keeps-confirm-password-disabled-until-password-field-is-touched-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:98:44
+     96|         name: /Confirm Password/i,
+     97|       })
+     98|       await expect.element(confirmPassword).toBeDisabled()
+       |                                            ^
+     99|
+    100|       await userEvent.type(password, 'a')
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:98:6
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-action-dialog.test.tsx > UsersActionDialog > add user > shows password validation messages when password is invalid
+Error: Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-add-user-shows-password-validation-messages-when-password-is-invalid-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:104:4
+    102|     })
+    103|
+    104|     it('shows password validation messages when password is invalid', …
+       |    ^
+    105|       const { getByRole, getByText } = await render(
+    106|         <UsersActionDialog open onOpenChange={vi.fn()} />
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-action-dialog.test.tsx > UsersActionDialog > add user > shows the submitted data when the form is submitted successfully
+VitestBrowserElementError: Cannot find element with locator: page.getByLabel(/first name/i)
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_1u_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_1t_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_1s_"[39m
+    [33mrole[39m=[32m"dialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<p[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"h-105 w-[calc(100%+0.75rem)] overflow-y-auto py-1 pe-3"[39m
+    [36m>[39m
+      [36m<form[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"absolute inset-e-4 top-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"[39m
+      [33mdata-slot[39m=[32m"dialog-close"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<svg[39m …[36m />[39m
+      [36m<span[39m …[36m />[39m
+    [36m</button>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m...
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-add-user-shows-the-submitted-data-when-the-form-is-submitted-successfully-1.png
+System.Management.Automation.RemoteException
+ ❯ fillRequiredProfileFields src/features/userscopy/components/users-action-dialog.test.tsx:324:29
+    322|   for (const [label, value] of entries) {
+    323|     const el = screen.getByLabelText(label)
+    324|     await expect.element(el).toBeInTheDocument()
+       |                             ^
+    325|     await user.fill(el, value)
+    326|   }
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:162:12
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ fillRequiredProfileFields src/features/userscopy/components/users-action-dialog.test.tsx:324:4
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:162:6
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-action-dialog.test.tsx > UsersActionDialog > edit user > renders title and description
+VitestBrowserElementError: Cannot find element with locator: page.getByText(/Update the user here\. Click save when you're ConcluÃ­da\./i)
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_2d_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_2c_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_2b_"[39m
+    [33mrole[39m=[32m"dialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<p[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"h-105 w-[calc(100%+0.75rem)] overflow-y-auto py-1 pe-3"[39m
+    [36m>[39m
+      [36m<form[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"absolute inset-e-4 top-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"[39m
+      [33mdata-slot[39m=[32m"dialog-close"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<svg[39m …[36m />[39m
+      [36m<span[39m …[36m />[39m
+    [36m</button>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m...
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-edit-user-renders-title-and-description-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:202:40
+    200|
+    201|       await expect.element(title).toBeInTheDocument()
+    202|       await expect.element(description).toBeInTheDocument()
+       |                                        ^
+    203|     })
+    204|
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:202:6
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-action-dialog.test.tsx > UsersActionDialog > edit user > submits without password changes
+TimeoutError: locator.click: Timeout 14847ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('button', { name: /Save Changes/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-edit-user-submits-without-password-changes-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:216:22
+    214|
+    215|       const submitButton = screen.getByRole('button', { name: /Save Ch…
+    216|       await userEvent.click(submitButton)
+       |                      ^
+    217|
+    218|       expect(onOpenChange).toHaveBeenCalledOnce()
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-action-dialog.test.tsx > UsersActionDialog > edit user > requires confirm password when password is changed
+TimeoutError: locator.fill: Timeout 14861ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('textbox', { name: /^Password$/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-edit-user-requires-confirm-password-when-password-is-changed-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:245:22
+    243|       })
+    244|
+    245|       await userEvent.fill(password, 'S3cur3P@ssw0rd')
+       |                      ^
+    246|       await expect.element(confirmPassword).toBeEnabled()
+    247|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-action-dialog.test.tsx > UsersActionDialog > edit user > shows the submitted data when the form is submitted successfully
+TimeoutError: locator.fill: Timeout 14861ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByLabel(/first name/i)[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-edit-user-shows-the-submitted-data-when-the-form-is-submitted-successfully-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-action-dialog.test.tsx:269:22
+    267|       const EDIT_SUCCESS_PASSWORD = 'S3cur3P@ssw0rd'
+    268|
+    269|       await userEvent.fill(
+       |                      ^
+    270|         screen.getByLabelText(/first name/i),
+    271|         EDIT_SUCCESS_FIRST_NAME
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-invite-dialog.test.tsx > UsersInviteDialog > shows error messages when submitting empty form, and clears them as fields are filled
+TimeoutError: locator.click: Timeout 14440ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('option', { name: /Superadmin/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-invite-dialog.test.tsx/UsersInviteDialog-shows-error-messages-when-submitting-empty-form--and-clears-them-as-fields-are-filled-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-invite-dialog.test.tsx:74:20
+     72|     const roleSelect = getByRole('combobox', { name: /Role/i })
+     73|     await userEvent.click(roleSelect)
+     74|     await userEvent.click(getByRole('option', { name: /Superadmin/i }))
+       |                    ^
+     75|
+     76|     await expect.element(emailErrorMessage).not.toBeInTheDocument()
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-invite-dialog.test.tsx > UsersInviteDialog > resets entered values when the dialog is closed and reopened
+TimeoutError: locator.click: Timeout 14743ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('option', { name: 'Superadmin' })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-invite-dialog.test.tsx/UsersInviteDialog-resets-entered-values-when-the-dialog-is-closed-and-reopened-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-invite-dialog.test.tsx:104:20
+    102|     const roleSelect = getByRole('combobox', { name: /Role/i })
+    103|     await userEvent.click(roleSelect)
+    104|     await userEvent.click(getByRole('option', { name: ROLE_VALUE }))
+       |                    ^
+    105|
+    106|     const descInput = getByRole('textbox', { name: /Description/i })
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-invite-dialog.test.tsx > UsersInviteDialog > shows submitted data when the form is submitted successfully
+TimeoutError: locator.click: Timeout 14778ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('option', { name: 'superadmin' })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-invite-dialog.test.tsx/UsersInviteDialog-shows-submitted-data-when-the-form-is-submitted-successfully-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-invite-dialog.test.tsx:139:20
+    137|     const roleSelect = getByRole('combobox', { name: /Role/i })
+    138|     await userEvent.click(roleSelect)
+    139|     await userEvent.click(getByRole('option', { name: ROLE_VALUE }))
+       |                    ^
+    140|
+    141|     const descInput = getByRole('textbox', { name: /Description/i })
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > renders the dialog with the correct title, description, input and buttons
+VitestBrowserElementError: Cannot find element with locator: page.getByRole('heading', { name: /Delete 2 users/i, level: 2 })
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_2_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_1_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_0_"[39m
+    [33mrole[39m=[32m"alertdialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<div[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-renders-the-dialog-with-the-correct-title--description--input-and-buttons-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-multi-delete-dialog.test.tsx:35:32
+     33|     const deleteButton = getByRole('button', { name: /Delete/i })
+     34|
+     35|     await expect.element(title).toBeInTheDocument()
+       |                                ^
+     36|     await expect.element(desc).toBeInTheDocument()
+     37|     await expect.element(confirmDeleteInput).toBeInTheDocument()
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/userscopy/components/users-multi-delete-dialog.test.tsx:35:4
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > keeps the delete button disabled until the confirm delete input is filled correctly
+VitestBrowserElementError: Cannot find element with locator: page.getByRole('button', { name: /Delete/i })
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_5_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_4_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_3_"[39m
+    [33mrole[39m=[32m"alertdialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<div[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-keeps-the-delete-button-disabled-until-the-confirm-delete-input-is-filled-correctly-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-multi-delete-dialog.test.tsx:53:39
+     51|     const deleteButton = getByRole('button', { name: /Delete/i })
+     52|
+     53|     await expect.element(deleteButton).toBeDisabled()
+       |                                       ^
+     54|
+     55|     await userEvent.fill(confirmDeleteInput, 'wrong-input')
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/userscopy/components/users-multi-delete-dialog.test.tsx:53:4
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > resets the confirm delete input when the dialog is closed and reopened
+TimeoutError: locator.fill: Timeout 14883ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('textbox', { name: /Confirm by typing "DELETE"/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-resets-the-confirm-delete-input-when-the-dialog-is-closed-and-reopened-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-multi-delete-dialog.test.tsx:102:20
+    100|       name: /Confirm by typing "DELETE"/i,
+    101|     })
+    102|     await userEvent.fill(confirmDeleteInput, 'DELETE')
+       |                    ^
+    103|     await expect.element(confirmDeleteInput).toHaveValue('DELETE')
+    104|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > shows the submitted data when deleted successfully
+VitestBrowserElementError: Cannot find element with locator: page.getByRole('button', { name: /Delete/i })
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_e_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_d_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_c_"[39m
+    [33mrole[39m=[32m"alertdialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<div[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-shows-the-submitted-data-when-deleted-successfully-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-multi-delete-dialog.test.tsx:125:39
+    123|     const deleteButton = getByRole('button', { name: /Delete/i })
+    124|
+    125|     await expect.element(deleteButton).toBeDisabled()
+       |                                       ^
+    126|
+    127|     await userEvent.fill(confirmDeleteInput, 'DELETE')
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/userscopy/components/users-multi-delete-dialog.test.tsx:125:4
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/userscopy/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > deletes successfully when press Enter key on the confirm delete input
+VitestBrowserElementError: Cannot find element with locator: page.getByRole('button', { name: /Delete/i })
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_h_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_g_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_f_"[39m
+    [33mrole[39m=[32m"alertdialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<div[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/userscopy/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-deletes-successfully-when-press-Enter-key-on-the-confirm-delete-input-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/userscopy/components/users-multi-delete-dialog.test.tsx:150:39
+    148|     const deleteButton = getByRole('button', { name: /Delete/i })
+    149|
+    150|     await expect.element(deleteButton).toBeDisabled()
+       |                                       ^
+    151|
+    152|     await userEvent.fill(confirmDeleteInput, 'DELETE')
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/userscopy/components/users-multi-delete-dialog.test.tsx:150:4
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-action-dialog.test.tsx > UsersActionDialog > add user > renders title and description
+VitestBrowserElementError: Cannot find element with locator: page.getByText(/Create new user here. Click save when you're ConcluÃ­da./i)
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_2_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_1_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_0_"[39m
+    [33mrole[39m=[32m"dialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<p[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"h-105 w-[calc(100%+0.75rem)] overflow-y-auto py-1 pe-3"[39m
+    [36m>[39m
+      [36m<form[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"absolute inset-e-4 top-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"[39m
+      [33mdata-slot[39m=[32m"dialog-close"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<svg[39m …[36m />[39m
+      [36m<span[39m …[36m />[39m
+    [36m</button>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m...
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-add-user-renders-title-and-description-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/users/components/users-action-dialog.test.tsx:56:40
+     54|
+     55|       await expect.element(title).toBeInTheDocument()
+     56|       await expect.element(description).toBeInTheDocument()
+       |                                        ^
+     57|     })
+     58|
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/users/components/users-action-dialog.test.tsx:56:6
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-action-dialog.test.tsx > UsersActionDialog > add user > shows the submitted data when the form is submitted successfully
+TimeoutError: locator.click: Timeout 14531ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('option', { name: 'Superadmin' })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-add-user-shows-the-submitted-data-when-the-form-is-submitted-successfully-1.png
+System.Management.Automation.RemoteException
+ ❯ fillRequiredProfileFields src/features/users/components/users-action-dialog.test.tsx:331:13
+    329|   const roleSelect = screen.getByRole('combobox', { name: /Role/i })
+    330|   await user.click(roleSelect)
+    331|   await user.click(
+       |             ^
+    332|     screen.getByRole('option', { name: overrides?.roleOption ?? 'Super…
+    333|   )
+ ❯ src/features/users/components/users-action-dialog.test.tsx:163:6
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-action-dialog.test.tsx > UsersActionDialog > edit user > renders title and description
+VitestBrowserElementError: Cannot find element with locator: page.getByText(/Update the user here\. Click save when you're ConcluÃ­da\./i)
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_2m_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_2l_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_2k_"[39m
+    [33mrole[39m=[32m"dialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<p[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"h-105 w-[calc(100%+0.75rem)] overflow-y-auto py-1 pe-3"[39m
+    [36m>[39m
+      [36m<form[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"absolute inset-e-4 top-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"[39m
+      [33mdata-slot[39m=[32m"dialog-close"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [36m<svg[39m …[36m />[39m
+      [36m<span[39m …[36m />[39m
+    [36m</button>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m...
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-action-dialog.test.tsx/UsersActionDialog-edit-user-renders-title-and-description-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/users/components/users-action-dialog.test.tsx:203:40
+    201|
+    202|       await expect.element(title).toBeInTheDocument()
+    203|       await expect.element(description).toBeInTheDocument()
+       |                                        ^
+    204|     })
+    205|
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/users/components/users-action-dialog.test.tsx:203:6
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-invite-dialog.test.tsx > UsersInviteDialog > shows error messages when submitting empty form, and clears them as fields are filled
+TimeoutError: locator.click: Timeout 14451ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('option', { name: /Superadmin/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-invite-dialog.test.tsx/UsersInviteDialog-shows-error-messages-when-submitting-empty-form--and-clears-them-as-fields-are-filled-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/users/components/users-invite-dialog.test.tsx:74:20
+     72|     const roleSelect = getByRole('combobox', { name: /Role/i })
+     73|     await userEvent.click(roleSelect)
+     74|     await userEvent.click(getByRole('option', { name: /Superadmin/i }))
+       |                    ^
+     75|
+     76|     await expect.element(emailErrorMessage).not.toBeInTheDocument()
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-invite-dialog.test.tsx > UsersInviteDialog > resets entered values when the dialog is closed and reopened
+TimeoutError: locator.click: Timeout 14743ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('option', { name: 'Superadmin' })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-invite-dialog.test.tsx/UsersInviteDialog-resets-entered-values-when-the-dialog-is-closed-and-reopened-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/users/components/users-invite-dialog.test.tsx:104:20
+    102|     const roleSelect = getByRole('combobox', { name: /Role/i })
+    103|     await userEvent.click(roleSelect)
+    104|     await userEvent.click(getByRole('option', { name: ROLE_VALUE }))
+       |                    ^
+    105|
+    106|     const descInput = getByRole('textbox', { name: /Description/i })
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-invite-dialog.test.tsx > UsersInviteDialog > shows submitted data when the form is submitted successfully
+TimeoutError: locator.click: Timeout 14758ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('option', { name: 'superadmin' })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-invite-dialog.test.tsx/UsersInviteDialog-shows-submitted-data-when-the-form-is-submitted-successfully-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/users/components/users-invite-dialog.test.tsx:139:20
+    137|     const roleSelect = getByRole('combobox', { name: /Role/i })
+    138|     await userEvent.click(roleSelect)
+    139|     await userEvent.click(getByRole('option', { name: ROLE_VALUE }))
+       |                    ^
+    140|
+    141|     const descInput = getByRole('textbox', { name: /Description/i })
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > renders the dialog with the correct title, description, input and buttons
+VitestBrowserElementError: Cannot find element with locator: page.getByText(/Are you sure you want to delete the selected users?/i)
+System.Management.Automation.RemoteException
+[36m<body[39m
+  [33mdata-scroll-locked[39m=[32m"1"[39m
+  [33mstyle[39m=[32m"pointer-events: none;"[39m
+[36m>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mclass[39m=[32m"fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-overlay"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+  [36m/>[39m
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"radix-_r_2_"[39m
+    [33maria-labelledby[39m=[32m"radix-_r_1_"[39m
+    [33mclass[39m=[32m"fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg"[39m
+    [33mdata-slot[39m=[32m"alert-dialog-content"[39m
+    [33mdata-state[39m=[32m"open"[39m
+    [33mid[39m=[32m"radix-_r_0_"[39m
+    [33mrole[39m=[32m"alertdialog"[39m
+    [33mstyle[39m=[32m"pointer-events: auto;"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-2 sm:text-start text-start"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-header"[39m
+    [36m>[39m
+      [36m<h2[39m …[36m />[39m
+      [36m<div[39m …[36m />[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"[39m
+      [33mdata-slot[39m=[32m"alert-dialog-footer"[39m
+    [36m>[39m
+      [36m<button[39m …[36m />[39m
+      [36m<button[39m …[36m />[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<span[39m
+    [33maria-hidden[39m=[32m"true"[39m
+    [33mdata-aria-hidden[39m=[32m"true"[39m
+    [33mdata-radix-focus-guard[39m=[32m""[39m
+    [33mstyle[39m=[32m"outline: none; opacity: 0; position: fixed; pointer-events: none;"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+[36m</body>[39m
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-renders-the-dialog-with-the-correct-title--description--input-and-buttons-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/users/components/users-multi-delete-dialog.test.tsx:36:31
+     34|
+     35|     await expect.element(title).toBeInTheDocument()
+     36|     await expect.element(desc).toBeInTheDocument()
+       |                               ^
+     37|     await expect.element(confirmDeleteInput).toBeInTheDocument()
+     38|     await expect.element(deleteButton).toBeInTheDocument()
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/users/components/users-multi-delete-dialog.test.tsx:36:4
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > keeps the delete button disabled until the confirm delete input is filled correctly
+TimeoutError: locator.fill: Timeout 14878ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('textbox', { name: /Confirm by typing "DELETE"/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-keeps-the-delete-button-disabled-until-the-confirm-delete-input-is-filled-correctly-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/users/components/users-multi-delete-dialog.test.tsx:55:20
+     53|     await expect.element(deleteButton).toBeDisabled()
+     54|
+     55|     await userEvent.fill(confirmDeleteInput, 'wrong-input')
+       |                    ^
+     56|     await expect.element(deleteButton).toBeDisabled()
+     57|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[32/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > resets the confirm delete input when the dialog is closed and reopened
+TimeoutError: locator.fill: Timeout 14882ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('textbox', { name: /Confirm by typing "DELETE"/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-resets-the-confirm-delete-input-when-the-dialog-is-closed-and-reopened-1.png
+System.Management.Automation.RemoteException
+
+ Test Files  9 failed | 17 passed (26)
+      Tests  40 failed | 127 passed (167)
+   Start at  21:28:01
+   Duration  143.34s (transform 0ms, setup 0ms, import 33.00s, tests 552.36s, environment 0ms)
+
+ ❯ src/features/users/components/users-multi-delete-dialog.test.tsx:102:20
+    100|       name: /Confirm by typing "DELETE"/i,
+    101|     })
+    102|     await userEvent.fill(confirmDeleteInput, 'DELETE')
+       |                    ^
+    103|     await expect.element(confirmDeleteInput).toHaveValue('DELETE')
+    104|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[33/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > shows the submitted data when deleted successfully
+TimeoutError: locator.fill: Timeout 14885ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('textbox', { name: /Confirm by typing "DELETE"/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-shows-the-submitted-data-when-deleted-successfully-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/users/components/users-multi-delete-dialog.test.tsx:127:20
+    125|     await expect.element(deleteButton).toBeDisabled()
+    126|
+    127|     await userEvent.fill(confirmDeleteInput, 'DELETE')
+       |                    ^
+    128|     await expect.element(deleteButton).toBeEnabled()
+JSON report written to F:/faculdade/TrabalhoLucas/Testes/mission-control-plataform/docs/sprint-6/evidencias/frontend-final.json
+    129|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[34/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/users/components/users-multi-delete-dialog.test.tsx > UsersMultiDeleteDialog > deletes successfully when press Enter key on the confirm delete input
+TimeoutError: locator.fill: Timeout 14875ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('textbox', { name: /Confirm by typing "DELETE"/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/users/components/__screenshots__/users-multi-delete-dialog.test.tsx/UsersMultiDeleteDialog-deletes-successfully-when-press-Enter-key-on-the-confirm-delete-input-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/users/components/users-multi-delete-dialog.test.tsx:152:20
+    150|     await expect.element(deleteButton).toBeDisabled()
+    151|
+    152|     await userEvent.fill(confirmDeleteInput, 'DELETE')
+       |                    ^
+    153|     await expect.element(deleteButton).toBeEnabled()
+    154|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[35/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/auth/sign-up/components/sign-up-form.test.tsx > SignUpForm > renders fields and submit button
+VitestBrowserElementError: Cannot find element with locator: page.getByLabel(/^Password$/i)
+System.Management.Automation.RemoteException
+[36m<body>[39m
+  [0m
+  
+System.Management.Automation.RemoteException
+[0m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"grid gap-3"[39m
+    [36m>[39m
+      [36m<div[39m …[36m />[39m
+      [36m<div[39m …[36m />[39m
+      [36m<div[39m …[36m />[39m
+      [36m<button[39m …[36m />[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/auth/sign-up/components/__screenshots__/sign-up-form.test.tsx/SignUpForm-renders-fields-and-submit-button-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/auth/sign-up/components/sign-up-form.test.tsx:44:40
+     42|   it('renders fields and submit button', async () => {
+     43|     await expect.element(emailInput).toBeInTheDocument()
+     44|     await expect.element(passwordInput).toBeInTheDocument()
+       |                                        ^
+     45|     await expect.element(confirmPasswordInput).toBeInTheDocument()
+     46|     await expect.element(submitButton).toBeInTheDocument()
+System.Management.Automation.RemoteException
+Caused by: Error: Matcher did not succeed in time.
+ ❯ src/features/auth/sign-up/components/sign-up-form.test.tsx:44:4
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[36/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/auth/sign-up/components/sign-up-form.test.tsx > SignUpForm > shows validation messages when submitting empty form
+TimeoutError: locator.click: Timeout 14899ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByRole('button', { name: /^Create Account$/i })[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/auth/sign-up/components/__screenshots__/sign-up-form.test.tsx/SignUpForm-shows-validation-messages-when-submitting-empty-form-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/auth/sign-up/components/sign-up-form.test.tsx:50:20
+     48|
+     49|   it('shows validation messages when submitting empty form', async () …
+     50|     await userEvent.click(submitButton)
+       |                    ^
+     51|
+     52|     await expect
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[37/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/auth/sign-up/components/sign-up-form.test.tsx > SignUpForm > shows a mismatch error when passwords do not match
+TimeoutError: locator.fill: Timeout 14884ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByLabel(/^Password$/i)[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/auth/sign-up/components/__screenshots__/sign-up-form.test.tsx/SignUpForm-shows-a-mismatch-error-when-passwords-do-not-match-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/auth/sign-up/components/sign-up-form.test.tsx:65:20
+     63|   it('shows a mismatch error when passwords do not match', async () =>…
+     64|     await userEvent.fill(emailInput, 'a@b.com')
+     65|     await userEvent.fill(passwordInput, '1234567')
+       |                    ^
+     66|     await userEvent.fill(confirmPasswordInput, '7654321')
+     67|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[38/40]⎯
+System.Management.Automation.RemoteException
+ FAIL  |chromium| src/features/auth/sign-up/components/sign-up-form.test.tsx > SignUpForm > disables submit while submitting and re-enables after timeout
+TimeoutError: locator.fill: Timeout 14889ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-vitest="true"]').contentFrame().getByTestId('__vitest_0__').getByLabel(/^Password$/i)[22m
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+Failure screenshot:
+  - src/features/auth/sign-up/components/__screenshots__/sign-up-form.test.tsx/SignUpForm-disables-submit-while-submitting-and-re-enables-after-timeout-1.png
+System.Management.Automation.RemoteException
+ ❯ src/features/auth/sign-up/components/sign-up-form.test.tsx:78:20
+     76|
+     77|     await userEvent.fill(emailInput, 'a@b.com')
+     78|     await userEvent.fill(passwordInput, '1234567')
+       |                    ^
+     79|     await userEvent.fill(confirmPasswordInput, '1234567')
+     80|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39/40]⎯
+System.Management.Automation.RemoteException
+--- fim ---
+Fim: 2026-11-15T21:30:27.5382600-03:00
+CÃ³digo: 1
+Estado do comando: falhou ou bloqueado; classificar pela causa no relatÃ³rio
+EvidÃªncia: docs/sprint-6/evidencias/frontend-final.log

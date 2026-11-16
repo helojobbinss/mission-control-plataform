@@ -1,0 +1,23 @@
+Casos: CT-014
+InÃ­cio: 2026-11-15T21:21:32.8125939-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: frontend
+Comando: npm.cmd run lint
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+
+> mission-control-frontend@2.2.1 lint
+> eslint .
+
+
+F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\frontend\src\features\tasks\components\tasks-columns.tsx
+  11:10  warning  Fast refresh only works when a file only exports components. Move your component(s) to a separate file. If all exports are HOCs, add them to the `extraHOCs` option  react-refresh/only-export-components
+
+✖ 1 problem (0 errors, 1 warning)
+
+--- fim ---
+Fim: 2026-11-15T21:21:44.8726760-03:00
+CÃ³digo: 0
+Estado do comando: passou (confirmar contagens na saÃ­da)
+EvidÃªncia: docs/sprint-6/evidencias/frontend-lint.log

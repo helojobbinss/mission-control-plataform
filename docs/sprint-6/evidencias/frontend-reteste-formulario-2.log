@@ -1,0 +1,29 @@
+Casos: CT-030
+InÃ­cio: 2026-11-15T21:27:37.6099841-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: frontend
+Comando: npm.cmd test -- src/features/tasks/components/tasks-mutate-drawer.test.tsx --reporter=default --reporter=json --outputFile=../docs/sprint-6/evidencias/frontend-reteste-formulario-2.json
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+
+> mission-control-frontend@2.2.1 test
+> vitest run --browser.headless src/features/tasks/components/tasks-mutate-drawer.test.tsx --reporter=default --reporter=json --outputFile=../docs/sprint-6/evidencias/frontend-reteste-formulario-2.json
+
+
+ RUN  v4.1.11 F:/faculdade/TrabalhoLucas/Testes/mission-control-plataform/frontend
+
+ ✓ |chromium| src/features/tasks/components/tasks-mutate-drawer.test.tsx (6 tests) 1513ms
+     ✓ envia a missão válida e fecha após a confirmação do serviço  564ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  21:27:40
+   Duration  3.93s (transform 0ms, setup 0ms, import 674ms, tests 1.51s, environment 0ms)
+
+JSON report written to F:/faculdade/TrabalhoLucas/Testes/mission-control-plataform/docs/sprint-6/evidencias/frontend-reteste-formulario-2.json
+--- fim ---
+Fim: 2026-11-15T21:27:44.3498505-03:00
+CÃ³digo: 0
+Estado do comando: passou (confirmar contagens na saÃ­da)
+EvidÃªncia: docs/sprint-6/evidencias/frontend-reteste-formulario-2.log

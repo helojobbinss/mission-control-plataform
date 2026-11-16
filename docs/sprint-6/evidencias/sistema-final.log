@@ -1,0 +1,18 @@
+Casos: CT-010
+InÃ­cio: 2026-11-15T21:27:58.9551836-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: frontend
+Comando: npm.cmd run test:integration
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+
+> mission-control-frontend@2.2.1 test:integration
+> node scripts/integration-smoke.mjs
+
+PASS: route guard, login, manual satellite, FastAPI telemetry, mission creation/edit/transition, dashboard, session reload, manager user creation and logout.
+--- fim ---
+Fim: 2026-11-15T21:28:30.9401939-03:00
+CÃ³digo: 0
+Estado do comando: passou (confirmar contagens na saÃ­da)
+EvidÃªncia: docs/sprint-6/evidencias/sistema-final.log

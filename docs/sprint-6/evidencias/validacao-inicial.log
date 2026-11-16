@@ -1,0 +1,18 @@
+Casos: CT-028
+InÃ­cio: 2026-11-15T21:40:53.2508683-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: .
+Comando: python-api/.venv/Scripts/python.exe docs/sprint-6/validar_entregaveis.py
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+Traceback (most recent call last):
+  File "F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\docs\sprint-6\validar_entregaveis.py", line 29, in <module>
+    assert len(report[positions[index] + len(title):end].strip()) > 40, title
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ## 1. PLANO DE TESTE
+--- fim ---
+Fim: 2026-11-15T21:40:53.7419573-03:00
+CÃ³digo: 1
+Estado do comando: falhou ou bloqueado; classificar pela causa no relatÃ³rio
+EvidÃªncia: docs/sprint-6/evidencias/validacao-inicial.log

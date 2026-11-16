@@ -1,0 +1,24 @@
+{
+  "casos_planejados": 35,
+  "casos_executados": 30,
+  "casos_aprovados": 28,
+  "casos_reprovados": 2,
+  "casos_bloqueados": 1,
+  "casos_nao_executados": 4,
+  "instancias_framework": 316,
+  "instancias_aprovadas": 275,
+  "instancias_reprovadas": 41,
+  "cenarios_e2e": 1,
+  "testes_automatizados_distintos_executados": 317,
+  "testes_automatizados_aprovados": 276,
+  "incidentes_total": 14,
+  "incidentes_abertos": 12,
+  "incidentes_por_severidade": {
+    "alta": 1,
+    "média": 8,
+    "baixa": 5
+  },
+  "historias_com_cobertura_tecnica_parcial": 11,
+  "historias_sem_cobertura_executada": 9,
+  "cobertura_codigo": null
+}

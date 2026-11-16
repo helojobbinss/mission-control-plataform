@@ -1,0 +1,41 @@
+Casos: CT-006..CT-008
+InÃ­cio: 2026-11-15T21:20:03.6698678-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: python-api
+Comando: .venv/Scripts/python.exe -m pytest tests/test_sprint6.py -v --junitxml=../docs/sprint-6/evidencias/python-novos.xml
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+============================= test session starts =============================
+platform win32 -- Python 3.13.18, pytest-8.4.2, pluggy-1.6.0 -- F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\python-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\python-api
+plugins: anyio-4.16.0
+collecting ... collected 18 items
+
+tests/test_sprint6.py::test_ct006_alert_boundaries[battery_level-19.99-LOW_BATTERY-True] PASSED [  5%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[battery_level-20-LOW_BATTERY-False] PASSED [ 11%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[battery_level-20.01-LOW_BATTERY-False] PASSED [ 16%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[internal_temperature-39.99-HIGH_INTERNAL_TEMPERATURE-False] PASSED [ 22%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[internal_temperature-40-HIGH_INTERNAL_TEMPERATURE-False] PASSED [ 27%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[internal_temperature-40.01-HIGH_INTERNAL_TEMPERATURE-True] PASSED [ 33%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[voltage-24.99-LOW_VOLTAGE-True] PASSED [ 38%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[voltage-25-LOW_VOLTAGE-False] PASSED [ 44%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[voltage-31-HIGH_VOLTAGE-False] PASSED [ 50%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[voltage-31.01-HIGH_VOLTAGE-True] PASSED [ 55%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[gyroscope_x--4.51-HIGH_ANGULAR_VELOCITY-True] PASSED [ 61%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[gyroscope_x--4.5-HIGH_ANGULAR_VELOCITY-False] PASSED [ 66%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[gyroscope_x-4.5-HIGH_ANGULAR_VELOCITY-False] PASSED [ 72%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[gyroscope_x-4.51-HIGH_ANGULAR_VELOCITY-True] PASSED [ 77%]
+tests/test_sprint6.py::test_ct007_telemetry_alerts_match_returned_sensors PASSED [ 83%]
+tests/test_sprint6.py::test_ct008_communication_decision_table[online-None] PASSED [ 88%]
+tests/test_sprint6.py::test_ct008_communication_decision_table[offline-COMMUNICATION_LOST] PASSED [ 94%]
+tests/test_sprint6.py::test_ct008_communication_decision_table[unknown-SENSOR_FAILURE] PASSED [100%]
+
+- generated xml file: F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\docs\sprint-6\evidencias\python-novos.xml -
+============================= 18 passed in 0.31s ==============================
+--- fim ---
+Fim: 2026-11-15T21:20:05.0815753-03:00
+CÃ³digo: 0
+Estado do comando: passou (confirmar contagens na saÃ­da)
+EvidÃªncia: docs/sprint-6/evidencias/python-novos.log

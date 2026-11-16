@@ -1,0 +1,14 @@
+[
+  {
+    "arquivo": "docs/sprint-6/evidencias/captura-busca.png",
+    "origem": "frontend/src/context/__screenshots__/search-provider.test.tsx/SearchProvider-and-CommandMenu-applies-theme-and-closes-the-palette-when-a-theme-command-is-chosen-1.png",
+    "sha256": "d7df904118335b5333cbae1bbb7e983c7c9d3e941b5dfeaa140d428be5f095c5",
+    "descricao": "Captura real produzida automaticamente pelo Vitest/Chromium em cenário reprovado; cópia sem edição."
+  },
+  {
+    "arquivo": "docs/sprint-6/evidencias/captura-cadastro-legado.png",
+    "origem": "frontend/src/features/auth/sign-up/components/__screenshots__/sign-up-form.test.tsx/SignUpForm-disables-submit-while-submitting-and-re-enables-after-timeout-1.png",
+    "sha256": "000fddee8aced7852f0eb291d0d1d2f05628b9547977535a3d49c8e9db126a2d",
+    "descricao": "Captura real produzida automaticamente pelo Vitest/Chromium em cenário reprovado; cópia sem edição."
+  }
+]

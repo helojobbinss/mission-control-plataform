@@ -1,0 +1,26 @@
+Casos: CT-027
+InÃ­cio: 2026-11-15T21:27:59.0158970-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: backend
+Comando: php vendor/phpunit/phpunit/phpunit --colors=never --filter TelemetryUnitsTest|EnvironmentTest
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.12
+Configuration: F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\backend\phpunit.xml
+
+
+
+DDDDD                                                               5 / 5 (100%)
+
+Time: 00:01.027, Memory: 46.00 MB
+
+OK, but there were issues!
+Tests: 5, Assertions: 109, Deprecations: 1.
+--- fim ---
+Fim: 2026-11-15T21:28:00.6088748-03:00
+CÃ³digo: 0
+Estado do comando: passou (confirmar contagens na saÃ­da)
+EvidÃªncia: docs/sprint-6/evidencias/smoke-backend.log

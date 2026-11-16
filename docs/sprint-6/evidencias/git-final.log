@@ -1,0 +1,43 @@
+Caso: CT-028
+Data/hora: 2026-11-15T21:42:07.705824-03:00
+Commit inicial/final HEAD: 3799ff303c9158f36bcb28bf89103baba899d087
+Ambiente: Windows/PowerShell; revisão da árvore de trabalho
+Esperado: branch Sprint 6, sem alterações de produção, sem commit novo, diff sem erros.
+
+$ git branch --show-current
+sprint-6/testes-validacao-documentacao
+
+
+Código: 0
+
+$ git rev-parse HEAD
+3799ff303c9158f36bcb28bf89103baba899d087
+
+
+Código: 0
+
+$ git status --short
+ M .gitignore
+ M frontend/src/features/tasks/components/tasks-mutate-drawer.test.tsx
+?? backend/tests/Feature/SprintSixTest.php
+?? docs/sprint-6/
+?? frontend/src/lib/meter-color.test.ts
+?? python-api/tests/test_sprint6.py
+
+
+Código: 0
+
+$ git diff --name-only
+.gitignore
+frontend/src/features/tasks/components/tasks-mutate-drawer.test.tsx
+
+
+Código: 0
+
+$ git diff --check
+
+
+Código: 0
+
+Resultado: branch sprint-6/testes-validacao-documentacao; HEAD base mantido; alterações apenas em testes, documentação e ignore de ferramentas locais.
+Status: passou (revisão Git); não altera falhas das suítes.

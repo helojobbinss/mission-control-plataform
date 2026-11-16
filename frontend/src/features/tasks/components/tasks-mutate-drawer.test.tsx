@@ -1,179 +1,88 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { render } from 'vitest-browser-react'
 import { userEvent } from 'vitest/browser'
-import { showSubmittedData } from '@/lib/show-submitted-data'
+import { saveMission } from '../data/api'
 import { type Task } from '../data/schema'
 import { TasksMutateDrawer } from './tasks-mutate-drawer'
 
-vi.mock('@/lib/show-submitted-data', () => ({ showSubmittedData: vi.fn() }))
-
+// CT-030: formulário isolado; persistência real verificada no CT-010.
+vi.mock('../data/api', () => ({ saveMission: vi.fn().mockResolvedValue(undefined) }))
+vi.mock('@/features/monitoring/data/api', () => ({
+  listSatellites: vi.fn().mockResolvedValue([
+    { id: 1, name: 'QA Manual', norad_id: null, source: 'manual', status: 'active', missions: [], orbit: null },
+  ]),
+}))
 const MOCK_TASK = {
-  id: 'task-1',
-  title: 'Existing task',
-  status: 'Agendada',
-  label: 'feature',
-  Operador: 'medium',
-} as const satisfies Task
+  id: '1', satellite_id: 1, title: 'Missão fictícia existente',
+  status: 'Agendada', label: 'Monitoramento', Operador: 'Gabriel',
+} satisfies Task
 
-describe('TasksMutateDrawer', () => {
+async function renderIsolated(element: ReactNode) {
+  const client = new QueryClient({ defaultOptions: { queries: { retry: false }, mutations: { retry: false } } })
+  return render(<QueryClientProvider client={client}>{element}</QueryClientProvider>)
+}
+
+describe('CT-030: formulário de missão', () => {
   beforeEach(() => vi.clearAllMocks())
 
-  it('renders create title and description', async () => {
-    const { getByRole, getByText } = await render(
-      <TasksMutateDrawer open onOpenChange={vi.fn()} />
-    )
-
-    const title = getByRole('heading', {
-      level: 2,
-      name: /Create Task/i,
-    })
-    const desc = getByText(/Add a new task/i)
-
-    await expect.element(title).toBeInTheDocument()
-    await expect.element(desc).toBeInTheDocument()
+  it('apresenta título e descrição de criação', async () => {
+    const screen = await renderIsolated(<TasksMutateDrawer open onOpenChange={vi.fn()} />)
+    await expect.element(screen.getByRole('heading', { name: 'Create missão' })).toBeInTheDocument()
+    await expect.element(screen.getByText(/Crie um missão/)).toBeInTheDocument()
   })
 
-  it('renders edit title, description, and prefilled title', async () => {
-    const { getByRole, getByText } = await render(
-      <TasksMutateDrawer open onOpenChange={vi.fn()} currentRow={MOCK_TASK} />
-    )
-
-    const title = getByRole('heading', {
-      level: 2,
-      name: /Update Task/i,
-    })
-    const desc = getByText(/Update the task/i)
-
-    const titleInput = getByRole('textbox', { name: /Title/i })
-    const statusSelect = getByRole('combobox', { name: /Status/i })
-    const labelRadio = getByRole('radio', { name: MOCK_TASK.label })
-    const OperadorRadio = getByRole('radio', { name: MOCK_TASK.Operador })
-
-    await expect.element(title).toBeInTheDocument()
-    await expect.element(desc).toBeInTheDocument()
-    await expect.element(titleInput).toHaveValue(MOCK_TASK.title)
-    await expect
-      .element(statusSelect)
-      .toHaveTextContent(new RegExp(MOCK_TASK.status, 'i'))
-    await expect.element(labelRadio).toBeChecked()
-    await expect.element(OperadorRadio).toBeChecked()
+  it('apresenta edição com os valores recebidos', async () => {
+    const screen = await renderIsolated(<TasksMutateDrawer open onOpenChange={vi.fn()} currentRow={MOCK_TASK} />)
+    await expect.element(screen.getByRole('heading', { name: 'Update missão' })).toBeInTheDocument()
+    await expect.element(screen.getByLabelText('Título', { exact: true })).toHaveValue(MOCK_TASK.title)
+    await expect.element(screen.getByLabelText('Satélite *', { exact: true })).toHaveValue('1')
+    await expect.element(screen.getByRole('radio', { name: 'Monitoramento', exact: true })).toBeChecked()
+    await expect.element(screen.getByRole('radio', { name: 'Gabriel', exact: true })).toBeChecked()
   })
 
-  it('shows validation messages when submitting an empty form', async () => {
-    const { getByRole, getByText } = await render(
-      <TasksMutateDrawer open onOpenChange={vi.fn()} />
-    )
-
-    const saveButton = getByRole('button', { name: /Save changes/i })
-    await userEvent.click(saveButton)
-
-    await expect.element(getByText(/Title is required.$/i)).toBeInTheDocument()
-    await expect
-      .element(getByText(/Please select a status.$/i))
-      .toBeInTheDocument()
-    await expect
-      .element(getByText(/Please select a label.$/i))
-      .toBeInTheDocument()
-    await expect
-      .element(getByText(/Please choose a Operador.$/i))
-      .toBeInTheDocument()
+  it('rejeita os campos obrigatórios vazios sem salvar', async () => {
+    const screen = await renderIsolated(<TasksMutateDrawer open onOpenChange={vi.fn()} />)
+    await userEvent.click(screen.getByRole('button', { name: 'Salvar', exact: true }))
+    for (const text of ['Título obrigatório.', 'Selecione um satélite.', 'Por favor selecione um status.', 'Por favor selecione um Categoria.', 'Por favor selecione um Operador.']) {
+      await expect.element(screen.getByText(text, { exact: true })).toBeInTheDocument()
+    }
+    expect(saveMission).not.toHaveBeenCalled()
   })
 
-  it('submits create form and shows submitted data', async () => {
+  it('envia a missão válida e fecha após a confirmação do serviço', async () => {
     const onOpenChange = vi.fn()
-    const { getByRole } = await render(
-      <TasksMutateDrawer open onOpenChange={onOpenChange} />
-    )
-
-    const titleInput = getByRole('textbox', { name: /Title/i })
-    await userEvent.fill(titleInput, 'New task title')
-
-    const statusSelect = getByRole('combobox', { name: /Status/i })
-    await userEvent.click(statusSelect)
-    await userEvent.click(getByRole('option', { name: /Ativa/i }))
-
-    await userEvent.click(getByRole('radio', { name: /^Bug$/i }))
-    await userEvent.click(getByRole('radio', { name: /^Low$/i }))
-
-    const saveButton = getByRole('button', { name: /Save changes/i })
-    await userEvent.click(saveButton)
-
-    expect(onOpenChange).toHaveBeenCalledOnce()
-    expect(onOpenChange).toHaveBeenCalledWith(false)
-
-    expect(showSubmittedData).toHaveBeenCalledOnce()
-    expect(showSubmittedData).toHaveBeenCalledWith({
-      title: 'New task title',
-      status: 'Ativa',
-      label: 'bug',
-      Operador: 'low',
-    })
-  })
-
-  it('closes when Close is clicked', async () => {
-    const onOpenChange = vi.fn()
-    const { getByRole } = await render(
-      <TasksMutateDrawer open onOpenChange={onOpenChange} />
-    )
-
-    const closeButtons = getByRole('dialog')
-      .getByRole('button', {
-        name: /Close/i,
-      })
-      .all()
-    expect(closeButtons).toHaveLength(2)
-    await userEvent.click(closeButtons[1])
-
-    expect(onOpenChange).toHaveBeenCalledOnce()
+    const screen = await renderIsolated(<TasksMutateDrawer open onOpenChange={onOpenChange} />)
+    await userEvent.fill(screen.getByLabelText('Título', { exact: true }), 'Missão QA')
+    await screen.getByLabelText('Satélite *', { exact: true }).selectOptions('1')
+    await userEvent.click(screen.getByRole('combobox').filter({ hasText: 'Selecione um status' }))
+    await userEvent.click(screen.getByRole('option', { name: 'Agendada', exact: true }))
+    await userEvent.click(screen.getByRole('radio', { name: 'Monitoramento', exact: true }))
+    await userEvent.click(screen.getByRole('radio', { name: 'Gabriel', exact: true }))
+    await userEvent.click(screen.getByRole('button', { name: 'Salvar', exact: true }))
+    await vi.waitFor(() => expect(saveMission).toHaveBeenCalledWith(expect.objectContaining({
+      title: 'Missão QA', satellite_id: '1', status: 'Agendada', label: 'Monitoramento', Operador: 'Gabriel',
+    }), undefined, undefined))
     expect(onOpenChange).toHaveBeenCalledWith(false)
   })
 
-  it('resets entered values when the sheet is closed and reopened', async () => {
+  it('fecha pelo botão Fechar', async () => {
+    const onOpenChange = vi.fn()
+    const screen = await renderIsolated(<TasksMutateDrawer open onOpenChange={onOpenChange} />)
+    await userEvent.click(screen.getByRole('button', { name: 'Fechar', exact: true }))
+    expect(onOpenChange).toHaveBeenCalledWith(false)
+  })
+
+  it('limpa o título de rascunho ao fechar e reabrir', async () => {
     function Harness() {
       const [open, setOpen] = useState(true)
-      return (
-        <>
-          <button type='button' onClick={() => setOpen(true)}>
-            Reopen
-          </button>
-          <TasksMutateDrawer open={open} onOpenChange={setOpen} />
-        </>
-      )
+      return <><button onClick={() => setOpen(true)}>Reabrir</button><TasksMutateDrawer open={open} onOpenChange={setOpen} /></>
     }
-
-    const { getByRole } = await render(<Harness />)
-
-    const titleInput = getByRole('textbox', { name: /Title/i })
-    await userEvent.fill(titleInput, 'Draft title')
-    await expect.element(titleInput).toHaveValue('Draft title')
-
-    const statusSelect = getByRole('combobox', { name: /Status/i })
-    await userEvent.click(statusSelect)
-    await userEvent.click(getByRole('option', { name: /Ativa/i }))
-    await expect.element(statusSelect).toHaveTextContent(/Ativa/i)
-
-    const labelRadio = getByRole('radio', { name: /^Documentation$/i })
-    await userEvent.click(labelRadio)
-    await expect.element(labelRadio).toBeChecked()
-
-    const OperadorRadio = getByRole('radio', { name: /^High$/i })
-    await userEvent.click(OperadorRadio)
-    await expect.element(OperadorRadio).toBeChecked()
-
-    const closeButtons = getByRole('dialog')
-      .getByRole('button', {
-        name: /Close/i,
-      })
-      .all()
-    await userEvent.click(closeButtons[0])
-
-    const reopenButton = getByRole('button', { name: /Reopen/i })
-    await userEvent.click(reopenButton)
-
-    await expect.element(titleInput).toHaveValue('')
-    await expect.element(statusSelect).not.toHaveTextContent(/Ativa/i)
-    await expect.element(labelRadio).not.toBeChecked()
-    await expect.element(OperadorRadio).not.toBeChecked()
+    const screen = await renderIsolated(<Harness />)
+    await userEvent.fill(screen.getByLabelText('Título', { exact: true }), 'Rascunho QA')
+    await userEvent.click(screen.getByRole('button', { name: 'Fechar', exact: true }))
+    await userEvent.click(screen.getByRole('button', { name: 'Reabrir', exact: true }))
+    await expect.element(screen.getByLabelText('Título', { exact: true })).toHaveValue('')
   })
 })

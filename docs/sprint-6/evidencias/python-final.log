@@ -1,0 +1,74 @@
+Casos: CT-006..008,CT-022..023,CT-027
+InÃ­cio: 2026-11-15T21:26:32.1333734-03:00
+Commit base: 3799ff303c9158f36bcb28bf89103baba899d087 (Ã¡rvore de trabalho inclui testes Sprint 6)
+Ambiente: Windows / PowerShell 5.1.26100.9711
+DiretÃ³rio: python-api
+Comando: .venv/Scripts/python.exe -m pytest -v --junitxml=../docs/sprint-6/evidencias/python-final.xml
+Esperado: CÃ³digo de saÃ­da zero; todas as verificaÃ§Ãµes aprovadas.
+--- saÃ­da original ---
+============================= test session starts =============================
+platform win32 -- Python 3.13.18, pytest-8.4.2, pluggy-1.6.0 -- F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\python-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\python-api
+plugins: anyio-4.16.0
+collecting ... collected 45 items
+
+tests/test_alerts.py::test_low_battery_generates_alert PASSED            [  2%]
+tests/test_alerts.py::test_offline_communication_generates_critical_alert PASSED [  4%]
+tests/test_alerts.py::test_normal_telemetry_returns_no_alerts PASSED     [  6%]
+tests/test_alerts.py::test_missing_sensor_generates_sensor_failure_alert PASSED [  8%]
+tests/test_health.py::test_root PASSED                                   [ 11%]
+tests/test_health.py::test_health_check PASSED                           [ 13%]
+tests/test_orbit_simulation.py::test_sgp4_position_has_geodetic_values PASSED [ 15%]
+tests/test_orbit_simulation.py::test_simulated_orbit_altitude_speed_and_latitude_limit PASSED [ 17%]
+tests/test_orbit_simulation.py::test_simulated_orbit_is_periodic_in_inertial_frame PASSED [ 20%]
+tests/test_orbit_simulation.py::test_equatorial_orbit_stays_on_equator PASSED [ 22%]
+tests/test_orbit_simulation.py::test_polar_orbit_reaches_the_pole PASSED [ 24%]
+tests/test_orbit_simulation.py::test_endpoint_simulate_ok PASSED         [ 26%]
+tests/test_orbit_simulation.py::test_endpoint_simulate_validation PASSED [ 28%]
+tests/test_orbits.py::test_calculate_satellite_position PASSED           [ 31%]
+tests/test_orbits.py::test_calculation_time_requires_timezone PASSED     [ 33%]
+tests/test_orbits.py::test_calculate_position_using_norad_id PASSED      [ 35%]
+tests/test_orbits.py::test_calculate_position_rejects_datetime_without_timezone PASSED [ 37%]
+tests/test_orbits.py::test_satellite_not_found PASSED                    [ 40%]
+tests/test_orbits.py::test_orbital_data_source_unavailable PASSED        [ 42%]
+tests/test_orbits.py::test_invalid_omm_record_returns_422 PASSED         [ 44%]
+tests/test_sensors.py::test_get_satellite_sensors_returns_success PASSED [ 46%]
+tests/test_sensors.py::test_sensor_response_has_expected_structure PASSED [ 48%]
+tests/test_sensors.py::test_sensor_values_are_within_simulated_ranges PASSED [ 51%]
+tests/test_sensors.py::test_invalid_satellite_id_is_rejected PASSED      [ 53%]
+tests/test_sensors.py::test_sensor_response_contains_new_telemetry_fields PASSED [ 55%]
+tests/test_sensors.py::test_new_telemetry_values_are_within_expected_ranges PASSED [ 57%]
+tests/test_sensors.py::test_communication_status_has_consistent_status PASSED [ 60%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[battery_level-19.99-LOW_BATTERY-True] PASSED [ 62%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[battery_level-20-LOW_BATTERY-False] PASSED [ 64%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[battery_level-20.01-LOW_BATTERY-False] PASSED [ 66%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[internal_temperature-39.99-HIGH_INTERNAL_TEMPERATURE-False] PASSED [ 68%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[internal_temperature-40-HIGH_INTERNAL_TEMPERATURE-False] PASSED [ 71%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[internal_temperature-40.01-HIGH_INTERNAL_TEMPERATURE-True] PASSED [ 73%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[voltage-24.99-LOW_VOLTAGE-True] PASSED [ 75%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[voltage-25-LOW_VOLTAGE-False] PASSED [ 77%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[voltage-31-HIGH_VOLTAGE-False] PASSED [ 80%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[voltage-31.01-HIGH_VOLTAGE-True] PASSED [ 82%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[gyroscope_x--4.51-HIGH_ANGULAR_VELOCITY-True] PASSED [ 84%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[gyroscope_x--4.5-HIGH_ANGULAR_VELOCITY-False] PASSED [ 86%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[gyroscope_x-4.5-HIGH_ANGULAR_VELOCITY-False] PASSED [ 88%]
+tests/test_sprint6.py::test_ct006_alert_boundaries[gyroscope_x-4.51-HIGH_ANGULAR_VELOCITY-True] PASSED [ 91%]
+tests/test_sprint6.py::test_ct007_telemetry_alerts_match_returned_sensors PASSED [ 93%]
+tests/test_sprint6.py::test_ct008_communication_decision_table[online-None] PASSED [ 95%]
+tests/test_sprint6.py::test_ct008_communication_decision_table[offline-COMMUNICATION_LOST] PASSED [ 97%]
+tests/test_sprint6.py::test_ct008_communication_decision_table[unknown-SENSOR_FAILURE] PASSED [100%]
+
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\python-api\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: F:\faculdade\TrabalhoLucas\Testes\mission-control-plataform\docs\sprint-6\evidencias\python-final.xml -
+======================== 45 passed, 1 warning in 1.95s ========================
+--- fim ---
+Fim: 2026-11-15T21:26:36.8198498-03:00
+CÃ³digo: 0
+Estado do comando: passou (confirmar contagens na saÃ­da)
+EvidÃªncia: docs/sprint-6/evidencias/python-final.log
