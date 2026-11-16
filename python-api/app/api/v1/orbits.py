@@ -2,7 +2,8 @@ from datetime import datetime, timezone
 
 from fastapi import APIRouter, HTTPException, Query, Path
 
-from app.schemas.orbit import OrbitPositionRequest
+from app.schemas.orbit import OrbitPositionRequest, SimulatedOrbitRequest
+from app.services.orbit_simulation_service import simulate_circular_orbit_position
 from app.services.celestrak_service import (
     fetch_omm_record,
     OrbitalDataSourceError,
@@ -38,6 +39,23 @@ def get_satellite_position(
             status_code=422,
             detail=str(exc),
         ) from exc
+
+
+@router.post("/simulate")
+def simulate_satellite_position(request: SimulatedOrbitRequest):
+    """Simula a órbita manual no mesmo router servido pela aplicação oficial."""
+    try:
+        position = simulate_circular_orbit_position(
+            altitude_km=request.altitude_km,
+            inclination_deg=request.inclination_deg,
+            raan_deg=request.raan_deg,
+            initial_anomaly_deg=request.initial_anomaly_deg,
+            epoch=request.epoch,
+            calculation_time=request.calculation_time or datetime.now(timezone.utc),
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    return {"source": "simulation", **position}
 
 
 @router.get("/{norad_id}/position")
