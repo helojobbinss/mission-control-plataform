@@ -22,6 +22,19 @@ export default defineConfig(({ mode }) => ({
       '@': path.resolve(import.meta.dirname, './src'),
     },
   },
+  build: {
+    rolldownOptions: {
+      output: {
+        codeSplitting: {
+          groups: [
+            { name: 'vendor-react', test: /node_modules[\\/](react|react-dom|scheduler)[\\/]/, priority: 30 },
+            { name: 'vendor-tanstack', test: /node_modules[\\/]@tanstack[\\/]/, priority: 20 },
+            { name: 'vendor-ui', test: /node_modules[\\/](@radix-ui|radix-ui|lucide-react|cmdk)[\\/]/, priority: 10 },
+          ],
+        },
+      },
+    },
+  },
   test: {
     silent: 'passed-only',
     unstubEnvs: true,

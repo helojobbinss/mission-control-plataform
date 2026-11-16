@@ -74,8 +74,8 @@ export function TasksMultiDeleteDialog<TData>({
           className='space-y-4'
         >
           <p className='mb-2'>
-            Você tem certeza que deseja excluir essa missão? <br />
-            This action cannot be unConcluída.
+            Tem certeza de que deseja excluir as missões selecionadas? <br />
+            Esta ação não pode ser desfeita.
           </p>
 
           <Label className='my-4 flex flex-col items-start gap-1.5'>

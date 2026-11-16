@@ -61,7 +61,7 @@ export function UsersDeleteDialog({
             <span className='font-bold'>
               {currentRow.role.toUpperCase()}
             </span>{' '}
-            from the system. This cannot be unConcluída.
+            from the system. This cannot be undone.
           </p>
 
           <Label className='my-2'>

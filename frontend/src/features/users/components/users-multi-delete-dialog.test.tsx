@@ -25,10 +25,10 @@ describe('UsersMultiDeleteDialog', () => {
       name: /Delete 2 users/i,
     })
     const desc = getByText(
-      new RegExp(`Are you sure you want to delete the selected users?`, 'i')
+      /Tem certeza que deseja excluir esse aviso/i
     )
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme digitando "DELETE"/i,
     })
     const deleteButton = getByRole('button', { name: /Delete/i })
 
@@ -46,7 +46,7 @@ describe('UsersMultiDeleteDialog', () => {
     )
 
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme digitando "DELETE"/i,
     })
     const deleteButton = getByRole('button', { name: /Delete/i })
 
@@ -97,7 +97,7 @@ describe('UsersMultiDeleteDialog', () => {
     const { getByRole } = await render(<Harness />)
 
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme digitando "DELETE"/i,
     })
     await userEvent.fill(confirmDeleteInput, 'DELETE')
     await expect.element(confirmDeleteInput).toHaveValue('DELETE')
@@ -118,7 +118,7 @@ describe('UsersMultiDeleteDialog', () => {
     )
 
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme digitando "DELETE"/i,
     })
     const deleteButton = getByRole('button', { name: /Delete/i })
 
@@ -143,7 +143,7 @@ describe('UsersMultiDeleteDialog', () => {
     )
 
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme digitando "DELETE"/i,
     })
     const deleteButton = getByRole('button', { name: /Delete/i })
 

@@ -28,7 +28,9 @@ class TelemetryRecorder
             'recorded_at' => $response['timestamp'],
         ]);
 
-        $activeAlertCodes = [];
+        // Um alerta ativo é identificado por código + parâmetro: o mesmo código
+        // (ex.: HIGH_ANGULAR_VELOCITY) pode ocorrer em sensores distintos.
+        $activeAlertKeys = [];
 
         foreach ($response['alerts'] as $alertData) {
             $code = $alertData['code'] ?? null;
@@ -37,16 +39,17 @@ class TelemetryRecorder
                 continue;
             }
 
-            $activeAlertCodes[] = $code;
+            $parameter = $alertData['parameter'] ?? null;
+            $activeAlertKeys[$code."\0".$parameter] = true;
 
             SatelliteAlert::updateOrCreate(
                 [
                     'satellite_id' => $satellite->id,
                     'code' => $code,
+                    'parameter' => $parameter,
                     'resolved' => false,
                 ],
                 [
-                    'parameter' => $alertData['parameter'] ?? null,
                     'severity' => $alertData['severity'] ?? null,
                     'measured_value' => $alertData['measured_value'] ?? null,
                     'unit' => $alertData['unit'] ?? null,
@@ -57,14 +60,11 @@ class TelemetryRecorder
             );
         }
 
-        $openAlerts = SatelliteAlert::where('satellite_id', $satellite->id)
-            ->where('resolved', false);
-
-        if (!empty($activeAlertCodes)) {
-            $openAlerts->whereNotIn('code', $activeAlertCodes);
-        }
-
-        $openAlerts->update(['resolved' => true]);
+        SatelliteAlert::where('satellite_id', $satellite->id)
+            ->where('resolved', false)
+            ->get()
+            ->reject(fn (SatelliteAlert $alert) => isset($activeAlertKeys[$alert->code."\0".$alert->parameter]))
+            ->each(fn (SatelliteAlert $alert) => $alert->update(['resolved' => true]));
 
         return $reading;
     }

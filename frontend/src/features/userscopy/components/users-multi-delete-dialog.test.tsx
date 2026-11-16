@@ -22,15 +22,15 @@ describe('UsersMultiDeleteDialog', () => {
 
     const title = getByRole('heading', {
       level: 2,
-      name: /Delete 2 users/i,
+      name: /Deletar 2 usuários/i,
     })
     const desc = getByText(
-      new RegExp(`Are you sure you want to delete the selected users?`, 'i')
+      /Tem certeza que deseja excluir o usuário selecionado/i
     )
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme escrevendo "DELETE"/i,
     })
-    const deleteButton = getByRole('button', { name: /Delete/i })
+    const deleteButton = getByRole('button', { name: /Deletar/i })
 
     await expect.element(title).toBeInTheDocument()
     await expect.element(desc).toBeInTheDocument()
@@ -46,9 +46,9 @@ describe('UsersMultiDeleteDialog', () => {
     )
 
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme escrevendo "DELETE"/i,
     })
-    const deleteButton = getByRole('button', { name: /Delete/i })
+    const deleteButton = getByRole('button', { name: /Deletar/i })
 
     await expect.element(deleteButton).toBeDisabled()
 
@@ -97,7 +97,7 @@ describe('UsersMultiDeleteDialog', () => {
     const { getByRole } = await render(<Harness />)
 
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme escrevendo "DELETE"/i,
     })
     await userEvent.fill(confirmDeleteInput, 'DELETE')
     await expect.element(confirmDeleteInput).toHaveValue('DELETE')
@@ -118,9 +118,9 @@ describe('UsersMultiDeleteDialog', () => {
     )
 
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme escrevendo "DELETE"/i,
     })
-    const deleteButton = getByRole('button', { name: /Delete/i })
+    const deleteButton = getByRole('button', { name: /Deletar/i })
 
     await expect.element(deleteButton).toBeDisabled()
 
@@ -143,9 +143,9 @@ describe('UsersMultiDeleteDialog', () => {
     )
 
     const confirmDeleteInput = getByRole('textbox', {
-      name: /Confirm by typing "DELETE"/i,
+      name: /Confirme escrevendo "DELETE"/i,
     })
-    const deleteButton = getByRole('button', { name: /Delete/i })
+    const deleteButton = getByRole('button', { name: /Deletar/i })
 
     await expect.element(deleteButton).toBeDisabled()
 

@@ -31,7 +31,7 @@ const formSchema = z
   .object({
     firstName: z.string().min(1, 'Primeiro nome é obrigatório.'),
     lastName: z.string().min(1, 'Sobrenome é obrigatório.'),
-    username: z.string().min(1, 'Nome de usuário é obrigatório..'),
+    username: z.string().min(1, 'Nome de usuário é obrigatório.'),
     phoneNumber: z.string().min(1, 'Telefone é obrigatório.'),
     email: z.email({
       error: (iss) => (iss.input === '' ? 'Email é obrigatório.' : undefined),
@@ -67,7 +67,7 @@ const formSchema = z
       return /[a-z]/.test(password)
     },
     {
-      message: 'Senha precisa ter pelo menos uma letra maiuscula',
+      message: 'Senha precisa ter pelo menos uma letra minúscula',
       path: ['password'],
     }
   )
@@ -148,7 +148,7 @@ export function UsersActionDialog({
           <DialogTitle>{isEdit ? 'Edit User' : 'Add New User'}</DialogTitle>
           <DialogDescription>
             {isEdit ? 'Update the user here. ' : 'Create new user here. '}
-            Clique em salva e &apos;re Concluída.
+            Clique em salvar quando terminar.
           </DialogDescription>
         </DialogHeader>
         <div className='h-105 w-[calc(100%+0.75rem)] overflow-y-auto py-1 pe-3'>
