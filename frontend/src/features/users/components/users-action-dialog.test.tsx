@@ -49,7 +49,7 @@ describe('UsersActionDialog', () => {
         name: /Add New User/i,
       })
       const description = getByText(
-        /Create new user here. Click save when you're ConcluÃ­da./i
+        /Create new user here. Click save when you're done./i
       )
 
       await expect.element(title).toBeInTheDocument()
@@ -176,7 +176,7 @@ describe('UsersActionDialog', () => {
         lastName: MOCK_USER.lastName,
         username: MOCK_USER.username,
         email: MOCK_USER.email,
-        role: MOCK_USER.role,
+        role: 'Fechado',
         phoneNumber: MOCK_USER.phoneNumber,
         password: 'S3cur3P@ssw0rd',
         confirmPassword: 'S3cur3P@ssw0rd',
@@ -196,7 +196,7 @@ describe('UsersActionDialog', () => {
         name: /Edit User/i,
       })
       const description = getByText(
-        /Update the user here\. Click save when you're ConcluÃ­da\./i
+        /Update the user here\. Click save when you're done\./i
       )
 
       await expect.element(title).toBeInTheDocument()
@@ -329,7 +329,7 @@ async function fillRequiredProfileFields(
   const roleSelect = screen.getByRole('combobox', { name: /Role/i })
   await user.click(roleSelect)
   await user.click(
-    screen.getByRole('option', { name: overrides?.roleOption ?? 'Superadmin' })
+    screen.getByRole('option', { name: overrides?.roleOption ?? 'Fechado' })
   )
 }
 

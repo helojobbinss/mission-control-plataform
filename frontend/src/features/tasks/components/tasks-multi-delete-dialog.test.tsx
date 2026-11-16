@@ -25,7 +25,7 @@ describe('TasksMultiDeleteDialog', () => {
       name: /Delete 2 tasks/i,
     })
     const desc = getByText(
-      'Are you sure you want to delete the selected tasks?'
+      'Tem certeza de que deseja excluir as missões selecionadas?'
     )
     const confirmDeleteInput = getByRole('textbox', {
       name: /Confirm by typing "DELETE"/i,

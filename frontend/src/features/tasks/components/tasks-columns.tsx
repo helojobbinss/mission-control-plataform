@@ -1,17 +1,11 @@
-﻿import { useState } from 'react'
-import { type ColumnDef } from '@tanstack/react-table'
+﻿import { type ColumnDef } from '@tanstack/react-table'
 import { Badge } from '@/components/ui/badge'
 import { Checkbox } from '@/components/ui/checkbox'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { statuses } from '../data/data'
 import { type Task } from '../data/schema'
 import { DataTableRowActions } from './data-table-row-actions'
-import { MissionDetails } from './mission-details'
-
-function MissionTitle({ task }: { task: Task }) {
-  const [open, setOpen] = useState(false)
-  return <div className='flex flex-col items-start'><button type='button' className='text-left font-medium hover:underline' onClick={() => setOpen(true)}>{task.title}</button>{open && <MissionDetails mission={task} onClose={() => setOpen(false)} />}</div>
-}
+import { MissionTitle } from './mission-title'
 
 export const tasksColumns: ColumnDef<Task>[] = [
   {
