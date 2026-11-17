@@ -1,0 +1,15 @@
+{
+    "before": {
+        "missions": "[{\"id\":1,\"name\":\"Miss\\u00e3o, \\\"\\u00d3rbita\\\"\",\"description\":null,\"status\":\"Agendada\",\"category\":null,\"operator_name\":null,\"created_at\":\"2026-11-17 00:29:55\",\"updated_at\":\"2026-11-17 00:29:55\",\"planned_start_date\":null,\"planned_end_date\":null,\"started_at\":null,\"ended_at\":null,\"budget\":1234.5,\"satellite_id\":1}]",
+        "satellites": "[{\"id\":1,\"norad_id\":null,\"name\":\"Sat\\u00e9lite \\u00c1urea\",\"international_designator\":null,\"created_at\":\"2026-11-17 00:29:55\",\"updated_at\":\"2026-11-17 00:29:55\",\"source\":\"manual\",\"status\":\"active\",\"description\":null,\"launch_date\":null,\"orbit_altitude_km\":550,\"orbit_inclination_deg\":null,\"orbit_raan_deg\":null,\"orbit_initial_anomaly_deg\":null,\"orbit_epoch\":null,\"monitoring_limits\":null}]",
+        "telemetry_readings": "[{\"id\":1,\"satellite_id\":1,\"readings\":\"{\\\"temperature\\\":{\\\"value\\\":-12.5,\\\"unit\\\":\\\"\\\\u00b0C\\\",\\\"status\\\":\\\"normal\\\"},\\\"battery\\\":{\\\"value\\\":80,\\\"unit\\\":\\\"%\\\",\\\"status\\\":\\\"normal\\\"}}\",\"simulated\":1,\"recorded_at\":\"2026-11-16 23:59:59\",\"created_at\":\"2026-11-17 00:29:55\",\"updated_at\":\"2026-11-17 00:29:55\",\"orbital_position\":\"{\\\"latitude\\\":-23.5,\\\"longitude\\\":40,\\\"altitude_km\\\":550,\\\"orbital_speed_km_s\\\":7.5}\"}]",
+        "satellite_alerts": "[]"
+    },
+    "after": {
+        "missions": "[{\"id\":1,\"name\":\"Miss\\u00e3o, \\\"\\u00d3rbita\\\"\",\"description\":null,\"status\":\"Agendada\",\"category\":null,\"operator_name\":null,\"created_at\":\"2026-11-17 00:29:55\",\"updated_at\":\"2026-11-17 00:29:55\",\"planned_start_date\":null,\"planned_end_date\":null,\"started_at\":null,\"ended_at\":null,\"budget\":1234.5,\"satellite_id\":1}]",
+        "satellites": "[{\"id\":1,\"norad_id\":null,\"name\":\"Sat\\u00e9lite \\u00c1urea\",\"international_designator\":null,\"created_at\":\"2026-11-17 00:29:55\",\"updated_at\":\"2026-11-17 00:29:55\",\"source\":\"manual\",\"status\":\"active\",\"description\":null,\"launch_date\":null,\"orbit_altitude_km\":550,\"orbit_inclination_deg\":null,\"orbit_raan_deg\":null,\"orbit_initial_anomaly_deg\":null,\"orbit_epoch\":null,\"monitoring_limits\":null}]",
+        "telemetry_readings": "[{\"id\":1,\"satellite_id\":1,\"readings\":\"{\\\"temperature\\\":{\\\"value\\\":-12.5,\\\"unit\\\":\\\"\\\\u00b0C\\\",\\\"status\\\":\\\"normal\\\"},\\\"battery\\\":{\\\"value\\\":80,\\\"unit\\\":\\\"%\\\",\\\"status\\\":\\\"normal\\\"}}\",\"simulated\":1,\"recorded_at\":\"2026-11-16 23:59:59\",\"created_at\":\"2026-11-17 00:29:55\",\"updated_at\":\"2026-11-17 00:29:55\",\"orbital_position\":\"{\\\"latitude\\\":-23.5,\\\"longitude\\\":40,\\\"altitude_km\\\":550,\\\"orbital_speed_km_s\\\":7.5}\"}]",
+        "satellite_alerts": "[]"
+    },
+    "equal": true
+}

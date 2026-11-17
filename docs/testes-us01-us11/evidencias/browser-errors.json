@@ -1,0 +1,97 @@
+[
+  {
+    "type": "requestfailed",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap",
+    "error": "net::ERR_NETWORK_ACCESS_DENIED"
+  },
+  {
+    "type": "console",
+    "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap"
+  },
+  {
+    "type": "requestfailed",
+    "url": "http://127.0.0.1:15173/api/user",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "type": "requestfailed",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap",
+    "error": "net::ERR_NETWORK_ACCESS_DENIED"
+  },
+  {
+    "type": "console",
+    "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap"
+  },
+  {
+    "type": "requestfailed",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap",
+    "error": "net::ERR_NETWORK_ACCESS_DENIED"
+  },
+  {
+    "type": "console",
+    "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap"
+  },
+  {
+    "type": "requestfailed",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap",
+    "error": "net::ERR_NETWORK_ACCESS_DENIED"
+  },
+  {
+    "type": "console",
+    "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap"
+  },
+  {
+    "type": "requestfailed",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap",
+    "error": "net::ERR_NETWORK_ACCESS_DENIED"
+  },
+  {
+    "type": "console",
+    "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap"
+  },
+  {
+    "type": "requestfailed",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap",
+    "error": "net::ERR_NETWORK_ACCESS_DENIED"
+  },
+  {
+    "type": "console",
+    "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap"
+  },
+  {
+    "type": "console",
+    "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "url": "http://127.0.0.1:15173/api/exports?dataset=telemetry&start_date=1900-01-01&end_date=1900-01-02"
+  },
+  {
+    "type": "requestfailed",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap",
+    "error": "net::ERR_NETWORK_ACCESS_DENIED"
+  },
+  {
+    "type": "console",
+    "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap"
+  },
+  {
+    "type": "requestfailed",
+    "url": "http://127.0.0.1:15173/src/features/auth/sign-in/index.tsx",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "type": "requestfailed",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap",
+    "error": "net::ERR_NETWORK_ACCESS_DENIED"
+  },
+  {
+    "type": "console",
+    "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap"
+  }
+]

@@ -1,0 +1,3 @@
+﻿id,norad_id,name,international_designator,source,status,description,launch_date,orbit_altitude_km,orbit_inclination_deg,orbit_raan_deg,orbit_initial_anomaly_deg,orbit_epoch,created_at,updated_at
+1,,"Smoke Manual",,manual,active,,,500,30,0,0,2026-11-17T00:31:07Z,2026-11-17T00:31:07Z,2026-11-17T00:31:09Z
+2,,"Smoke B",,manual,active,,,500,30,0,0,2026-11-17T00:31:12Z,2026-11-17T00:31:12Z,2026-11-17T00:31:12Z

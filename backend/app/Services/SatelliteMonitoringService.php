@@ -169,6 +169,7 @@ class SatelliteMonitoringService
             report($exception);
         }
 
+        $telemetry = app(MonitoringLimits::class)->apply($satellite, $telemetry);
         DB::transaction(function () use ($satellite, $telemetry, $orbitalPosition) {
             $this->recorder->record($satellite, $telemetry, $orbitalPosition);
         });

@@ -27,6 +27,7 @@ class Satellite extends Model
     ];
 
     protected $casts = [
+        'monitoring_limits' => 'array',
         'norad_id' => 'integer',
         'launch_date' => 'date:Y-m-d',
         'orbit_altitude_km' => 'float',

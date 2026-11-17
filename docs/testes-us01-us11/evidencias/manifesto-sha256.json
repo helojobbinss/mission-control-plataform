@@ -1,0 +1,173 @@
+{
+  "generated_at": "2026-11-17T00:35:29.767Z",
+  "entries": [
+    {
+      "file": "backend/app/Http/Controllers/DataExportController.php",
+      "sha256": "94b8aa284e229e58fe2964dd42d471d930178e8ebe0316f981613c031cbd0f3a"
+    },
+    {
+      "file": "backend/app/Http/Controllers/MonitoringLimitsController.php",
+      "sha256": "59ad2ffdcea298dc6059cb3d6501251a333c909769d628512f7689bd532ae984"
+    },
+    {
+      "file": "backend/app/Services/DataExportService.php",
+      "sha256": "a54524a835b5bb30ce86dc0c5a45e7a6666485bcc0c8e5ad59ff5dd721f4ce0b"
+    },
+    {
+      "file": "backend/app/Services/MonitoringLimits.php",
+      "sha256": "701301cfdce68837b1c0f58612ef56e4b0e6fb5f9586e3eaba8df2da4a5c958e"
+    },
+    {
+      "file": "backend/app/Services/SatelliteMonitoringService.php",
+      "sha256": "68c453fd5a53809ae7f286e0156b9efcfafea2629cc9f09980b3a390a558a4e3"
+    },
+    {
+      "file": "backend/app/Models/Satellite.php",
+      "sha256": "018312e6c50864ebe7461b47eda8c6e859746299bf60f50ef46d28165546d392"
+    },
+    {
+      "file": "backend/routes/api.php",
+      "sha256": "ab869b52b5ee0d526e5d69a405597dd71ff846a672025bad92cd174c77474e1f"
+    },
+    {
+      "file": "backend/database/migrations/2026_11_16_000001_add_monitoring_limits_to_satellites.php",
+      "sha256": "88640fdc0f823456da99daed36096e3026391793173743eba3a3f4c97d6aefae"
+    },
+    {
+      "file": "backend/tests/Feature/DataExportTest.php",
+      "sha256": "82fd95a300722677a00b22e544500776f767a1259ea81bb72d8397a9b1fc52fc"
+    },
+    {
+      "file": "backend/tests/Feature/MonitoringLimitsTest.php",
+      "sha256": "39e11bc656ec1f4181157609da1849061212c644e3625c1770a0380b9a9b9e89"
+    },
+    {
+      "file": "frontend/src/features/exports/index.tsx",
+      "sha256": "77d5a41d253b01536b0d9aef7acc1898c8a8fed4daece1868fe20f42a7d6c491"
+    },
+    {
+      "file": "frontend/src/features/exports/index.test.tsx",
+      "sha256": "5689326adb438c5bc812d23922d605d49f04ad93d1192e83747079ca4553ea00"
+    },
+    {
+      "file": "frontend/src/features/monitoring/components/monitoring-limits.tsx",
+      "sha256": "2ff277c4ed9eb7eda5c76c02ff46a733c9acbb8819cc9f57bbe02b9fde1be533"
+    },
+    {
+      "file": "frontend/src/features/monitoring/components/monitoring-limits.test.tsx",
+      "sha256": "f2c4ad0b5698a59469981549763b14620d5444b00772c8e424afdfcb3823931f"
+    },
+    {
+      "file": "frontend/scripts/integration-smoke.mjs",
+      "sha256": "5a9d40e8d49c3eba14096f411327dbcf651bb82e78c1408ae79a50b8d24ead9c"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/ambiente-node.json",
+      "sha256": "073c78db2cddf65cc7939fe68653cfdc1bacbc8e1a19d181d2ccd8d7e63c35c8"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/backend-final.log",
+      "sha256": "8b1751306e91795ebf3344d60c40aba3af72cc89d11358fc89f21530b24556a9"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/backend-final.xml",
+      "sha256": "6d41343d5b6c93ef4647acdfad39ed8ded7e401bdc1c41ac110d22afdf12d9ad"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/browser-errors.json",
+      "sha256": "57f45037be9260bad456b3ba271cc9cb9a8e58dcadc446b81785ae8fa6cf1c1f"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/build.log",
+      "sha256": "515499c01b6d4479aff4fb63c89b52cdefb600683fc153569859d67d5fabfd1e"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/csv-validacao.json",
+      "sha256": "92b411601d926745c164519d593108d83921d124f729e52a6347a839c5e6e8d7"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/e2e.log",
+      "sha256": "e8e90a2cf4b1f10f8aa66a16a989ea687ca2c5fee3a02bada86ab9e3e018b0ce"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/export-missions.csv",
+      "sha256": "37f0f1cfd37a1bf4ccc40d8c3bc285afa83990521d54527262202ef667961eb0"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/export-satellites.csv",
+      "sha256": "240c99f076fd5763b16215275421f985f1de347b18b361e17c18effe842ac700"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/export-telemetry.csv",
+      "sha256": "b24184c8d919e23b873082492435f128712ae2be3c9c1de026e5732a8cd18ec5"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/frontend-completo.log",
+      "sha256": "1486641bf75b3ed341e46fbde89366915a6684d974aae5bb3aa4070bbb15e4e4"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/frontend-focal.log",
+      "sha256": "d6ce648ed15ce5bd9bb9e7d0273231d9191f86acaf3881cd8c9f02332eb213a8"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/http-e2e.json",
+      "sha256": "43a0f2796daaf8367571c807a9e0d8f705ab797682b3c7ca1abbcf931d1ae068"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/integridade-banco.json",
+      "sha256": "034f14733b294ffde0a43e531ee4f38a7b479acb9338314cd1b5562677c58641"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/lint.log",
+      "sha256": "178a10650d0fd8d95245463538f98d83a93e797da9988734395ebc718878dd18"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/mariadb-version.log",
+      "sha256": "6d3e0f80b97230fab27f7ecb81eb6265b057b9c3442f848326e2a306fe2f1155"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/migrations-local.log",
+      "sha256": "059f15ac801aac993b8aa6d7e5211e66c733c73e62980930f19860bb13cccdb6"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/php-version.log",
+      "sha256": "3275f75c5a72c281d3d892e6ade9f7eda5072ca152a2350985c7cf38321b26ba"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/python-regressao.log",
+      "sha256": "2545e427f5bbf825cdc480c55dff448f78fad81301a8f45e7c6165c64bf6dc7e"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/python-version.log",
+      "sha256": "a5c9ba409d8dd64dae0942c543f120aa9763aff45ba25b83d1b2607da1bdefed"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/regressao-missoes.log",
+      "sha256": "349f389edb55bd5f279f6b6d300729821e076f73da13b2d20246ecab78d2f649"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/us01-sem-registros.png",
+      "sha256": "0f7aed32b8101d612a75b0fe8ede7b8fc72173017f265a547867275403131481"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/us11-independencia.png",
+      "sha256": "587450b3023dcdbe54ba9242ae0ab0023c9e85331d6c16d7c8d174233838d1d1"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/us11-inicial.log",
+      "sha256": "d2989c2fd5b05ae4760623f90837deb7c8c6fe2990dc04f82569596f938c4958"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/us11-recarregado.png",
+      "sha256": "7a8bc87463cce275abfcce4b0734ebe4ddb325b772e2bb9e7ee888a49a6ebb21"
+    },
+    {
+      "file": "docs/testes-us01-us11/evidencias/us11-salvo.png",
+      "sha256": "48c6c478600764f5f98aba34da8b9b25d4cde5b53d488bfa979fa3ee59da1557"
+    },
+    {
+      "file": "docs/testes-us01-us11/validar_csv.py",
+      "sha256": "f0b005175086190e730277d506706a6ba4340748d390a4b8737ee6e720d7d4a7"
+    }
+  ]
+}

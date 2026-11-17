@@ -46,6 +46,7 @@ class SatelliteTelemetryController extends Controller
             ], 502);
         }
         $satellite = Satellite::where('norad_id', $noradId)->first();
+        if ($satellite) $response = app(\App\Services\MonitoringLimits::class)->apply($satellite, $response);
 
         $satelliteName = $satellite ? $satellite->name : null;
 

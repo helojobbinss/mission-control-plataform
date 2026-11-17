@@ -1,0 +1,73 @@
+[
+  {
+    "file": "export-missions.csv",
+    "bom": true,
+    "encoding": "utf-8-sig",
+    "delimiter": ",",
+    "columns": [
+      "id",
+      "name",
+      "satellite_id",
+      "description",
+      "status",
+      "category",
+      "operator_name",
+      "planned_start_date",
+      "planned_end_date",
+      "started_at",
+      "ended_at",
+      "budget",
+      "created_at",
+      "updated_at"
+    ],
+    "data_rows": 1,
+    "sha256": "37f0f1cfd37a1bf4ccc40d8c3bc285afa83990521d54527262202ef667961eb0"
+  },
+  {
+    "file": "export-satellites.csv",
+    "bom": true,
+    "encoding": "utf-8-sig",
+    "delimiter": ",",
+    "columns": [
+      "id",
+      "norad_id",
+      "name",
+      "international_designator",
+      "source",
+      "status",
+      "description",
+      "launch_date",
+      "orbit_altitude_km",
+      "orbit_inclination_deg",
+      "orbit_raan_deg",
+      "orbit_initial_anomaly_deg",
+      "orbit_epoch",
+      "created_at",
+      "updated_at"
+    ],
+    "data_rows": 2,
+    "sha256": "240c99f076fd5763b16215275421f985f1de347b18b361e17c18effe842ac700"
+  },
+  {
+    "file": "export-telemetry.csv",
+    "bom": true,
+    "encoding": "utf-8-sig",
+    "delimiter": ",",
+    "columns": [
+      "id",
+      "satellite_id",
+      "recorded_at",
+      "simulated",
+      "parameter",
+      "value",
+      "unit",
+      "status",
+      "latitude_deg",
+      "longitude_deg",
+      "altitude_km",
+      "orbital_speed_km_s"
+    ],
+    "data_rows": 56,
+    "sha256": "b24184c8d919e23b873082492435f128712ae2be3c9c1de026e5732a8cd18ec5"
+  }
+]

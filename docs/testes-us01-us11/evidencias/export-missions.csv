@@ -1,0 +1,2 @@
+﻿id,name,satellite_id,description,status,category,operator_name,planned_start_date,planned_end_date,started_at,ended_at,budget,created_at,updated_at
+1,"Smoke Mission",1,"Mission edited through React",Ativa,Monitoramento,Gabriel,,,2026-11-17T00:31:20Z,,,2026-11-17T00:31:16Z,2026-11-17T00:31:20Z

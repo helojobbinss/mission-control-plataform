@@ -12,6 +12,7 @@ import {
   TriangleAlert,
   ShieldCheck,
   Command,
+  Download,
 } from 'lucide-react'
 import { type SidebarData } from '../types'
 
@@ -33,6 +34,11 @@ teams: [
     {
       title: 'Geral',
       items: [
+        {
+          title: 'Extrair dados',
+          url: '/extrair-dados',
+          icon: Download,
+        },
         {
           title: 'Painel Geral',
           url: '/',

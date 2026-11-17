@@ -1,0 +1,42 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/satellites/1/monitoring/limits",
+    "status": 200
+  },
+  {
+    "method": "PUT",
+    "path": "/api/satellites/1/monitoring/limits",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/satellites/1/monitoring/limits",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/satellites/2/monitoring/limits",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/exports?dataset=missions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/exports?dataset=satellites",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/exports?dataset=telemetry",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/exports?dataset=telemetry&start_date=1900-01-01&end_date=1900-01-02",
+    "status": 404
+  }
+]

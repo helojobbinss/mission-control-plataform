@@ -45,6 +45,10 @@ Route::post('/reset-password', [
 
 Route::middleware('auth:sanctum')->group(function () {
 
+    Route::get('/exports', \App\Http\Controllers\DataExportController::class);
+    Route::get('/satellites/{satellite}/monitoring/limits', [\App\Http\Controllers\MonitoringLimitsController::class, 'show']);
+    Route::put('/satellites/{satellite}/monitoring/limits', [\App\Http\Controllers\MonitoringLimitsController::class, 'update']);
+
     /*
     |--------------------------------------------------------------------------
     | Autenticação e usuários

@@ -1,0 +1,8 @@
+{
+  "node": "v22.23.4",
+  "platform": "win32",
+  "react": "19.3.0",
+  "vite": "8.3.3",
+  "vitest": "4.1.11",
+  "playwright": "1.59.1"
+}
